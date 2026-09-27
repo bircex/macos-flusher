@@ -7,19 +7,23 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             header
-            DiskBar()
-            progressBar
+            overview
             Divider()
-            List {
-                ForEach(Catalog.groups) { group in
-                    GroupSection(group: group)
+            HStack(spacing: 0) {
+                List {
+                    ForEach(Catalog.groups) { group in
+                        GroupSection(group: group)
+                    }
                 }
+                .listStyle(.inset)
+                Divider()
+                CategoryChart()
+                    .frame(width: 300)
             }
-            .listStyle(.inset)
             Divider()
             LogView()
         }
-        .frame(minWidth: 760, minHeight: 640)
+        .frame(minWidth: 940, minHeight: 740)
         .confirmationDialog(
             "Delete \(Format.bytes(store.selectedTotal)) across \(store.selectedCount) categories?",
             isPresented: $confirmFlush,
@@ -57,12 +61,23 @@ struct ContentView: View {
         .padding()
     }
 
+    private var overview: some View {
+        HStack(spacing: 16) {
+            DiskDonut()
+            VStack(spacing: 10) {
+                DiskLegend()
+                DiskBar()
+                progressBar
+            }
+        }
+        .padding(.horizontal)
+        .padding(.bottom, 12)
+    }
+
     private var progressBar: some View {
         let fraction = store.progress?.fraction ?? 0
         return PercentBar(fraction: fraction, tint: .accentColor, label: Format.percent(fraction))
             .opacity(store.progress == nil ? 0 : 1)
-            .padding(.horizontal)
-            .padding(.bottom, 8)
     }
 }
 
@@ -79,7 +94,7 @@ struct PercentBar: View {
                     RoundedRectangle(cornerRadius: 6).fill(Color.secondary.opacity(0.2))
                     if let behind {
                         RoundedRectangle(cornerRadius: 6)
-                            .fill(Color.orange.opacity(0.5))
+                            .fill(Palette.selected)
                             .frame(width: geo.size.width * min(max(behind, 0), 1))
                     }
                     RoundedRectangle(cornerRadius: 6)
@@ -129,8 +144,6 @@ struct DiskBar: View {
                         : Format.percent(disk.usedFraction)
                 )
             }
-            .padding(.horizontal)
-            .padding(.bottom, 8)
         }
     }
 }
@@ -141,10 +154,6 @@ struct GroupSection: View {
 
     private var visibleItems: [CacheItem] {
         group.items.filter(store.isVisible)
-    }
-
-    private var groupTotal: Int64 {
-        group.items.compactMap(store.size(of:)).reduce(0, +)
     }
 
     private var isExpanded: Binding<Bool> {
@@ -166,7 +175,7 @@ struct GroupSection: View {
                 HStack {
                     Text(group.name).font(.headline)
                     Spacer()
-                    Text(Format.bytes(groupTotal))
+                    Text(Format.bytes(store.total(of: group)))
                         .font(.system(.callout, design: .monospaced))
                         .foregroundStyle(.secondary)
                     Button("All") { store.setGroup(group, on: true) }

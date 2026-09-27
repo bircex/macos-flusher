@@ -66,6 +66,18 @@ final class Store: ObservableObject {
         Catalog.allItems.filter { selected.contains($0.id) && isAvailable($0) }.count
     }
 
+    var measuredTotal: Int64 {
+        Catalog.allItems.compactMap(size(of:)).reduce(0, +)
+    }
+
+    func total(of group: CacheGroup) -> Int64 {
+        group.items.compactMap(size(of:)).reduce(0, +)
+    }
+
+    func selectedTotal(of group: CacheGroup) -> Int64 {
+        group.items.filter { selected.contains($0.id) }.compactMap(size(of:)).reduce(0, +)
+    }
+
     func setGroup(_ group: CacheGroup, on: Bool) {
         for item in group.items where isAvailable(item) {
             if on { selected.insert(item.id) } else { selected.remove(item.id) }
