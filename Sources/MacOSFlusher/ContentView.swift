@@ -208,26 +208,89 @@ struct ItemRow: View {
     }
 }
 
+extension LogLevel {
+    var label: String {
+        switch self {
+        case .info: return "INFO"
+        case .error: return "ERROR"
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .info: return "info.circle.fill"
+        case .error: return "exclamationmark.triangle.fill"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .info: return .blue
+        case .error: return .red
+        }
+    }
+}
+
+struct LogRow: View {
+    let entry: LogEntry
+
+    var body: some View {
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Image(systemName: entry.level.icon)
+                .foregroundStyle(entry.level.color)
+                .frame(width: 14)
+            Text(Format.time(entry.date))
+                .foregroundStyle(.secondary)
+            Text(entry.level.label)
+                .fontWeight(.semibold)
+                .foregroundStyle(entry.level.color)
+                .frame(width: 40, alignment: .leading)
+            Text(entry.message)
+                .textSelection(.enabled)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .font(.system(.caption, design: .monospaced))
+        .padding(.horizontal)
+        .padding(.vertical, 3)
+        .background(entry.level == .error ? Color.red.opacity(0.1) : Color.clear)
+    }
+}
+
 struct LogView: View {
     @EnvironmentObject var store: Store
 
+    private func count(_ level: LogLevel) -> Int {
+        store.log.filter { $0.level == level }.count
+    }
+
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 2) {
-                    ForEach(Array(store.log.enumerated()), id: \.offset) { index, line in
-                        Text(line)
-                            .font(.system(.caption, design: .monospaced))
-                            .textSelection(.enabled)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .id(index)
-                    }
+        VStack(spacing: 0) {
+            HStack(spacing: 12) {
+                Text("Activity log")
+                    .font(.callout.weight(.semibold))
+                Spacer()
+                ForEach([LogLevel.info, .error], id: \.self) { level in
+                    Label("\(count(level))", systemImage: level.icon)
+                        .font(.system(.caption, design: .monospaced))
+                        .foregroundStyle(level.color)
                 }
-                .padding(8)
             }
-            .frame(height: 110)
-            .onChange(of: store.log.count) { count in
-                proxy.scrollTo(count - 1, anchor: .bottom)
+            .padding(.horizontal)
+            .padding(.vertical, 6)
+            Divider()
+            ScrollViewReader { proxy in
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 0) {
+                        ForEach(store.log) { entry in
+                            LogRow(entry: entry).id(entry.id)
+                        }
+                    }
+                    .padding(.vertical, 4)
+                }
+                .frame(height: 130)
+                .onChange(of: store.log.last?.id) { id in
+                    if let id { proxy.scrollTo(id, anchor: .bottom) }
+                }
             }
         }
     }

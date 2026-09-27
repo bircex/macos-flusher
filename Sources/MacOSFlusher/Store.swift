@@ -8,12 +8,24 @@ enum ItemState: Equatable, Sendable {
     case measured(Int64)
 }
 
+enum LogLevel: Sendable {
+    case info
+    case error
+}
+
+struct LogEntry: Identifiable, Sendable {
+    let id: Int
+    let date: Date
+    let level: LogLevel
+    let message: String
+}
+
 @MainActor
 final class Store: ObservableObject {
     @Published private(set) var states: [String: ItemState] = [:]
     @Published var selected: Set<String> = Set(Catalog.allItems.filter(\.defaultOn).map(\.id))
     @Published private(set) var busy = false
-    @Published private(set) var log: [String] = []
+    @Published private(set) var log: [LogEntry] = []
     @Published private(set) var lastFreed: Int64?
     @Published var hideEmpty = true
     @Published private(set) var progress: Progress?
@@ -21,6 +33,7 @@ final class Store: ObservableObject {
     @Published var expanded: Set<String> = Set(Catalog.groups.map(\.id))
 
     private var current: Task<Void, Never>?
+    private var logSequence = 0
     private let concurrency = 4
 
     init() {
@@ -145,9 +158,9 @@ final class Store: ObservableObject {
             states[item.id] = state
             if case .measured(let bytes) = state { after += bytes }
             if result.status == 0 {
-                append("✓ \(item.name)")
+                append("Flushed \(item.name)")
             } else {
-                append("✗ \(item.name): \(result.output.trimmingCharacters(in: .whitespacesAndNewlines))")
+                append("\(item.name): \(result.output.trimmingCharacters(in: .whitespacesAndNewlines))", level: .error)
             }
         }
         for item in items where states[item.id] == .scanning { states[item.id] = .unknown }
@@ -157,8 +170,9 @@ final class Store: ObservableObject {
         append("Freed \(Format.bytes(lastFreed ?? 0)).")
     }
 
-    private func append(_ line: String) {
-        log.append(line)
+    private func append(_ message: String, level: LogLevel = .info) {
+        logSequence += 1
+        log.append(LogEntry(id: logSequence, date: Date(), level: level, message: message))
         if log.count > 300 { log.removeFirst(log.count - 300) }
     }
 }
@@ -208,7 +222,17 @@ enum Format {
         return f
     }()
 
+    private static let timeFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "HH:mm:ss"
+        return f
+    }()
+
     static func bytes(_ value: Int64) -> String {
         formatter.string(fromByteCount: value)
+    }
+
+    static func time(_ date: Date) -> String {
+        timeFormatter.string(from: date)
     }
 }
