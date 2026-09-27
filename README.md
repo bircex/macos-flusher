@@ -4,20 +4,32 @@ A small native macOS app that finds and deletes developer caches: package manage
 
 Pick the categories, see how much each one takes, press Flush. The disk bar shows how full the disk is now and how much will be free after the flush.
 
+![MacOS Flusher](docs/public/shots/main-light.png)
+
+Documentation: https://bircex.github.io/macos-flusher/
+
 ## Install
 
-One command, builds from source on your machine (needs Xcode Command Line Tools, macOS 13 or newer):
+Needs macOS 13 or newer. The app is a universal binary for Apple Silicon and Intel.
+
+Download [MacOS-Flusher.dmg](https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg) and drag the app into Applications. The app is not notarized, so macOS asks you to allow it the first time. The [first launch guide](https://bircex.github.io/macos-flusher/guide/first-launch) shows how.
+
+Or install the latest release with one command:
 
 ```
 curl -fsSL https://raw.githubusercontent.com/bircex/macos-flusher/main/install.sh | bash
 ```
 
-Or from a clone:
+Or from a clone (needs Xcode Command Line Tools):
 
 ```
 make install    # builds and copies "MacOS Flusher.app" into /Applications
 make run        # builds and opens it without installing
 ```
+
+## Releases
+
+Versions follow calendar versioning, `YYYY.M.PATCH`, for example `2026.9.0`. The release workflow publishes a new version when a change to the app is merged into `main`. Each release has a DMG, a ZIP and a `SHA256SUMS` file.
 
 ## What it covers
 
