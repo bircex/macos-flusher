@@ -15,5 +15,8 @@
     <key>LSMinimumSystemVersion</key><string>13.0</string>
     <key>LSApplicationCategoryType</key><string>public.app-category.developer-tools</string>
     <key>NSHighResolutionCapable</key><true/>
+    <key>NSDesktopFolderUsageDescription</key><string>MacOS Flusher measures how much disk space your Desktop folder uses. Nothing in it is changed.</string>
+    <key>NSDocumentsFolderUsageDescription</key><string>MacOS Flusher measures how much disk space your Documents folder uses. Nothing in it is changed.</string>
+    <key>NSDownloadsFolderUsageDescription</key><string>MacOS Flusher measures how much disk space your Downloads folder uses. Nothing in it is changed.</string>
 </dict>
 </plist>

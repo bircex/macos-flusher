@@ -121,6 +121,42 @@ struct DiskLegend: View {
     }
 }
 
+struct LocationChart: View {
+    @EnvironmentObject var store: Store
+
+    private var detail: String {
+        if let analysis = store.analysis { return "Analyzing \(analysis.done) of \(analysis.total)" }
+        return "\(Format.bytes(store.disk?.used ?? 0)) used"
+    }
+
+    var body: some View {
+        let rows = store.locationRows
+        let scale = Double(max(rows.map(\.total).max() ?? 1, 1))
+        ChartPanel(
+            title: "Disk usage by location",
+            detail: detail,
+            legend: [.otherData(), .unselected(), .selected()],
+            placeholder: rows.isEmpty ? (store.busy || store.analysis != nil ? "Analyzing disk…" : "Not analyzed yet") : nil
+        ) {
+            ForEach(rows) { row in
+                bar(row, scale: scale, nested: false)
+                ForEach(row.children) { child in
+                    bar(child, scale: scale, nested: true)
+                }
+            }
+        }
+    }
+
+    private func bar(_ row: LocationRow, scale: Double, nested: Bool) -> some View {
+        ChartRow(
+            name: row.name,
+            series: [.otherData(row.other), .unselected(row.cache.unselected), .selected(row.cache.selected)],
+            scale: scale,
+            nested: nested
+        )
+    }
+}
+
 struct CategoryChart: View {
     @EnvironmentObject var store: Store
 

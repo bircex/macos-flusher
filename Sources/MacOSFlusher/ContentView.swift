@@ -17,13 +17,17 @@ struct ContentView: View {
                 }
                 .listStyle(.inset)
                 Divider()
-                CategoryChart()
-                    .frame(width: 300)
+                VStack(spacing: 0) {
+                    LocationChart()
+                    Divider()
+                    CategoryChart()
+                }
+                .frame(width: 320)
             }
             Divider()
             LogView()
         }
-        .frame(minWidth: 940, minHeight: 740)
+        .frame(minWidth: 960, minHeight: 820)
         .confirmationDialog(
             "Delete \(Format.bytes(store.selectedTotal)) across \(store.selectedCount) categories?",
             isPresented: $confirmFlush,

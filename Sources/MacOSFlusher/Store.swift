@@ -31,6 +31,9 @@ final class Store: ObservableObject {
     @Published private(set) var progress: Progress?
     @Published private(set) var disk: DiskInfo?
     @Published var expanded: Set<String> = Set(Catalog.groups.map(\.id))
+    @Published private(set) var pathSizes: [String: [String: Int64]] = [:]
+    @Published private(set) var locations: [DiskLocation] = []
+    @Published private(set) var analysis: Progress?
 
     private var current: Task<Void, Never>?
     private var logSequence = 0
@@ -105,9 +108,11 @@ final class Store: ObservableObject {
         busy = true
         lastFreed = nil
         append("Scanning…")
+        current?.cancel()
         current = Task { [weak self] in
             await self?.runScan()
             self?.busy = false
+            await self?.runAnalysis()
         }
     }
 
@@ -115,10 +120,17 @@ final class Store: ObservableObject {
         guard !busy else { return }
         busy = true
         lastFreed = nil
+        current?.cancel()
         current = Task { [weak self] in
             await self?.runFlush()
             self?.busy = false
+            await self?.runAnalysis()
         }
+    }
+
+    private func apply(_ measurement: Measurement, to id: String) {
+        states[id] = measurement.state
+        pathSizes[id] = measurement.paths
     }
 
     private func runScan() async {
@@ -126,16 +138,16 @@ final class Store: ObservableObject {
         refreshDisk()
         progress = Progress(done: 0, total: items.count)
         for item in items { states[item.id] = .scanning }
-        await withTaskGroup(of: (String, ItemState).self) { group in
+        await withTaskGroup(of: (String, Measurement).self) { group in
             var pending = items.makeIterator()
             func enqueue() {
                 guard let item = pending.next() else { return }
                 group.addTask { (item.id, await Measurer.measure(item)) }
             }
             for _ in 0..<concurrency { enqueue() }
-            for await (id, state) in group {
-                states[id] = state
-                if state == .unavailable { selected.remove(id) }
+            for await (id, measurement) in group {
+                apply(measurement, to: id)
+                if measurement.state == .unavailable { selected.remove(id) }
                 progress = Progress(done: min((progress?.done ?? 0) + 1, items.count), total: items.count)
                 if Task.isCancelled {
                     group.cancelAll()
@@ -166,9 +178,9 @@ final class Store: ObservableObject {
             case .command(let command):
                 result = await Shell.command(command)
             }
-            let state = await Measurer.measure(item)
-            states[item.id] = state
-            if case .measured(let bytes) = state { after += bytes }
+            let measurement = await Measurer.measure(item)
+            apply(measurement, to: item.id)
+            if case .measured(let bytes) = measurement.state { after += bytes }
             if result.status == 0 {
                 append("Flushed \(item.name)")
             } else {
@@ -180,6 +192,45 @@ final class Store: ObservableObject {
         refreshDisk()
         lastFreed = max(0, before - after)
         append("Freed \(Format.bytes(lastFreed ?? 0)).")
+    }
+
+    private func runAnalysis() async {
+        guard !Task.isCancelled else {
+            analysis = nil
+            return
+        }
+        let plan = Locations.plan()
+        let roots = plan.flatMap(\.roots)
+        var raw: [String: Int64] = [:]
+        analysis = Progress(done: 0, total: roots.count)
+        await withTaskGroup(of: (String, Int64?).self) { group in
+            var pending = roots.makeIterator()
+            func enqueue() {
+                guard let root = pending.next() else { return }
+                group.addTask { (root, await Shell.sizesOfPaths([root])[root]) }
+            }
+            for _ in 0..<concurrency { enqueue() }
+            for await (root, bytes) in group {
+                raw[root] = bytes
+                if Task.isCancelled {
+                    group.cancelAll()
+                } else {
+                    analysis = Progress(done: raw.count, total: roots.count)
+                    enqueue()
+                }
+            }
+        }
+        guard !Task.isCancelled else { return }
+        let caches = cacheBytes(in: plan)
+        locations = plan.map { location in
+            var measured = location
+            let bytes = location.roots.map { Locations.exclusive($0, raw: raw) }.reduce(0, +)
+            measured.other = max(0, bytes - (caches[location.id]?.total ?? 0))
+            return measured
+        }
+        analysis = nil
+        refreshDisk()
+        append("Disk analysis finished.")
     }
 
     private func append(_ message: String, level: LogLevel = .info) {
@@ -212,18 +263,21 @@ struct DiskInfo: Equatable {
     }
 }
 
+struct Measurement: Sendable {
+    let state: ItemState
+    var paths: [String: Int64] = [:]
+}
+
 enum Measurer {
-    static func measure(_ item: CacheItem) async -> ItemState {
+    static func measure(_ item: CacheItem) async -> Measurement {
         if let binary = item.requires, !Shell.exists(binary: binary) {
-            return .unavailable
+            return Measurement(state: .unavailable)
         }
         if let command = item.sizeCommand {
-            return .measured(Shell.parseSizes(await Shell.command(command).output))
+            return Measurement(state: .measured(Shell.parseSizes(await Shell.command(command).output)))
         }
-        if item.paths.isEmpty {
-            return .measured(0)
-        }
-        return .measured(await Shell.sizeOfPaths(item.paths))
+        let paths = await Shell.sizesOfPaths(item.paths)
+        return Measurement(state: .measured(paths.values.reduce(0, +)), paths: paths)
     }
 }
 
