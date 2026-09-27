@@ -9,7 +9,7 @@ Pick the categories, see how much each one takes, press Flush. The disk bar show
 One command, builds from source on your machine (needs Xcode Command Line Tools, macOS 13 or newer):
 
 ```
-curl -fsSL https://raw.githubusercontent.com/recepkizilarslan/macos-flusher/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/bircex/macos-flusher/main/install.sh | bash
 ```
 
 Or from a clone:
