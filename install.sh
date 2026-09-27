@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-REPO="https://github.com/recepkizilarslan/macos-flusher.git"
+REPO="https://github.com/bircex/macos-flusher.git"
 APP="MacOS Flusher"
 INSTALL_DIR="${INSTALL_DIR:-/Applications}"
 

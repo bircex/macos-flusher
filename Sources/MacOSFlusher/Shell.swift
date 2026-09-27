@@ -73,13 +73,17 @@ enum Shell {
         }
     }
 
-    static func sizeOfPaths(_ patterns: [String]) async -> Int64 {
+    static func sizesOfPaths(_ patterns: [String]) async -> [String: Int64] {
         let paths = patterns.flatMap(expand)
-        guard !paths.isEmpty else { return 0 }
-        let out = await run("/usr/bin/du", ["-skc"] + paths).output
-        guard let last = out.split(separator: "\n").last,
-              let kb = Int64(last.split(separator: "\t").first ?? "") else { return 0 }
-        return kb * 1024
+        guard !paths.isEmpty else { return [:] }
+        let out = await run("/usr/bin/du", ["-skx"] + paths).output
+        var sizes: [String: Int64] = [:]
+        for line in out.split(separator: "\n") {
+            let parts = line.split(separator: "\t", maxSplits: 1)
+            guard parts.count == 2, let kb = Int64(parts[0]) else { continue }
+            sizes[String(parts[1])] = kb * 1024
+        }
+        return sizes
     }
 
     static func removePaths(_ patterns: [String]) async -> (status: Int32, output: String) {

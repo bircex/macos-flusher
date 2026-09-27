@@ -7,19 +7,27 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             header
-            DiskBar()
-            progressBar
+            overview
             Divider()
-            List {
-                ForEach(Catalog.groups) { group in
-                    GroupSection(group: group)
+            HStack(spacing: 0) {
+                List {
+                    ForEach(Catalog.groups) { group in
+                        GroupSection(group: group)
+                    }
                 }
+                .listStyle(.inset)
+                Divider()
+                VStack(spacing: 0) {
+                    LocationChart()
+                    Divider()
+                    CategoryChart()
+                }
+                .frame(width: 320)
             }
-            .listStyle(.inset)
             Divider()
             LogView()
         }
-        .frame(minWidth: 760, minHeight: 640)
+        .frame(minWidth: 960, minHeight: 820)
         .confirmationDialog(
             "Delete \(Format.bytes(store.selectedTotal)) across \(store.selectedCount) categories?",
             isPresented: $confirmFlush,
@@ -57,15 +65,51 @@ struct ContentView: View {
         .padding()
     }
 
-    @ViewBuilder
+    private var overview: some View {
+        HStack(spacing: 16) {
+            DiskDonut()
+            VStack(spacing: 10) {
+                DiskLegend()
+                DiskBar()
+                progressBar
+            }
+        }
+        .padding(.horizontal)
+        .padding(.bottom, 12)
+    }
+
     private var progressBar: some View {
-        if let progress = store.progress {
-            ProgressView(value: progress.fraction)
-                .progressViewStyle(.linear)
-                .padding(.horizontal)
-                .padding(.bottom, 8)
-        } else {
-            Color.clear.frame(height: 14)
+        let fraction = store.progress?.fraction ?? 0
+        return PercentBar(fraction: fraction, tint: .accentColor, label: Format.percent(fraction))
+            .opacity(store.progress == nil ? 0 : 1)
+    }
+}
+
+struct PercentBar: View {
+    let fraction: Double
+    var behind: Double?
+    let tint: Color
+    let label: String
+
+    var body: some View {
+        HStack(spacing: 10) {
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 6).fill(Color.secondary.opacity(0.2))
+                    if let behind {
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(Palette.selected)
+                            .frame(width: geo.size.width * min(max(behind, 0), 1))
+                    }
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(tint)
+                        .frame(width: geo.size.width * min(max(fraction, 0), 1))
+                }
+            }
+            .frame(height: 18)
+            Text(label)
+                .font(.system(.callout, design: .monospaced).weight(.semibold))
+                .frame(width: 100, alignment: .trailing)
         }
     }
 }
@@ -75,9 +119,10 @@ struct DiskBar: View {
 
     var body: some View {
         if let disk = store.disk {
+            let expectedFraction = max(0, disk.usedFraction - Double(store.selectedTotal) / Double(max(disk.total, 1)))
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
-                    Text("Disk \(Int(disk.usedFraction * 100))% full")
+                    Text("Disk usage")
                         .font(.callout.weight(.medium))
                     Spacer()
                     Text("\(Format.bytes(disk.free)) free of \(Format.bytes(disk.total))")
@@ -94,22 +139,15 @@ struct DiskBar: View {
                             .foregroundStyle(.green)
                     }
                 }
-                GeometryReader { geo in
-                    let expectedFraction = max(0, disk.usedFraction - Double(store.selectedTotal) / Double(max(disk.total, 1)))
-                    ZStack(alignment: .leading) {
-                        RoundedRectangle(cornerRadius: 4).fill(Color.secondary.opacity(0.2))
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(Color.orange.opacity(0.5))
-                            .frame(width: geo.size.width * disk.usedFraction)
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(disk.usedFraction > 0.9 ? Color.red : Color.accentColor)
-                            .frame(width: geo.size.width * expectedFraction)
-                    }
-                }
-                .frame(height: 10)
+                PercentBar(
+                    fraction: expectedFraction,
+                    behind: disk.usedFraction,
+                    tint: disk.usedFraction > 0.9 ? Color.red : Color.accentColor,
+                    label: store.selectedTotal > 0
+                        ? "\(Format.percent(disk.usedFraction)) → \(Format.percent(expectedFraction))"
+                        : Format.percent(disk.usedFraction)
+                )
             }
-            .padding(.horizontal)
-            .padding(.bottom, 8)
         }
     }
 }
@@ -120,10 +158,6 @@ struct GroupSection: View {
 
     private var visibleItems: [CacheItem] {
         group.items.filter(store.isVisible)
-    }
-
-    private var groupTotal: Int64 {
-        group.items.compactMap(store.size(of:)).reduce(0, +)
     }
 
     private var isExpanded: Binding<Bool> {
@@ -145,7 +179,7 @@ struct GroupSection: View {
                 HStack {
                     Text(group.name).font(.headline)
                     Spacer()
-                    Text(Format.bytes(groupTotal))
+                    Text(Format.bytes(store.total(of: group)))
                         .font(.system(.callout, design: .monospaced))
                         .foregroundStyle(.secondary)
                     Button("All") { store.setGroup(group, on: true) }
@@ -208,26 +242,89 @@ struct ItemRow: View {
     }
 }
 
+extension LogLevel {
+    var label: String {
+        switch self {
+        case .info: return "INFO"
+        case .error: return "ERROR"
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .info: return "info.circle.fill"
+        case .error: return "exclamationmark.triangle.fill"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .info: return .blue
+        case .error: return .red
+        }
+    }
+}
+
+struct LogRow: View {
+    let entry: LogEntry
+
+    var body: some View {
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Image(systemName: entry.level.icon)
+                .foregroundStyle(entry.level.color)
+                .frame(width: 14)
+            Text(Format.time(entry.date))
+                .foregroundStyle(.secondary)
+            Text(entry.level.label)
+                .fontWeight(.semibold)
+                .foregroundStyle(entry.level.color)
+                .frame(width: 40, alignment: .leading)
+            Text(entry.message)
+                .textSelection(.enabled)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .font(.system(.caption, design: .monospaced))
+        .padding(.horizontal)
+        .padding(.vertical, 3)
+        .background(entry.level == .error ? Color.red.opacity(0.1) : Color.clear)
+    }
+}
+
 struct LogView: View {
     @EnvironmentObject var store: Store
 
+    private func count(_ level: LogLevel) -> Int {
+        store.log.filter { $0.level == level }.count
+    }
+
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 2) {
-                    ForEach(Array(store.log.enumerated()), id: \.offset) { index, line in
-                        Text(line)
-                            .font(.system(.caption, design: .monospaced))
-                            .textSelection(.enabled)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .id(index)
-                    }
+        VStack(spacing: 0) {
+            HStack(spacing: 12) {
+                Text("Activity log")
+                    .font(.callout.weight(.semibold))
+                Spacer()
+                ForEach([LogLevel.info, .error], id: \.self) { level in
+                    Label("\(count(level))", systemImage: level.icon)
+                        .font(.system(.caption, design: .monospaced))
+                        .foregroundStyle(level.color)
                 }
-                .padding(8)
             }
-            .frame(height: 110)
-            .onChange(of: store.log.count) { count in
-                proxy.scrollTo(count - 1, anchor: .bottom)
+            .padding(.horizontal)
+            .padding(.vertical, 6)
+            Divider()
+            ScrollViewReader { proxy in
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 0) {
+                        ForEach(store.log) { entry in
+                            LogRow(entry: entry).id(entry.id)
+                        }
+                    }
+                    .padding(.vertical, 4)
+                }
+                .frame(height: 130)
+                .onChange(of: store.log.last?.id) { id in
+                    if let id { proxy.scrollTo(id, anchor: .bottom) }
+                }
             }
         }
     }
