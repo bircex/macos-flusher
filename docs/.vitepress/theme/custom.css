@@ -1,0 +1,49 @@
+:root {
+  --vp-c-brand-1: #2467bd;
+  --vp-c-brand-2: #2a78d6;
+  --vp-c-brand-3: #256abf;
+  --vp-c-brand-soft: rgba(42, 120, 214, 0.14);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #2a78d6 20%, #1baf7a);
+}
+
+.dark {
+  --vp-c-brand-1: #86b6ef;
+  --vp-c-brand-2: #5598e7;
+  --vp-c-brand-3: #2a78d6;
+  --vp-c-brand-soft: rgba(57, 135, 229, 0.18);
+}
+
+.dark .light-only,
+html:not(.dark) .dark-only {
+  display: none;
+}
+
+.vp-doc img.shot,
+.shot-frame img {
+  border-radius: 10px;
+  border: 1px solid var(--vp-c-divider);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.35);
+}
+
+.vp-doc img.shot.narrow {
+  max-width: 321px;
+}
+
+.shot-frame {
+  max-width: 1152px;
+  margin: 48px auto 0;
+  padding: 0 24px 64px;
+}
+
+@media (min-width: 640px) {
+  .shot-frame {
+    padding: 0 48px 64px;
+  }
+}
+
+@media (min-width: 960px) {
+  .shot-frame {
+    padding: 0 64px 64px;
+  }
+}

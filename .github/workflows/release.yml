@@ -1,0 +1,44 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - Sources/**
+      - Resources/**
+      - Info.plist
+      - Package.swift
+      - Makefile
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Pick the next version
+        id: version
+        run: |
+          month="$(date -u +%Y.%-m)"
+          last="$(git tag --list "v${month}.*" | sed "s/^v${month}\.//" | sort -n | tail -1)"
+          echo "version=${month}.$(( ${last:--1} + 1 ))" >> "$GITHUB_OUTPUT"
+      - run: make package ARCHS="arm64 x86_64" VERSION="${{ steps.version.outputs.version }}"
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "v$VERSION" \
+            dist/MacOS-Flusher.dmg dist/MacOS-Flusher.zip dist/SHA256SUMS \
+            --target "$GITHUB_SHA" \
+            --title "MacOS Flusher $VERSION" \
+            --generate-notes
