@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MacOS Flusher: get your disk space back</title>
 <meta name="description" content="A free, open source Mac app for developers. It finds the caches that package managers, build tools, Docker and IDEs leave behind, shows what fills your disk and deletes what you choose.">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MacOS Flusher: get your disk space back">
 <meta property="og:description" content="Find and delete developer caches on your Mac, and see what is filling the disk.">
@@ -18,599 +18,495 @@
 
 <header class="nav">
   <div class="container">
-    <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="30" height="30">MacOS Flusher</a>
+    <a class="brand" href="#top">MacOS Flusher</a>
     <nav class="nav-links" aria-label="Sections">
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
-      <a href="#install">Install</a>
       <a href="#caches">What it cleans</a>
+      <a href="#install">Install</a>
       <a href="#privacy">Privacy</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="button primary small" href="https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg">Download</a>
+    <a class="button small" href="https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg">Download</a>
   </div>
 </header>
 
 <main id="main">
 
-<section class="hero" id="top">
+<div class="hero" id="top">
   <div class="container">
-    <img class="hero-icon" src="assets/icon.png" alt="MacOS Flusher app icon" width="112" height="112">
-    <div><span class="badge"><span class="dot"></span>Free and open source</span></div>
-    <h1>MacOS <span>Flusher</span></h1>
-    <p class="tagline">Get your disk space back</p>
-    <p class="lead">A small native Mac app for developers. It finds the caches that package managers, build tools, Docker and IDEs leave behind, shows what fills your disk and deletes what you choose.</p>
+    <h1>MacOS Flusher</h1>
+    <p class="tagline"><strong>Get your disk space back.</strong> A small Mac app that finds the caches your developer tools leave behind, shows what fills the disk and deletes what you choose.</p>
     <div class="actions">
-      <a class="button primary" href="https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg">
+      <a class="button" href="https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download latest
       </a>
-      <a class="button secondary" href="https://github.com/bircex/macos-flusher">
+      <a class="button outline" href="https://github.com/bircex/macos-flusher">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         Go to project
       </a>
     </div>
     <p class="meta">
       <span data-version>Latest release</span>
+      <span data-size hidden></span>
       <span>macOS 13 or newer</span>
       <span>Apple Silicon and Intel</span>
-      <span data-size hidden></span>
+      <span>Free and open source</span>
     </p>
-    <div class="window">
-      <div class="window-bar"><i></i><i></i><i></i><b>MacOS Flusher</b></div>
-      <picture>
-        <source srcset="assets/shots/main-dark.png" media="(prefers-color-scheme: dark)">
-        <img src="assets/shots/main-light.png" width="2360" height="1760" alt="Main window with the disk overview, the list of caches, two charts and the activity log">
-      </picture>
-    </div>
-  </div>
-</section>
-
-<div class="stats">
-  <div class="container">
-    <div class="stat"><b>88</b><span>caches it knows</span></div>
-    <div class="stat"><b>14</b><span>ecosystems</span></div>
-    <div class="stat"><b>1 MB</b><span>download</span></div>
-    <div class="stat"><b>0</b><span>network requests</span></div>
   </div>
 </div>
 
-<section id="features">
+<div class="showcase">
   <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Features</p>
-      <h2>Everything a full disk needs</h2>
-      <p>One window shows what takes the space, what is safe to delete and what the disk looks like afterwards.</p>
+    <div class="shot lifted">
+      <img src="assets/shots/main-light.png" width="2360" height="1760" alt="Main window with the disk overview, the list of caches, two charts and the activity log">
     </div>
-    <div class="grid three">
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
-        <h3>Every stack in one list</h3>
-        <p>npm, pip, Go, Cargo, Gradle, Xcode, Docker, Homebrew, JetBrains, VS Code and many more, grouped by ecosystem.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <h3>Measure first, delete second</h3>
-        <p>Every cache is measured before anything is removed. The disk bar shows how full the disk is now and how full it will be after the flush.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div>
-        <h3>See what fills the disk</h3>
-        <p>Charts break the disk down by location and by cache category. The Docker disk image has its own row under Docker.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
-        <h3>Safe defaults</h3>
-        <p>Caches that are slow to rebuild or hold your data start unselected. Named Docker volumes and project files are never touched.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
-        <h3>Uses each tool's own cleanup</h3>
-        <p>Where a tool has a cleanup command, the app runs it. <code>go clean</code>, <code>npm cache clean</code>, <code>docker prune</code> and <code>brew cleanup</code> do the deleting.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <h3>Native and private</h3>
-        <p>Written in SwiftUI for Apple Silicon and Intel. The app makes no network requests, has no account and collects nothing.</p>
+  </div>
+</div>
+
+<section class="block" id="features">
+  <div class="container split">
+    <header>
+      <h2>Features</h2>
+    </header>
+    <div>
+      <p class="intro">One window shows what takes the space, what is safe to delete and what the disk looks like afterwards.</p>
+      <div class="columns">
+        <div class="item">
+          <h3>Every stack in one list</h3>
+          <p>npm, pip, Go, Cargo, Gradle, Xcode, Docker, Homebrew, JetBrains, VS Code and many more, grouped by ecosystem.</p>
+        </div>
+        <div class="item">
+          <h3>Measure first, delete second</h3>
+          <p>Every cache is measured before anything is removed. The disk bar shows how full the disk is now and after the flush.</p>
+        </div>
+        <div class="item">
+          <h3>See what fills the disk</h3>
+          <p>Charts break the disk down by location and by cache category. The Docker disk image has its own row.</p>
+        </div>
+        <div class="item">
+          <h3>Safe defaults</h3>
+          <p>Caches that are slow to rebuild or hold your data start unselected. Named Docker volumes and projects are never touched.</p>
+        </div>
+        <div class="item">
+          <h3>Each tool cleans itself</h3>
+          <p>Where a tool has a cleanup command, the app runs it. <code>go clean</code>, <code>npm cache clean</code> and <code>docker prune</code> do the deleting.</p>
+        </div>
+        <div class="item">
+          <h3>Native and private</h3>
+          <p>Written in SwiftUI. The app makes no network requests, has no account and collects nothing.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="how" class="alt">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">How it works</p>
-      <h2>Scan, choose, flush</h2>
-      <p>Three steps, and nothing is deleted until you confirm the last one.</p>
-    </div>
+<section class="block" id="how">
+  <div class="container split">
+    <header>
+      <h2>How it works</h2>
+      <p>Three steps. Nothing is deleted until you confirm the last one.</p>
+    </header>
     <div class="steps">
-      <div class="step">
-        <div class="step-text">
-          <span class="step-number">1</span>
+      <div class="step wide">
+        <div>
+          <p class="kicker">01</p>
           <h3>Scan</h3>
           <p>The app measures every cache as soon as it opens. The overview shows how the disk is split between your data, caches and free space.</p>
-          <ul>
-            <li>Nothing is deleted during a scan</li>
-            <li>Tools that are not installed are greyed out</li>
-            <li>Folders are measured in the background for the location chart</li>
-          </ul>
         </div>
-        <picture class="shot">
-          <source srcset="assets/shots/overview-dark.png" media="(prefers-color-scheme: dark)">
+        <div class="shot">
           <img src="assets/shots/overview-light.png" width="2360" height="456" loading="lazy" alt="Overview with the disk donut, four tiles and the disk bar">
-        </picture>
+        </div>
       </div>
       <div class="step">
-        <div class="step-text">
-          <span class="step-number">2</span>
+        <div>
+          <p class="kicker">02</p>
           <h3>Choose</h3>
           <p>Tick the caches you want to delete. The charts show where the space is and how much of it you have selected.</p>
-          <ul>
-            <li>Select or clear a whole group with All and None</li>
-            <li>The disk bar shows the change before you make it, for example 94% → 79%</li>
-            <li>Hover a bar to see the exact sizes behind it</li>
+          <ul class="list">
+            <li>Select or clear a whole group at once</li>
+            <li>The disk bar shows the change before you make it</li>
+            <li>Hover a bar to see the exact sizes</li>
           </ul>
-          <p class="legend">
-            <span><i style="background: var(--blue)"></i>Other data</span>
-            <span><i style="background: var(--green)"></i>Unselected caches</span>
-            <span><i style="background: var(--orange)"></i>Selected caches</span>
-          </p>
         </div>
-        <picture class="shot narrow">
-          <source srcset="assets/shots/charts-dark.png" media="(prefers-color-scheme: dark)">
+        <div class="shot narrow">
           <img src="assets/shots/charts-light.png" width="642" height="986" loading="lazy" alt="Charts of disk usage by location and caches by category">
-        </picture>
-      </div>
-      <div class="step">
-        <div class="step-text">
-          <span class="step-number">3</span>
-          <h3>Flush</h3>
-          <p>Press Flush selected and confirm. The app works through the caches one by one and measures each again, so the list always shows what is really left.</p>
-          <ul>
-            <li>Folder caches are emptied, the folder itself stays</li>
-            <li>Command caches are cleaned by the tool that owns them</li>
-            <li>Every step is logged, failures with the message from the tool</li>
-          </ul>
         </div>
-        <picture class="shot">
-          <source srcset="assets/shots/log-dark.png" media="(prefers-color-scheme: dark)">
+      </div>
+      <div class="step wide">
+        <div>
+          <p class="kicker">03</p>
+          <h3>Flush</h3>
+          <p>Press Flush selected and confirm. The app works through the caches one by one and measures each again, so the list shows what is really left. Every step is logged, failures with the message from the tool.</p>
+        </div>
+        <div class="shot">
           <img src="assets/shots/log-light.png" width="2360" height="318" loading="lazy" alt="Activity log after a flush with one error line">
-        </picture>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="install">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Install</p>
-      <h2>Up and running in a minute</h2>
-      <p>Needs macOS 13 Ventura or newer. The same download works on Apple Silicon and Intel Macs.</p>
-    </div>
-    <div class="grid three">
-      <div class="card install-card">
-        <span class="tag">Recommended</span>
-        <h3>Download the app</h3>
-        <p>Open the disk image and drag MacOS Flusher into Applications.</p>
-        <a class="button primary" href="https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download latest
-        </a>
-        <p class="note"><span data-version>Latest release</span><span data-released hidden></span></p>
-      </div>
-      <div class="card install-card">
-        <span class="tag">Terminal</span>
-        <h3>Install with one command</h3>
-        <p>Downloads the latest release, checks it and copies it into Applications.</p>
-        <div class="code">
-          <pre>curl -fsSL https://raw.githubusercontent.com/bircex/macos-flusher/main/install.sh | bash</pre>
-          <button class="copy" type="button" aria-label="Copy command">
-            <svg class="idle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <svg class="done" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
+<section class="block" id="caches">
+  <div class="container split">
+    <header>
+      <h2>What it cleans</h2>
+      <p>88 caches in 14 groups, with the exact folder or command for each.</p>
+    </header>
+    <div>
+      <p class="intro">Nothing hidden. Open a group to see every folder that is emptied and every command that is run.</p>
+      <div>
+        <div class="toolbar">
+          <span>Lines starting with $ are commands. Everything else is a folder.</span>
+          <button class="button outline small" type="button" data-expand>Expand all</button>
         </div>
-        <p class="note">Opens right away, without a security prompt.</p>
+        <div class="accordion">
+          <details>
+            <summary><span class="title">JavaScript / TypeScript</span><span class="count">10 caches</span><span class="hint">npm, Yarn, pnpm, Bun, Deno, Corepack, nvm, node-gyp, Electron, Turborepo</span></summary>
+            <ul class="caches">
+              <li><span class="name">npm cache</span><span class="removes"><span><b>$ </b>npm cache clean --force</span></span></li>
+              <li><span class="name">Yarn cache</span><span class="removes"><span>~/Library/Caches/Yarn</span><span>~/.yarn/cache</span><span>~/.yarn/berry/cache</span></span></li>
+              <li><span class="name">pnpm store</span><span class="removes"><span>~/Library/pnpm/store</span><span>~/Library/Caches/pnpm</span><span>~/.pnpm-store</span></span></li>
+              <li><span class="name">Bun install cache</span><span class="removes"><span>~/.bun/install/cache</span></span></li>
+              <li><span class="name">Deno cache</span><span class="removes"><span>~/Library/Caches/deno</span></span></li>
+              <li><span class="name">Corepack cache</span><span class="removes"><span>~/.cache/node/corepack</span></span></li>
+              <li><span class="name">nvm download cache</span><span class="removes"><span>~/.nvm/.cache</span></span></li>
+              <li><span class="name">node-gyp headers</span><span class="removes"><span>~/Library/Caches/node-gyp</span><span>~/.node-gyp</span></span></li>
+              <li><span class="name">Electron downloads</span><span class="removes"><span>~/Library/Caches/electron</span><span>~/.electron</span><span>~/Library/Caches/electron-builder</span></span></li>
+              <li><span class="name">Turborepo cache</span><span class="removes"><span>~/Library/Caches/turborepo</span><span>~/.turbo</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">Python</span><span class="count">10 caches</span><span class="hint">pip, uv, Poetry, Pipenv, pipx, Conda, Ruff, pre-commit, Hugging Face, PyTorch</span></summary>
+            <ul class="caches">
+              <li><span class="name">pip cache</span><span class="removes"><span>~/Library/Caches/pip</span></span></li>
+              <li><span class="name">uv cache</span><span class="removes"><span>~/.cache/uv</span></span></li>
+              <li><span class="name">Poetry cache</span><span class="removes"><span>~/Library/Caches/pypoetry</span></span></li>
+              <li><span class="name">Pipenv cache</span><span class="removes"><span>~/Library/Caches/pipenv</span></span></li>
+              <li><span class="name">pipx cache</span><span class="removes"><span>~/.local/pipx/.cache</span></span></li>
+              <li><span class="name">Conda package cache</span><span class="removes"><span>~/miniconda3/pkgs</span><span>~/anaconda3/pkgs</span><span>~/miniforge3/pkgs</span><span>~/.conda/pkgs</span></span></li>
+              <li><span class="name">Ruff cache</span><span class="removes"><span>~/Library/Caches/ruff</span><span>~/.cache/ruff</span></span></li>
+              <li><span class="name">pre-commit environments</span><span class="removes"><span>~/.cache/pre-commit</span></span></li>
+              <li><span class="name">Hugging Face hub</span><span class="removes"><span>~/.cache/huggingface</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">PyTorch hub</span><span class="removes"><span>~/.cache/torch</span></span><span class="state">Off by default</span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">Go</span><span class="count">3 caches</span><span class="hint">Build cache, module cache, gopls, goimports, golangci-lint, staticcheck</span></summary>
+            <ul class="caches">
+              <li><span class="name">Go build cache</span><span class="removes"><span><b>$ </b>go clean -cache</span></span></li>
+              <li><span class="name">Go module cache</span><span class="removes"><span><b>$ </b>go clean -modcache</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Go tools</span><span class="removes"><span>~/Library/Caches/gopls</span><span>~/Library/Caches/goimports</span><span>~/Library/Caches/golangci-lint</span><span>~/Library/Caches/staticcheck</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">Rust</span><span class="count">3 caches</span><span class="hint">Cargo registry and git, rustup downloads, sccache</span></summary>
+            <ul class="caches">
+              <li><span class="name">Cargo registry &amp; git</span><span class="removes"><span>~/.cargo/registry/cache</span><span>~/.cargo/registry/src</span><span>~/.cargo/git</span></span></li>
+              <li><span class="name">rustup downloads</span><span class="removes"><span>~/.rustup/downloads</span><span>~/.rustup/tmp</span></span></li>
+              <li><span class="name">sccache</span><span class="removes"><span>~/Library/Caches/Mozilla.sccache</span><span>~/.cache/sccache</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">JVM (Java, Kotlin, Scala, Clojure, Android)</span><span class="count">6 caches</span><span class="hint">Gradle, Maven, Coursier, sbt, Ivy, Kotlin, Android, Bazel</span></summary>
+            <ul class="caches">
+              <li><span class="name">Gradle caches</span><span class="removes"><span>~/.gradle/caches</span><span>~/.gradle/daemon</span></span></li>
+              <li><span class="name">Maven repository</span><span class="removes"><span>~/.m2/repository</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Coursier / sbt cache</span><span class="removes"><span>~/Library/Caches/Coursier</span><span>~/.cache/coursier</span><span>~/.sbt/boot</span><span>~/.ivy2/cache</span></span></li>
+              <li><span class="name">Kotlin daemon &amp; konan</span><span class="removes"><span>~/.kotlin</span><span>~/.konan/cache</span></span></li>
+              <li><span class="name">Android build cache</span><span class="removes"><span>~/.android/cache</span><span>~/.android/build-cache</span></span></li>
+              <li><span class="name">Bazel cache</span><span class="removes"><span>~/.cache/bazel</span><span>/private/var/tmp/_bazel_*</span></span><span class="state">Off by default</span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">.NET</span><span class="count">2 caches</span><span class="hint">NuGet packages and HTTP cache</span></summary>
+            <ul class="caches">
+              <li><span class="name">NuGet packages</span><span class="removes"><span>~/.nuget/packages</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">NuGet HTTP cache</span><span class="removes"><span>~/.local/share/NuGet/http-cache</span><span>~/.nuget/v3-cache</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">Swift / Objective-C</span><span class="count">6 caches</span><span class="hint">Xcode DerivedData, DeviceSupport, Simulator, Swift PM, CocoaPods, Carthage</span></summary>
+            <ul class="caches">
+              <li><span class="name">Xcode DerivedData</span><span class="removes"><span>~/Library/Developer/Xcode/DerivedData</span></span></li>
+              <li><span class="name">Xcode iOS DeviceSupport</span><span class="removes"><span>~/Library/Developer/Xcode/iOS DeviceSupport</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">iOS Simulator caches</span><span class="removes"><span>~/Library/Developer/CoreSimulator/Caches</span></span></li>
+              <li><span class="name">Swift PM cache</span><span class="removes"><span>~/Library/Caches/org.swift.swiftpm</span></span></li>
+              <li><span class="name">CocoaPods cache</span><span class="removes"><span>~/Library/Caches/CocoaPods</span></span></li>
+              <li><span class="name">Carthage cache</span><span class="removes"><span>~/Library/Caches/carthage</span><span>~/Library/Caches/org.carthage.CarthageKit</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">Ruby / PHP / Perl / Lua</span><span class="count">4 caches</span><span class="hint">RubyGems, Bundler, Composer, CPAN, LuaRocks</span></summary>
+            <ul class="caches">
+              <li><span class="name">RubyGems &amp; Bundler cache</span><span class="removes"><span>~/.gem/specs</span><span>~/.gem/ruby/*/cache</span><span>~/.bundle/cache</span></span></li>
+              <li><span class="name">Composer cache</span><span class="removes"><span>~/.composer/cache</span><span>~/Library/Caches/composer</span><span>~/.cache/composer</span></span></li>
+              <li><span class="name">CPAN build &amp; sources</span><span class="removes"><span>~/.cpan/build</span><span>~/.cpan/sources</span><span>~/.cpanm/work</span></span></li>
+              <li><span class="name">LuaRocks cache</span><span class="removes"><span>~/.cache/luarocks</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">Elixir / Erlang / Haskell / OCaml</span><span class="count">5 caches</span><span class="hint">Hex, rebar3, Cabal, Stack, opam</span></summary>
+            <ul class="caches">
+              <li><span class="name">Hex package cache</span><span class="removes"><span>~/.hex</span><span>~/.cache/hex</span></span></li>
+              <li><span class="name">rebar3 cache</span><span class="removes"><span>~/.cache/rebar3</span></span></li>
+              <li><span class="name">Cabal packages</span><span class="removes"><span>~/.cabal/packages</span><span>~/.cache/cabal</span></span></li>
+              <li><span class="name">Stack indices</span><span class="removes"><span>~/.stack/indices</span><span>~/.stack/pantry</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">opam download cache</span><span class="removes"><span>~/.opam/download-cache</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">C / C++</span><span class="count">3 caches</span><span class="hint">ccache, Conan, vcpkg</span></summary>
+            <ul class="caches">
+              <li><span class="name">ccache</span><span class="removes"><span>~/Library/Caches/ccache</span><span>~/.ccache</span><span>~/.cache/ccache</span></span></li>
+              <li><span class="name">Conan packages</span><span class="removes"><span>~/.conan2/p</span><span>~/.conan/data</span></span></li>
+              <li><span class="name">vcpkg cache</span><span class="removes"><span>~/.cache/vcpkg</span><span>~/Library/Caches/vcpkg</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">Dart, Zig, Nim, Julia, R, Crystal, D</span><span class="count">7 caches</span><span class="hint">pub, Zig, Nim, Julia, R, Crystal, dub</span></summary>
+            <ul class="caches">
+              <li><span class="name">Dart / Flutter pub cache</span><span class="removes"><span>~/.pub-cache</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Zig cache</span><span class="removes"><span>~/.cache/zig</span></span></li>
+              <li><span class="name">Nim cache</span><span class="removes"><span>~/.cache/nim</span><span>~/.nimble/pkgcache</span></span></li>
+              <li><span class="name">Julia compiled cache</span><span class="removes"><span>~/.julia/compiled</span><span>~/.julia/logs</span></span></li>
+              <li><span class="name">R cache</span><span class="removes"><span>~/Library/Caches/org.R-project.R</span><span>~/.cache/R</span></span></li>
+              <li><span class="name">Crystal cache</span><span class="removes"><span>~/.cache/crystal</span></span></li>
+              <li><span class="name">D dub packages</span><span class="removes"><span>~/.dub/packages</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">Containers &amp; VMs</span><span class="count">9 caches</span><span class="hint">Docker, Podman, minikube, Vagrant, Lima, Colima</span></summary>
+            <ul class="caches">
+              <li><span class="name">Docker build cache</span><span class="removes"><span><b>$ </b>docker builder prune -af</span></span></li>
+              <li><span class="name">Docker dangling images</span><span class="removes"><span><b>$ </b>docker image prune -f</span></span></li>
+              <li><span class="name">Docker unused images (all)</span><span class="removes"><span><b>$ </b>docker image prune -af</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Docker anonymous unused volumes</span><span class="removes"><span><b>$ </b>docker volume prune -f</span></span></li>
+              <li><span class="name">Docker stopped containers</span><span class="removes"><span><b>$ </b>docker container prune -f</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Podman unused data</span><span class="removes"><span><b>$ </b>podman system prune -af</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">minikube cache</span><span class="removes"><span>~/.minikube/cache</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Vagrant boxes</span><span class="removes"><span>~/.vagrant.d/boxes</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Lima / Colima cache</span><span class="removes"><span>~/Library/Caches/lima</span></span><span class="state">Off by default</span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">IDEs &amp; dev tools</span><span class="count">14 caches</span><span class="hint">Homebrew, JetBrains, VS Code, Cursor, Playwright, Cypress, Puppeteer, Terraform, Pulumi, Helm, AWS CLI, Ollama, Claude Code, Codex</span></summary>
+            <ul class="caches">
+              <li><span class="name">Homebrew downloads</span><span class="removes"><span><b>$ </b>brew cleanup --prune=all -s</span></span></li>
+              <li><span class="name">JetBrains caches</span><span class="removes"><span>~/Library/Caches/JetBrains</span></span></li>
+              <li><span class="name">VS Code caches</span><span class="removes"><span>~/Library/Application Support/Code/Cache</span><span>~/Library/Application Support/Code/CachedData</span><span>~/Library/Application Support/Code/CachedExtensionVSIXs</span></span></li>
+              <li><span class="name">Cursor caches</span><span class="removes"><span>~/Library/Application Support/Cursor/Cache</span><span>~/Library/Application Support/Cursor/CachedData</span></span></li>
+              <li><span class="name">Playwright browsers</span><span class="removes"><span>~/Library/Caches/ms-playwright</span></span></li>
+              <li><span class="name">Cypress binaries</span><span class="removes"><span>~/Library/Caches/Cypress</span></span></li>
+              <li><span class="name">Puppeteer &amp; Chrome DevTools browsers</span><span class="removes"><span>~/.cache/puppeteer</span><span>~/.cache/chrome-devtools-mcp</span></span></li>
+              <li><span class="name">Terraform plugin cache</span><span class="removes"><span>~/.terraform.d/plugin-cache</span></span></li>
+              <li><span class="name">Pulumi plugins</span><span class="removes"><span>~/.pulumi/plugins</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Helm cache</span><span class="removes"><span>~/Library/Caches/helm</span></span></li>
+              <li><span class="name">AWS CLI cache</span><span class="removes"><span>~/Library/Caches/aws</span></span></li>
+              <li><span class="name">Ollama models</span><span class="removes"><span>~/.ollama/models</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Claude Code scratchpads</span><span class="removes"><span>/private/tmp/claude-*</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Codex caches</span><span class="removes"><span>~/Library/Caches/com.openai.codex</span><span>~/.cache/codex-runtimes</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">Apps &amp; system</span><span class="count">6 caches</span><span class="hint">App updater leftovers, Spotify, Slack, Chrome, Brave, Edge, user logs, Trash</span></summary>
+            <ul class="caches">
+              <li><span class="name">App updater leftovers</span><span class="removes"><span>~/Library/Caches/*.ShipIt</span></span></li>
+              <li><span class="name">Spotify cache</span><span class="removes"><span>~/Library/Caches/com.spotify.client</span></span></li>
+              <li><span class="name">Slack cache</span><span class="removes"><span>~/Library/Application Support/Slack/Cache</span><span>~/Library/Application Support/Slack/Service Worker/CacheStorage</span></span></li>
+              <li><span class="name">Chrome / Brave / Edge cache</span><span class="removes"><span>~/Library/Caches/Google/Chrome</span><span>~/Library/Caches/BraveSoftware</span><span>~/Library/Caches/Microsoft Edge</span></span></li>
+              <li><span class="name">User logs</span><span class="removes"><span>~/Library/Logs</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Trash</span><span class="removes"><span>~/.Trash</span></span><span class="state">Off by default</span></li>
+            </ul>
+          </details>
+        </div>
+        <div class="columns" style="margin-top: 48px">
+          <div class="item">
+            <h3>Folders</h3>
+            <p>Everything inside the folder is deleted. The folder itself stays. Entries with <code>*</code> delete every match.</p>
+          </div>
+          <div class="item">
+            <h3>Commands</h3>
+            <p>The app runs the tool's own cleanup command and deletes nothing itself.</p>
+          </div>
+          <div class="item">
+            <h3>Never deleted</h3>
+            <p>Named Docker volumes, images a container uses, and your projects with their build folders.</p>
+          </div>
+        </div>
       </div>
-      <div class="card install-card">
-        <span class="tag">Developers</span>
-        <h3>Build from source</h3>
-        <p>A Swift package with no dependencies. The build takes about a minute.</p>
-        <div class="code">
-          <pre>git clone https://github.com/bircex/macos-flusher.git
+    </div>
+  </div>
+</section>
+
+<section class="block" id="install">
+  <div class="container split">
+    <header>
+      <h2>Install</h2>
+      <p>macOS 13 or newer. One download for Apple Silicon and Intel.</p>
+    </header>
+    <div>
+      <div class="options">
+        <div class="option">
+          <div>
+            <p class="kicker">Recommended</p>
+            <h3>Download the app</h3>
+            <p>Open the disk image and drag MacOS Flusher into Applications.</p>
+          </div>
+          <div>
+            <a class="button" href="https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg">Download latest</a>
+            <p class="note"><span data-version>Latest release</span><span data-released hidden></span></p>
+          </div>
+        </div>
+        <div class="option">
+          <div>
+            <p class="kicker">Terminal</p>
+            <h3>One command</h3>
+            <p>Downloads the latest release, checks it and copies it into Applications.</p>
+          </div>
+          <div class="code">
+            <pre>curl -fsSL https://raw.githubusercontent.com/bircex/macos-flusher/main/install.sh | bash</pre>
+            <button class="copy" type="button" aria-label="Copy">
+              <svg class="idle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="done" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="option">
+          <div>
+            <p class="kicker">Developers</p>
+            <h3>Build from source</h3>
+            <p>A Swift package with no dependencies. Needs the Xcode Command Line Tools.</p>
+          </div>
+          <div class="code">
+            <pre>git clone https://github.com/bircex/macos-flusher.git
 cd macos-flusher
 make install</pre>
-          <button class="copy" type="button" aria-label="Copy commands">
-            <svg class="idle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <svg class="done" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
+            <button class="copy" type="button" aria-label="Copy">
+              <svg class="idle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="done" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
         </div>
-        <p class="note">Needs the Xcode Command Line Tools.</p>
       </div>
-    </div>
-
-    <details class="callout">
-      <summary>First launch: allow the app to open</summary>
-      <div class="details-body">
-        <p>This applies only to a copy downloaded with a browser. The app is signed locally but not notarized by Apple, so macOS blocks the first launch and says the app could not be verified.</p>
-        <h4>macOS 15 Sequoia and newer</h4>
-        <ol>
-          <li>Open the app once and close the message.</li>
-          <li>Open System Settings, then Privacy &amp; Security.</li>
-          <li>Scroll down to Security and click Open Anyway.</li>
-          <li>Confirm with your password or Touch ID.</li>
-        </ol>
-        <h4>macOS 13 Ventura and macOS 14 Sonoma</h4>
-        <ol>
-          <li>In Applications, hold Control and click MacOS Flusher.</li>
-          <li>Choose Open, then click Open in the dialog.</li>
-        </ol>
-        <h4>From Terminal, on any version</h4>
-        <div class="code">
-          <pre>xattr -dr com.apple.quarantine "/Applications/MacOS Flusher.app"</pre>
-          <button class="copy" type="button" aria-label="Copy command">
-            <svg class="idle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <svg class="done" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
-        </div>
-        <p>macOS remembers the decision. You do this once per installed copy.</p>
-      </div>
-    </details>
-
-    <details class="callout">
-      <summary>Verify, update and uninstall</summary>
-      <div class="details-body">
-        <h4>Verify a download</h4>
-        <p>Every release ships a <code>SHA256SUMS</code> file. The command prints <code>MacOS-Flusher.dmg: OK</code> when the file is intact.</p>
-        <div class="code">
-          <pre>cd ~/Downloads
+      <div class="accordion follow">
+        <details>
+          <summary><span class="title">First launch: allow the app to open</span></summary>
+          <div class="answer">
+            <p>This applies only to a copy downloaded with a browser. The app is signed locally but not notarized by Apple, so macOS blocks the first launch and says the app could not be verified. The one command install skips this step.</p>
+            <h4>macOS 15 Sequoia and newer</h4>
+            <ol>
+              <li>Open the app once and close the message.</li>
+              <li>Open System Settings, then Privacy &amp; Security.</li>
+              <li>Scroll down to Security and click Open Anyway.</li>
+              <li>Confirm with your password or Touch ID.</li>
+            </ol>
+            <h4>macOS 13 Ventura and macOS 14 Sonoma</h4>
+            <ol>
+              <li>In Applications, hold Control and click MacOS Flusher.</li>
+              <li>Choose Open, then click Open in the dialog.</li>
+            </ol>
+            <h4>From Terminal, on any version</h4>
+            <div class="code">
+              <pre>xattr -dr com.apple.quarantine "/Applications/MacOS Flusher.app"</pre>
+              <button class="copy" type="button" aria-label="Copy command">
+                <svg class="idle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="done" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </button>
+            </div>
+          </div>
+        </details>
+        <details>
+          <summary><span class="title">Verify a download</span></summary>
+          <div class="answer">
+            <p>Every release ships a <code>SHA256SUMS</code> file. The command prints <code>MacOS-Flusher.dmg: OK</code> when the file is intact.</p>
+            <div class="code">
+              <pre>cd ~/Downloads
 curl -fsSLO https://github.com/bircex/macos-flusher/releases/latest/download/SHA256SUMS
 grep MacOS-Flusher.dmg SHA256SUMS | shasum -a 256 -c -</pre>
-          <button class="copy" type="button" aria-label="Copy commands">
-            <svg class="idle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <svg class="done" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
-        </div>
-        <h4>Update</h4>
-        <p>The app does not update itself. Install the new version the same way you installed the first one. The version is shown under MacOS Flusher, About MacOS Flusher in the menu bar.</p>
-        <h4>Uninstall</h4>
-        <p>Quit the app and delete it from Applications. The app keeps no data of its own. macOS stores the window position in <code>~/Library/Preferences/com.recepkizilarslan.MacOSFlusher.plist</code>, which you can delete as well.</p>
-      </div>
-    </details>
-  </div>
-</section>
-
-<section id="caches" class="alt">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">What it cleans</p>
-      <h2>88 caches in 14 groups</h2>
-      <p>Open a group to see the exact folders that are emptied and the exact commands that are run.</p>
-    </div>
-    <div class="groups">
-      <details class="group">
-        <summary><span class="group-name">JavaScript / TypeScript</span><span class="group-count">10 caches</span><span class="group-tools">npm, Yarn, pnpm, Bun, Deno, Corepack, nvm, node-gyp, Electron, Turborepo</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>npm cache</td><td><code>npm cache clean --force</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Yarn cache</td><td><code>~/Library/Caches/Yarn</code><br><code>~/.yarn/cache</code><br><code>~/.yarn/berry/cache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>pnpm store</td><td><code>~/Library/pnpm/store</code><br><code>~/Library/Caches/pnpm</code><br><code>~/.pnpm-store</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Bun install cache</td><td><code>~/.bun/install/cache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Deno cache</td><td><code>~/Library/Caches/deno</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Corepack cache</td><td><code>~/.cache/node/corepack</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>nvm download cache</td><td><code>~/.nvm/.cache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>node-gyp headers</td><td><code>~/Library/Caches/node-gyp</code><br><code>~/.node-gyp</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Electron downloads</td><td><code>~/Library/Caches/electron</code><br><code>~/.electron</code><br><code>~/Library/Caches/electron-builder</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Turborepo cache</td><td><code>~/Library/Caches/turborepo</code><br><code>~/.turbo</code></td><td><span class="pill on">Yes</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">Python</span><span class="group-count">10 caches</span><span class="group-tools">pip, uv, Poetry, Pipenv, pipx, Conda, Ruff, pre-commit, Hugging Face, PyTorch</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>pip cache</td><td><code>~/Library/Caches/pip</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>uv cache</td><td><code>~/.cache/uv</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Poetry cache</td><td><code>~/Library/Caches/pypoetry</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Pipenv cache</td><td><code>~/Library/Caches/pipenv</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>pipx cache</td><td><code>~/.local/pipx/.cache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Conda package cache</td><td><code>~/miniconda3/pkgs</code><br><code>~/anaconda3/pkgs</code><br><code>~/miniforge3/pkgs</code><br><code>~/.conda/pkgs</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Ruff cache</td><td><code>~/Library/Caches/ruff</code><br><code>~/.cache/ruff</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>pre-commit environments</td><td><code>~/.cache/pre-commit</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Hugging Face hub</td><td><code>~/.cache/huggingface</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>PyTorch hub</td><td><code>~/.cache/torch</code></td><td><span class="pill off">No</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">Go</span><span class="group-count">3 caches</span><span class="group-tools">Build cache, module cache, gopls, goimports, golangci-lint, staticcheck</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>Go build cache</td><td><code>go clean -cache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Go module cache</td><td><code>go clean -modcache</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Go tools</td><td><code>~/Library/Caches/gopls</code><br><code>~/Library/Caches/goimports</code><br><code>~/Library/Caches/golangci-lint</code><br><code>~/Library/Caches/staticcheck</code></td><td><span class="pill on">Yes</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">Rust</span><span class="group-count">3 caches</span><span class="group-tools">Cargo registry and git, rustup downloads, sccache</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>Cargo registry &amp; git</td><td><code>~/.cargo/registry/cache</code><br><code>~/.cargo/registry/src</code><br><code>~/.cargo/git</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>rustup downloads</td><td><code>~/.rustup/downloads</code><br><code>~/.rustup/tmp</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>sccache</td><td><code>~/Library/Caches/Mozilla.sccache</code><br><code>~/.cache/sccache</code></td><td><span class="pill on">Yes</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">JVM (Java, Kotlin, Scala, Clojure, Android)</span><span class="group-count">6 caches</span><span class="group-tools">Gradle, Maven, Coursier, sbt, Ivy, Kotlin, Android, Bazel</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>Gradle caches</td><td><code>~/.gradle/caches</code><br><code>~/.gradle/daemon</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Maven repository</td><td><code>~/.m2/repository</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Coursier / sbt cache</td><td><code>~/Library/Caches/Coursier</code><br><code>~/.cache/coursier</code><br><code>~/.sbt/boot</code><br><code>~/.ivy2/cache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Kotlin daemon &amp; konan</td><td><code>~/.kotlin</code><br><code>~/.konan/cache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Android build cache</td><td><code>~/.android/cache</code><br><code>~/.android/build-cache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Bazel cache</td><td><code>~/.cache/bazel</code><br><code>/private/var/tmp/_bazel_*</code></td><td><span class="pill off">No</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">.NET</span><span class="group-count">2 caches</span><span class="group-tools">NuGet packages and HTTP cache</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>NuGet packages</td><td><code>~/.nuget/packages</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>NuGet HTTP cache</td><td><code>~/.local/share/NuGet/http-cache</code><br><code>~/.nuget/v3-cache</code></td><td><span class="pill on">Yes</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">Swift / Objective-C</span><span class="group-count">6 caches</span><span class="group-tools">Xcode DerivedData, DeviceSupport, Simulator, Swift PM, CocoaPods, Carthage</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>Xcode DerivedData</td><td><code>~/Library/Developer/Xcode/DerivedData</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Xcode iOS DeviceSupport</td><td><code>~/Library/Developer/Xcode/iOS DeviceSupport</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>iOS Simulator caches</td><td><code>~/Library/Developer/CoreSimulator/Caches</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Swift PM cache</td><td><code>~/Library/Caches/org.swift.swiftpm</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>CocoaPods cache</td><td><code>~/Library/Caches/CocoaPods</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Carthage cache</td><td><code>~/Library/Caches/carthage</code><br><code>~/Library/Caches/org.carthage.CarthageKit</code></td><td><span class="pill on">Yes</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">Ruby / PHP / Perl / Lua</span><span class="group-count">4 caches</span><span class="group-tools">RubyGems, Bundler, Composer, CPAN, LuaRocks</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>RubyGems &amp; Bundler cache</td><td><code>~/.gem/specs</code><br><code>~/.gem/ruby/*/cache</code><br><code>~/.bundle/cache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Composer cache</td><td><code>~/.composer/cache</code><br><code>~/Library/Caches/composer</code><br><code>~/.cache/composer</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>CPAN build &amp; sources</td><td><code>~/.cpan/build</code><br><code>~/.cpan/sources</code><br><code>~/.cpanm/work</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>LuaRocks cache</td><td><code>~/.cache/luarocks</code></td><td><span class="pill on">Yes</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">Elixir / Erlang / Haskell / OCaml</span><span class="group-count">5 caches</span><span class="group-tools">Hex, rebar3, Cabal, Stack, opam</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>Hex package cache</td><td><code>~/.hex</code><br><code>~/.cache/hex</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>rebar3 cache</td><td><code>~/.cache/rebar3</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Cabal packages</td><td><code>~/.cabal/packages</code><br><code>~/.cache/cabal</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Stack indices</td><td><code>~/.stack/indices</code><br><code>~/.stack/pantry</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>opam download cache</td><td><code>~/.opam/download-cache</code></td><td><span class="pill on">Yes</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">C / C++</span><span class="group-count">3 caches</span><span class="group-tools">ccache, Conan, vcpkg</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>ccache</td><td><code>~/Library/Caches/ccache</code><br><code>~/.ccache</code><br><code>~/.cache/ccache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Conan packages</td><td><code>~/.conan2/p</code><br><code>~/.conan/data</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>vcpkg cache</td><td><code>~/.cache/vcpkg</code><br><code>~/Library/Caches/vcpkg</code></td><td><span class="pill on">Yes</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">Dart, Zig, Nim, Julia, R, Crystal, D</span><span class="group-count">7 caches</span><span class="group-tools">pub, Zig, Nim, Julia, R, Crystal, dub</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>Dart / Flutter pub cache</td><td><code>~/.pub-cache</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Zig cache</td><td><code>~/.cache/zig</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Nim cache</td><td><code>~/.cache/nim</code><br><code>~/.nimble/pkgcache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Julia compiled cache</td><td><code>~/.julia/compiled</code><br><code>~/.julia/logs</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>R cache</td><td><code>~/Library/Caches/org.R-project.R</code><br><code>~/.cache/R</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Crystal cache</td><td><code>~/.cache/crystal</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>D dub packages</td><td><code>~/.dub/packages</code></td><td><span class="pill on">Yes</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">Containers &amp; VMs</span><span class="group-count">9 caches</span><span class="group-tools">Docker, Podman, minikube, Vagrant, Lima, Colima</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>Docker build cache</td><td><code>docker builder prune -af</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Docker dangling images</td><td><code>docker image prune -f</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Docker unused images (all)</td><td><code>docker image prune -af</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Docker anonymous unused volumes</td><td><code>docker volume prune -f</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Docker stopped containers</td><td><code>docker container prune -f</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Podman unused data</td><td><code>podman system prune -af</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>minikube cache</td><td><code>~/.minikube/cache</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Vagrant boxes</td><td><code>~/.vagrant.d/boxes</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Lima / Colima cache</td><td><code>~/Library/Caches/lima</code></td><td><span class="pill off">No</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">IDEs &amp; dev tools</span><span class="group-count">14 caches</span><span class="group-tools">Homebrew, JetBrains, VS Code, Cursor, Playwright, Cypress, Puppeteer, Terraform, Pulumi, Helm, AWS CLI, Ollama, Claude Code, Codex</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>Homebrew downloads</td><td><code>brew cleanup --prune=all -s</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>JetBrains caches</td><td><code>~/Library/Caches/JetBrains</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>VS Code caches</td><td><code>~/Library/Application Support/Code/Cache</code><br><code>~/Library/Application Support/Code/CachedData</code><br><code>~/Library/Application Support/Code/CachedExtensionVSIXs</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Cursor caches</td><td><code>~/Library/Application Support/Cursor/Cache</code><br><code>~/Library/Application Support/Cursor/CachedData</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Playwright browsers</td><td><code>~/Library/Caches/ms-playwright</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Cypress binaries</td><td><code>~/Library/Caches/Cypress</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Puppeteer &amp; Chrome DevTools browsers</td><td><code>~/.cache/puppeteer</code><br><code>~/.cache/chrome-devtools-mcp</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Terraform plugin cache</td><td><code>~/.terraform.d/plugin-cache</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Pulumi plugins</td><td><code>~/.pulumi/plugins</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Helm cache</td><td><code>~/Library/Caches/helm</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>AWS CLI cache</td><td><code>~/Library/Caches/aws</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Ollama models</td><td><code>~/.ollama/models</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Claude Code scratchpads</td><td><code>/private/tmp/claude-*</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Codex caches</td><td><code>~/Library/Caches/com.openai.codex</code><br><code>~/.cache/codex-runtimes</code></td><td><span class="pill on">Yes</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <details class="group">
-        <summary><span class="group-name">Apps &amp; system</span><span class="group-count">6 caches</span><span class="group-tools">App updater leftovers, Spotify, Slack, Chrome, Brave, Edge, user logs, Trash</span></summary>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Cache</th><th>Removes</th><th>Selected</th></tr></thead>
-            <tbody>
-              <tr><td>App updater leftovers</td><td><code>~/Library/Caches/*.ShipIt</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Spotify cache</td><td><code>~/Library/Caches/com.spotify.client</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Slack cache</td><td><code>~/Library/Application Support/Slack/Cache</code><br><code>~/Library/Application Support/Slack/Service Worker/CacheStorage</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>Chrome / Brave / Edge cache</td><td><code>~/Library/Caches/Google/Chrome</code><br><code>~/Library/Caches/BraveSoftware</code><br><code>~/Library/Caches/Microsoft Edge</code></td><td><span class="pill on">Yes</span></td></tr>
-              <tr><td>User logs</td><td><code>~/Library/Logs</code></td><td><span class="pill off">No</span></td></tr>
-              <tr><td>Trash</td><td><code>~/.Trash</code></td><td><span class="pill off">No</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-    </div>
-    <details class="callout">
-      <summary>How caches are removed and measured</summary>
-      <div class="details-body">
-        <h4>Removing</h4>
-        <ul>
-          <li>A folder: everything inside is deleted, the folder itself stays.</li>
-          <li>A pattern with <code>*</code>: every file or folder that matches is deleted.</li>
-          <li>A command: the app runs the tool's own cleanup command and deletes nothing itself.</li>
-        </ul>
-        <h4>Measuring</h4>
-        <ul>
-          <li>Folders are measured with <code>du</code>, which reports the space the files occupy on disk.</li>
-          <li>Docker sizes are the reclaimable sizes reported by <code>docker system df</code>.</li>
-        </ul>
-        <h4>Never deleted</h4>
-        <ul>
-          <li>Named Docker volumes and images that a container uses</li>
-          <li>Your projects, including <code>node_modules</code>, <code>target</code> and other build folders inside them</li>
-          <li>Anything outside the folders listed above</li>
-        </ul>
-      </div>
-    </details>
-  </div>
-</section>
-
-<section id="privacy">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Privacy</p>
-      <h2>Everything stays on your Mac</h2>
-      <p>No network requests, no account, no analytics. The source code is public, so every statement here can be checked.</p>
-    </div>
-    <div class="grid two">
-      <div class="card">
-        <h3>What the app reads</h3>
-        <ul class="checks">
-          <li>The size of each cache folder</li>
-          <li>What Docker reports as reclaimable</li>
-          <li>The size of your home folders, Applications and system folders</li>
-          <li>Total and free disk space</li>
-        </ul>
-        <p>It reads sizes only. It does not open, index or copy file contents.</p>
-      </div>
-      <div class="card">
-        <h3>What the app changes</h3>
-        <ul class="checks">
-          <li>It deletes only what you select, after you confirm</li>
-          <li>It installs no helper, login item or background service</li>
-          <li>It never asks for an administrator password</li>
-          <li>It does not ask for Full Disk Access</li>
-        </ul>
-        <p>Cleanup commands run with your own user account.</p>
-      </div>
-    </div>
-    <div class="plain-table" style="margin-top: 20px">
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>macOS asks for access to</th><th>Used for</th><th>If you decline</th></tr></thead>
-          <tbody>
-            <tr><td>Desktop folder</td><td>Size of Desktop</td><td>Counted under Everything else</td></tr>
-            <tr><td>Documents folder</td><td>Size of Documents</td><td>Counted under Everything else</td></tr>
-            <tr><td>Downloads folder</td><td>Size of Downloads</td><td>Counted under Everything else</td></tr>
-            <tr><td>Data from other apps</td><td>Size of app data in your Library</td><td>Counted under Everything else</td></tr>
-          </tbody>
-        </table>
+              <button class="copy" type="button" aria-label="Copy commands">
+                <svg class="idle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="done" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </button>
+            </div>
+          </div>
+        </details>
+        <details>
+          <summary><span class="title">Update and uninstall</span></summary>
+          <div class="answer">
+            <p>The app does not update itself. Install the new version the same way you installed the first one. The version is shown under MacOS Flusher, About MacOS Flusher in the menu bar.</p>
+            <p>To uninstall, quit the app and delete it from Applications. The app keeps no data of its own. macOS stores the window position in <code>~/Library/Preferences/com.recepkizilarslan.MacOSFlusher.plist</code>, which you can delete as well.</p>
+          </div>
+        </details>
       </div>
     </div>
   </div>
 </section>
 
-<section id="faq" class="alt">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">FAQ</p>
-      <h2>Questions and fixes</h2>
-      <p>Start with the activity log. Every failed step is listed there with the message from the tool.</p>
+<section class="block" id="privacy">
+  <div class="container split">
+    <header>
+      <h2>Privacy</h2>
+      <p>The source code is public, so every statement here can be checked.</p>
+    </header>
+    <div>
+      <p class="intro">Everything stays on your Mac. No network requests, no account, no analytics.</p>
+      <div class="columns two">
+        <div class="item">
+          <h3>What the app reads</h3>
+          <ul class="list">
+            <li>The size of each cache folder</li>
+            <li>What Docker reports as reclaimable</li>
+            <li>The size of your home folders, Applications and system folders</li>
+            <li>Total and free disk space</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>What the app changes</h3>
+          <ul class="list">
+            <li>It deletes only what you select, after you confirm</li>
+            <li>It installs no helper, login item or background service</li>
+            <li>It never asks for an administrator password</li>
+            <li>It does not ask for Full Disk Access</li>
+          </ul>
+        </div>
+      </div>
+      <table class="table">
+        <thead><tr><th>macOS asks for access to</th><th>Used for</th><th>If you decline</th></tr></thead>
+        <tbody>
+          <tr><td>Desktop folder</td><td>Size of Desktop</td><td>Counted under Everything else</td></tr>
+          <tr><td>Documents folder</td><td>Size of Documents</td><td>Counted under Everything else</td></tr>
+          <tr><td>Downloads folder</td><td>Size of Downloads</td><td>Counted under Everything else</td></tr>
+          <tr><td>Data from other apps</td><td>Size of app data in your Library</td><td>Counted under Everything else</td></tr>
+        </tbody>
+      </table>
     </div>
-    <div class="faq">
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="container split">
+    <header>
+      <h2>FAQ</h2>
+      <p>Start with the activity log. Every failed step is listed there.</p>
+    </header>
+    <div class="accordion">
       <details>
-        <summary>macOS says the app could not be verified</summary>
-        <div class="details-body">
-          <p>The app is not notarized by Apple, and macOS blocks copies downloaded with a browser. Follow the first launch steps in the <a href="#install">Install</a> section, or install with the one line command, which skips the prompt.</p>
+        <summary><span class="title">macOS says the app could not be verified</span></summary>
+        <div class="answer">
+          <p>The app is not notarized by Apple, and macOS blocks copies downloaded with a browser. Follow the first launch steps under <a href="#install">Install</a>, or install with the one line command, which skips the prompt.</p>
         </div>
       </details>
       <details>
-        <summary>A Docker cache fails with "Cannot connect to the Docker daemon"</summary>
-        <div class="details-body">
+        <summary><span class="title">A Docker cache fails with "Cannot connect to the Docker daemon"</span></summary>
+        <div class="answer">
           <p>Docker is installed but not running. Start Docker Desktop, wait until it is ready and press Scan.</p>
         </div>
       </details>
       <details>
-        <summary>A Docker cache fails with "read-only file system"</summary>
-        <div class="details-body">
+        <summary><span class="title">A Docker cache fails with "read-only file system"</span></summary>
+        <div class="answer">
           <p>This happens after the Mac ran out of disk space while Docker was running. Docker's virtual disk switches to read-only to protect itself and stays that way, even after space is free again.</p>
           <ol>
             <li>Free some space first by flushing the caches that are not from Docker.</li>
@@ -621,21 +517,21 @@ grep MacOS-Flusher.dmg SHA256SUMS | shasum -a 256 -c -</pre>
         </div>
       </details>
       <details>
-        <summary>A tool is shown as "not installed"</summary>
-        <div class="details-body">
+        <summary><span class="title">A tool is shown as "not installed"</span></summary>
+        <div class="answer">
           <p>The app looks in <code>/opt/homebrew/bin</code>, <code>/usr/local/bin</code>, <code>/usr/bin</code>, <code>/bin</code>, <code>~/go/bin</code> and <code>~/.cargo/bin</code>, followed by the <code>PATH</code> of your login shell.</p>
           <p>If a tool lives somewhere else, add that folder to <code>PATH</code> in <code>~/.zprofile</code>, then quit and reopen the app.</p>
         </div>
       </details>
       <details>
-        <summary>The disk analysis stays at "Analyzing"</summary>
-        <div class="details-body">
+        <summary><span class="title">The disk analysis stays at "Analyzing"</span></summary>
+        <div class="answer">
           <p>macOS is waiting for an answer to a folder access prompt. The prompt can be hidden behind other windows. Answer it and the analysis continues.</p>
         </div>
       </details>
       <details>
-        <summary>"Everything else" is very large</summary>
-        <div class="details-body">
+        <summary><span class="title">"Everything else" is very large</span></summary>
+        <div class="answer">
           <p>That row holds the used space the app could not attribute to a folder:</p>
           <ul>
             <li>Folders you did not allow the app to read</li>
@@ -646,14 +542,14 @@ grep MacOS-Flusher.dmg SHA256SUMS | shasum -a 256 -c -</pre>
         </div>
       </details>
       <details>
-        <summary>Sizes differ from Finder</summary>
-        <div class="details-body">
+        <summary><span class="title">Sizes differ from Finder</span></summary>
+        <div class="answer">
           <p>The app measures the space files occupy on disk. Finder often shows the size of the file contents. The two differ for sparse files such as the Docker disk image, for iCloud files that are not downloaded and for files that share storage after a copy.</p>
         </div>
       </details>
       <details>
-        <summary>Less space was freed than I selected</summary>
-        <div class="details-body">
+        <summary><span class="title">Less space was freed than I selected</span></summary>
+        <div class="answer">
           <ul>
             <li>A cache failed. Look for ERROR lines in the log.</li>
             <li>A tool rebuilt part of its cache while the flush ran.</li>
@@ -663,41 +559,24 @@ grep MacOS-Flusher.dmg SHA256SUMS | shasum -a 256 -c -</pre>
         </div>
       </details>
       <details>
-        <summary>A cache came back after the flush</summary>
-        <div class="details-body">
+        <summary><span class="title">A cache came back after the flush</span></summary>
+        <div class="answer">
           <p>That is expected. Caches are rebuilt the next time you install packages or build a project. Flush again when you need the space.</p>
         </div>
       </details>
       <details>
-        <summary>How are versions numbered?</summary>
-        <div class="details-body">
+        <summary><span class="title">How are versions numbered?</span></summary>
+        <div class="answer">
           <p>Versions follow the calendar: year, month and the number of the release within that month. <code>2026.9.0</code> is the first release in September 2026 and <code>2026.9.3</code> is the fourth.</p>
           <p>A new version is published automatically when a change to the app is merged. Each release has a disk image, a ZIP archive and a checksum file.</p>
         </div>
       </details>
       <details>
-        <summary>How do I add a cache that is missing?</summary>
-        <div class="details-body">
+        <summary><span class="title">How do I add a cache that is missing?</span></summary>
+        <div class="answer">
           <p>Adding a cache is one line in <code>Sources/MacOSFlusher/Catalog.swift</code>. Open a pull request on the <a href="https://github.com/bircex/macos-flusher">project page</a>, or <a href="https://github.com/bircex/macos-flusher/issues">open an issue</a> with the folder or the cleanup command.</p>
         </div>
       </details>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="container">
-    <h2>Ready to free some space?</h2>
-    <p>MacOS Flusher is free, open source and about one megabyte.</p>
-    <div class="actions">
-      <a class="button primary" href="https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download latest
-      </a>
-      <a class="button secondary" href="https://github.com/bircex/macos-flusher">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        Go to project
-      </a>
     </div>
   </div>
 </section>

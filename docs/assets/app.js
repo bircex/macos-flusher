@@ -15,7 +15,7 @@ async function showLatestRelease() {
     fill('version', `Version ${release.tag_name.replace(/^v/, '')}`)
     fill('released', `Released ${new Date(release.published_at).toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' })}`)
     const image = release.assets.find((asset) => asset.name === 'MacOS-Flusher.dmg')
-    if (image) fill('size', `${(image.size / 1e6).toFixed(1)} MB download`)
+    if (image) fill('size', `${(image.size / 1e6).toFixed(1)} MB`)
   } catch {
     return
   }
@@ -28,5 +28,24 @@ document.querySelectorAll('.copy').forEach((button) => {
     setTimeout(() => button.classList.remove('copied'), 1600)
   })
 })
+
+const expand = document.querySelector('[data-expand]')
+const groups = document.querySelectorAll('#caches .accordion > details')
+
+function label() {
+  const open = [...groups].every((group) => group.open)
+  expand.textContent = open ? 'Collapse all' : 'Expand all'
+  return open
+}
+
+expand.addEventListener('click', () => {
+  const open = label()
+  groups.forEach((group) => {
+    group.open = !open
+  })
+  label()
+})
+
+groups.forEach((group) => group.addEventListener('toggle', label))
 
 showLatestRelease()
