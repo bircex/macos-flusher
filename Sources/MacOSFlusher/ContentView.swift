@@ -57,15 +57,40 @@ struct ContentView: View {
         .padding()
     }
 
-    @ViewBuilder
     private var progressBar: some View {
-        if let progress = store.progress {
-            ProgressView(value: progress.fraction)
-                .progressViewStyle(.linear)
-                .padding(.horizontal)
-                .padding(.bottom, 8)
-        } else {
-            Color.clear.frame(height: 14)
+        let fraction = store.progress?.fraction ?? 0
+        return PercentBar(fraction: fraction, tint: .accentColor, label: Format.percent(fraction))
+            .opacity(store.progress == nil ? 0 : 1)
+            .padding(.horizontal)
+            .padding(.bottom, 8)
+    }
+}
+
+struct PercentBar: View {
+    let fraction: Double
+    var behind: Double?
+    let tint: Color
+    let label: String
+
+    var body: some View {
+        HStack(spacing: 10) {
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 6).fill(Color.secondary.opacity(0.2))
+                    if let behind {
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(Color.orange.opacity(0.5))
+                            .frame(width: geo.size.width * min(max(behind, 0), 1))
+                    }
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(tint)
+                        .frame(width: geo.size.width * min(max(fraction, 0), 1))
+                }
+            }
+            .frame(height: 18)
+            Text(label)
+                .font(.system(.callout, design: .monospaced).weight(.semibold))
+                .frame(width: 100, alignment: .trailing)
         }
     }
 }
@@ -75,9 +100,10 @@ struct DiskBar: View {
 
     var body: some View {
         if let disk = store.disk {
+            let expectedFraction = max(0, disk.usedFraction - Double(store.selectedTotal) / Double(max(disk.total, 1)))
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
-                    Text("Disk \(Int(disk.usedFraction * 100))% full")
+                    Text("Disk usage")
                         .font(.callout.weight(.medium))
                     Spacer()
                     Text("\(Format.bytes(disk.free)) free of \(Format.bytes(disk.total))")
@@ -94,19 +120,14 @@ struct DiskBar: View {
                             .foregroundStyle(.green)
                     }
                 }
-                GeometryReader { geo in
-                    let expectedFraction = max(0, disk.usedFraction - Double(store.selectedTotal) / Double(max(disk.total, 1)))
-                    ZStack(alignment: .leading) {
-                        RoundedRectangle(cornerRadius: 4).fill(Color.secondary.opacity(0.2))
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(Color.orange.opacity(0.5))
-                            .frame(width: geo.size.width * disk.usedFraction)
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(disk.usedFraction > 0.9 ? Color.red : Color.accentColor)
-                            .frame(width: geo.size.width * expectedFraction)
-                    }
-                }
-                .frame(height: 10)
+                PercentBar(
+                    fraction: expectedFraction,
+                    behind: disk.usedFraction,
+                    tint: disk.usedFraction > 0.9 ? Color.red : Color.accentColor,
+                    label: store.selectedTotal > 0
+                        ? "\(Format.percent(disk.usedFraction)) → \(Format.percent(expectedFraction))"
+                        : Format.percent(disk.usedFraction)
+                )
             }
             .padding(.horizontal)
             .padding(.bottom, 8)

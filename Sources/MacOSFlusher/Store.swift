@@ -232,6 +232,10 @@ enum Format {
         formatter.string(fromByteCount: value)
     }
 
+    static func percent(_ fraction: Double) -> String {
+        "\(Int((fraction * 100).rounded()))%"
+    }
+
     static func time(_ date: Date) -> String {
         timeFormatter.string(from: date)
     }
