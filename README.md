@@ -4,15 +4,15 @@ A small native macOS app that finds and deletes developer caches: package manage
 
 Pick the categories, see how much each one takes, press Flush. The disk bar shows how full the disk is now and how much will be free after the flush.
 
-![MacOS Flusher](docs/public/shots/main-light.png)
+![MacOS Flusher](docs/assets/shots/main-light.png)
 
-Documentation: https://bircex.github.io/macos-flusher/
+Website: https://bircex.github.io/macos-flusher/
 
 ## Install
 
 Needs macOS 13 or newer. The app is a universal binary for Apple Silicon and Intel.
 
-Download [MacOS-Flusher.dmg](https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg) and drag the app into Applications. The app is not notarized, so macOS asks you to allow it the first time. The [first launch guide](https://bircex.github.io/macos-flusher/guide/first-launch) shows how.
+Download [MacOS-Flusher.dmg](https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg) and drag the app into Applications. The app is not notarized, so macOS asks you to allow it the first time. The [install section of the website](https://bircex.github.io/macos-flusher/#install) shows how.
 
 Or install the latest release with one command:
 
