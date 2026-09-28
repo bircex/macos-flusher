@@ -11,7 +11,7 @@ struct ContentView: View {
             Divider()
             HStack(spacing: 0) {
                 List {
-                    ForEach(Catalog.groups) { group in
+                    ForEach(Targets.groups) { group in
                         GroupSection(group: group)
                     }
                 }
@@ -20,7 +20,7 @@ struct ContentView: View {
                 VStack(spacing: 0) {
                     LocationChart()
                     Divider()
-                    CategoryChart()
+                    GroupChart()
                 }
                 .frame(width: 320)
             }
@@ -29,7 +29,7 @@ struct ContentView: View {
         }
         .frame(minWidth: 960, minHeight: 820)
         .confirmationDialog(
-            "Delete \(Format.bytes(store.selectedTotal)) across \(store.selectedCount) categories?",
+            "Delete \(Format.bytes(store.selectedTotal)) across \(store.selectedCount) targets?",
             isPresented: $confirmFlush,
             titleVisibility: .visible
         ) {
@@ -45,7 +45,7 @@ struct ContentView: View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("MacOS Flusher").font(.title2.bold())
-                Text("Selected: \(Format.bytes(store.selectedTotal)) in \(store.selectedCount) categories")
+                Text("Selected: \(Format.bytes(store.selectedTotal)) in \(store.selectedCount) targets")
                     .font(.callout)
                     .foregroundStyle(.secondary)
             }
@@ -154,9 +154,9 @@ struct DiskBar: View {
 
 struct GroupSection: View {
     @EnvironmentObject var store: Store
-    let group: CacheGroup
+    let group: TargetGroup
 
-    private var visibleItems: [CacheItem] {
+    private var visibleItems: [Target] {
         group.items.filter(store.isVisible)
     }
 
@@ -195,7 +195,7 @@ struct GroupSection: View {
 
 struct ItemRow: View {
     @EnvironmentObject var store: Store
-    let item: CacheItem
+    let item: Target
 
     private var isOn: Binding<Bool> {
         Binding(

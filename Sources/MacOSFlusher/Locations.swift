@@ -9,7 +9,7 @@ struct DiskLocation: Identifiable, Sendable {
     var other: Int64 = 0
 }
 
-struct CacheBytes {
+struct TargetBytes {
     var selected: Int64 = 0
     var unselected: Int64 = 0
 
@@ -20,15 +20,15 @@ struct LocationRow: Identifiable {
     let id: String
     let name: String
     var other: Int64 = 0
-    var cache = CacheBytes()
+    var targets = TargetBytes()
     var children: [LocationRow] = []
 
-    var total: Int64 { other + cache.total }
+    var total: Int64 { other + targets.total }
 
     mutating func add(_ row: LocationRow) {
         other += row.other
-        cache.selected += row.cache.selected
-        cache.unselected += row.cache.unselected
+        targets.selected += row.targets.selected
+        targets.unselected += row.targets.unselected
     }
 }
 
@@ -85,9 +85,9 @@ enum Locations {
 }
 
 extension Store {
-    func cacheBytes(in plan: [DiskLocation]) -> [String: CacheBytes] {
-        var caches: [String: CacheBytes] = [:]
-        for item in Catalog.allItems {
+    func targetBytes(in plan: [DiskLocation]) -> [String: TargetBytes] {
+        var targets: [String: TargetBytes] = [:]
+        for item in Targets.allItems {
             let isSelected = selected.contains(item.id)
             var found = pathSizes[item.id]?.map { (Locations.location(of: $0.key, in: plan) ?? "", $0.value) } ?? []
             if item.sizeCommand != nil, item.requires == "docker" {
@@ -95,18 +95,18 @@ extension Store {
             }
             for (location, bytes) in found {
                 if isSelected {
-                    caches[location, default: CacheBytes()].selected += bytes
+                    targets[location, default: TargetBytes()].selected += bytes
                 } else {
-                    caches[location, default: CacheBytes()].unselected += bytes
+                    targets[location, default: TargetBytes()].unselected += bytes
                 }
             }
         }
-        return caches
+        return targets
     }
 
     var locationRows: [LocationRow] {
         guard let disk, !locations.isEmpty else { return [] }
-        let caches = cacheBytes(in: locations)
+        let targets = targetBytes(in: locations)
         var rows: [LocationRow] = []
         var groups: [String: LocationRow] = [:]
         var rest = LocationRow(id: "home-rest", name: "Other home items")
@@ -115,7 +115,7 @@ extension Store {
                 id: location.id,
                 name: location.name,
                 other: location.other,
-                cache: caches[location.id] ?? CacheBytes()
+                targets: targets[location.id] ?? TargetBytes()
             )
             guard row.total > 0 else { continue }
             if let group = location.group {
@@ -134,13 +134,13 @@ extension Store {
         }
         if rest.total > 0 { rows.append(rest) }
         rows.sort { $0.total > $1.total }
-        let loose = caches[""] ?? CacheBytes()
+        let loose = targets[""] ?? TargetBytes()
         let located = rows.map(\.total).reduce(0, +)
         let unread = LocationRow(
             id: "unread",
             name: "Everything else",
             other: max(0, disk.used - located - loose.total),
-            cache: loose
+            targets: loose
         )
         if unread.total > 0 { rows.append(unread) }
         return rows

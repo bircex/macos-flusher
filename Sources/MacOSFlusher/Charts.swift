@@ -46,8 +46,8 @@ extension Store {
         let kept = min(max(0, measuredTotal - selectedTotal), disk.used - chosen)
         return [
             DiskSlice(id: "other", name: "Other data", bytes: disk.used - chosen - kept, color: Palette.otherData),
-            DiskSlice(id: "unselected", name: "Unselected caches", bytes: kept, color: Palette.unselected),
-            DiskSlice(id: "selected", name: "Selected caches", bytes: chosen, color: Palette.selected),
+            DiskSlice(id: "unselected", name: "Unselected targets", bytes: kept, color: Palette.unselected),
+            DiskSlice(id: "selected", name: "Selected targets", bytes: chosen, color: Palette.selected),
             DiskSlice(id: "free", name: "Free", bytes: disk.free, color: Palette.free),
         ]
     }
@@ -150,18 +150,18 @@ struct LocationChart: View {
     private func bar(_ row: LocationRow, scale: Double, nested: Bool) -> some View {
         ChartRow(
             name: row.name,
-            series: [.otherData(row.other), .unselected(row.cache.unselected), .selected(row.cache.selected)],
+            series: [.otherData(row.other), .unselected(row.targets.unselected), .selected(row.targets.selected)],
             scale: scale,
             nested: nested
         )
     }
 }
 
-struct CategoryChart: View {
+struct GroupChart: View {
     @EnvironmentObject var store: Store
 
-    private var rows: [(group: CacheGroup, selected: Int64, total: Int64)] {
-        Catalog.groups
+    private var rows: [(group: TargetGroup, selected: Int64, total: Int64)] {
+        Targets.groups
             .map { (group: $0, selected: store.selectedTotal(of: $0), total: store.total(of: $0)) }
             .filter { $0.total > 0 }
             .sorted { $0.total > $1.total }
@@ -171,10 +171,10 @@ struct CategoryChart: View {
         let rows = rows
         let scale = Double(max(rows.first?.total ?? 1, 1))
         ChartPanel(
-            title: "Caches by category",
+            title: "Targets by group",
             detail: "\(Format.bytes(store.measuredTotal)) found",
             legend: [.unselected(), .selected()],
-            placeholder: rows.isEmpty ? (store.busy ? "Scanning…" : "No caches found") : nil
+            placeholder: rows.isEmpty ? (store.busy ? "Scanning…" : "No targets found") : nil
         ) {
             ForEach(rows, id: \.group.id) { row in
                 ChartRow(

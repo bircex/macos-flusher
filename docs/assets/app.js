@@ -30,7 +30,7 @@ document.querySelectorAll('.copy').forEach((button) => {
 })
 
 const expand = document.querySelector('[data-expand]')
-const groups = document.querySelectorAll('#caches .accordion > details')
+const groups = document.querySelectorAll('#targets .accordion > details')
 
 function label() {
   const open = [...groups].every((group) => group.open)

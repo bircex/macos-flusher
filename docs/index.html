@@ -22,7 +22,7 @@
     <nav class="nav-links" aria-label="Sections">
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
-      <a href="#caches">What it cleans</a>
+      <a href="#targets">What it cleans</a>
       <a href="#install">Install</a>
       <a href="#privacy">Privacy</a>
       <a href="#faq">FAQ</a>
@@ -105,7 +105,7 @@
         </div>
         <div class="item">
           <h3>See what fills the disk</h3>
-          <p>Charts break the disk down by location and by cache category. The Docker disk image has its own row.</p>
+          <p>Charts break the disk down by location and by target group. The Docker disk image has its own row.</p>
         </div>
         <div class="item">
           <h3>Safe defaults</h3>
@@ -170,11 +170,11 @@
   </div>
 </section>
 
-<section class="block" id="caches">
+<section class="block" id="targets">
   <div class="container">
     <header class="head">
       <h2>What it cleans</h2>
-      <p>88 caches in 14 groups, with the exact folder or command for each. Open a group to see every folder that is emptied and every command that is run.</p>
+      <p>88 targets in 14 groups, with the exact folder or command for each. Open a group to see every folder that is emptied and every command that is run.</p>
     </header>
     <div>
       <div>
@@ -184,8 +184,8 @@
         </div>
         <div class="accordion">
           <details>
-            <summary><span class="title">JavaScript / TypeScript</span><span class="count">10 caches</span><span class="hint">npm, Yarn, pnpm, Bun, Deno, Corepack, nvm, node-gyp, Electron, Turborepo</span></summary>
-            <ul class="caches">
+            <summary><span class="title">JavaScript / TypeScript</span><span class="count">10 targets</span><span class="hint">npm, Yarn, pnpm, Bun, Deno, Corepack, nvm, node-gyp, Electron, Turborepo</span></summary>
+            <ul class="targets">
               <li><span class="name">npm cache</span><span class="removes"><span><b>$ </b>npm cache clean --force</span></span></li>
               <li><span class="name">Yarn cache</span><span class="removes"><span>~/Library/Caches/Yarn</span><span>~/.yarn/cache</span><span>~/.yarn/berry/cache</span></span></li>
               <li><span class="name">pnpm store</span><span class="removes"><span>~/Library/pnpm/store</span><span>~/Library/Caches/pnpm</span><span>~/.pnpm-store</span></span></li>
@@ -199,8 +199,8 @@
             </ul>
           </details>
           <details>
-            <summary><span class="title">Python</span><span class="count">10 caches</span><span class="hint">pip, uv, Poetry, Pipenv, pipx, Conda, Ruff, pre-commit, Hugging Face, PyTorch</span></summary>
-            <ul class="caches">
+            <summary><span class="title">Python</span><span class="count">10 targets</span><span class="hint">pip, uv, Poetry, Pipenv, pipx, Conda, Ruff, pre-commit, Hugging Face, PyTorch</span></summary>
+            <ul class="targets">
               <li><span class="name">pip cache</span><span class="removes"><span>~/Library/Caches/pip</span></span></li>
               <li><span class="name">uv cache</span><span class="removes"><span>~/.cache/uv</span></span></li>
               <li><span class="name">Poetry cache</span><span class="removes"><span>~/Library/Caches/pypoetry</span></span></li>
@@ -214,24 +214,24 @@
             </ul>
           </details>
           <details>
-            <summary><span class="title">Go</span><span class="count">3 caches</span><span class="hint">Build cache, module cache, gopls, goimports, golangci-lint, staticcheck</span></summary>
-            <ul class="caches">
+            <summary><span class="title">Go</span><span class="count">3 targets</span><span class="hint">Build cache, module cache, gopls, goimports, golangci-lint, staticcheck</span></summary>
+            <ul class="targets">
               <li><span class="name">Go build cache</span><span class="removes"><span><b>$ </b>go clean -cache</span></span></li>
               <li><span class="name">Go module cache</span><span class="removes"><span><b>$ </b>go clean -modcache</span></span><span class="state">Off by default</span></li>
               <li><span class="name">Go tools</span><span class="removes"><span>~/Library/Caches/gopls</span><span>~/Library/Caches/goimports</span><span>~/Library/Caches/golangci-lint</span><span>~/Library/Caches/staticcheck</span></span></li>
             </ul>
           </details>
           <details>
-            <summary><span class="title">Rust</span><span class="count">3 caches</span><span class="hint">Cargo registry and git, rustup downloads, sccache</span></summary>
-            <ul class="caches">
+            <summary><span class="title">Rust</span><span class="count">3 targets</span><span class="hint">Cargo registry and git, rustup downloads, sccache</span></summary>
+            <ul class="targets">
               <li><span class="name">Cargo registry &amp; git</span><span class="removes"><span>~/.cargo/registry/cache</span><span>~/.cargo/registry/src</span><span>~/.cargo/git</span></span></li>
               <li><span class="name">rustup downloads</span><span class="removes"><span>~/.rustup/downloads</span><span>~/.rustup/tmp</span></span></li>
               <li><span class="name">sccache</span><span class="removes"><span>~/Library/Caches/Mozilla.sccache</span><span>~/.cache/sccache</span></span></li>
             </ul>
           </details>
           <details>
-            <summary><span class="title">JVM (Java, Kotlin, Scala, Clojure, Android)</span><span class="count">6 caches</span><span class="hint">Gradle, Maven, Coursier, sbt, Ivy, Kotlin, Android, Bazel</span></summary>
-            <ul class="caches">
+            <summary><span class="title">JVM (Java, Kotlin, Scala, Clojure, Android)</span><span class="count">6 targets</span><span class="hint">Gradle, Maven, Coursier, sbt, Ivy, Kotlin, Android, Bazel</span></summary>
+            <ul class="targets">
               <li><span class="name">Gradle caches</span><span class="removes"><span>~/.gradle/caches</span><span>~/.gradle/daemon</span></span></li>
               <li><span class="name">Maven repository</span><span class="removes"><span>~/.m2/repository</span></span><span class="state">Off by default</span></li>
               <li><span class="name">Coursier / sbt cache</span><span class="removes"><span>~/Library/Caches/Coursier</span><span>~/.cache/coursier</span><span>~/.sbt/boot</span><span>~/.ivy2/cache</span></span></li>
@@ -241,15 +241,15 @@
             </ul>
           </details>
           <details>
-            <summary><span class="title">.NET</span><span class="count">2 caches</span><span class="hint">NuGet packages and HTTP cache</span></summary>
-            <ul class="caches">
+            <summary><span class="title">.NET</span><span class="count">2 targets</span><span class="hint">NuGet packages and HTTP cache</span></summary>
+            <ul class="targets">
               <li><span class="name">NuGet packages</span><span class="removes"><span>~/.nuget/packages</span></span><span class="state">Off by default</span></li>
               <li><span class="name">NuGet HTTP cache</span><span class="removes"><span>~/.local/share/NuGet/http-cache</span><span>~/.nuget/v3-cache</span></span></li>
             </ul>
           </details>
           <details>
-            <summary><span class="title">Swift / Objective-C</span><span class="count">6 caches</span><span class="hint">Xcode DerivedData, DeviceSupport, Simulator, Swift PM, CocoaPods, Carthage</span></summary>
-            <ul class="caches">
+            <summary><span class="title">Swift / Objective-C</span><span class="count">6 targets</span><span class="hint">Xcode DerivedData, DeviceSupport, Simulator, Swift PM, CocoaPods, Carthage</span></summary>
+            <ul class="targets">
               <li><span class="name">Xcode DerivedData</span><span class="removes"><span>~/Library/Developer/Xcode/DerivedData</span></span></li>
               <li><span class="name">Xcode iOS DeviceSupport</span><span class="removes"><span>~/Library/Developer/Xcode/iOS DeviceSupport</span></span><span class="state">Off by default</span></li>
               <li><span class="name">iOS Simulator caches</span><span class="removes"><span>~/Library/Developer/CoreSimulator/Caches</span></span></li>
@@ -259,8 +259,8 @@
             </ul>
           </details>
           <details>
-            <summary><span class="title">Ruby / PHP / Perl / Lua</span><span class="count">4 caches</span><span class="hint">RubyGems, Bundler, Composer, CPAN, LuaRocks</span></summary>
-            <ul class="caches">
+            <summary><span class="title">Ruby / PHP / Perl / Lua</span><span class="count">4 targets</span><span class="hint">RubyGems, Bundler, Composer, CPAN, LuaRocks</span></summary>
+            <ul class="targets">
               <li><span class="name">RubyGems &amp; Bundler cache</span><span class="removes"><span>~/.gem/specs</span><span>~/.gem/ruby/*/cache</span><span>~/.bundle/cache</span></span></li>
               <li><span class="name">Composer cache</span><span class="removes"><span>~/.composer/cache</span><span>~/Library/Caches/composer</span><span>~/.cache/composer</span></span></li>
               <li><span class="name">CPAN build &amp; sources</span><span class="removes"><span>~/.cpan/build</span><span>~/.cpan/sources</span><span>~/.cpanm/work</span></span></li>
@@ -268,8 +268,8 @@
             </ul>
           </details>
           <details>
-            <summary><span class="title">Elixir / Erlang / Haskell / OCaml</span><span class="count">5 caches</span><span class="hint">Hex, rebar3, Cabal, Stack, opam</span></summary>
-            <ul class="caches">
+            <summary><span class="title">Elixir / Erlang / Haskell / OCaml</span><span class="count">5 targets</span><span class="hint">Hex, rebar3, Cabal, Stack, opam</span></summary>
+            <ul class="targets">
               <li><span class="name">Hex package cache</span><span class="removes"><span>~/.hex</span><span>~/.cache/hex</span></span></li>
               <li><span class="name">rebar3 cache</span><span class="removes"><span>~/.cache/rebar3</span></span></li>
               <li><span class="name">Cabal packages</span><span class="removes"><span>~/.cabal/packages</span><span>~/.cache/cabal</span></span></li>
@@ -278,16 +278,16 @@
             </ul>
           </details>
           <details>
-            <summary><span class="title">C / C++</span><span class="count">3 caches</span><span class="hint">ccache, Conan, vcpkg</span></summary>
-            <ul class="caches">
+            <summary><span class="title">C / C++</span><span class="count">3 targets</span><span class="hint">ccache, Conan, vcpkg</span></summary>
+            <ul class="targets">
               <li><span class="name">ccache</span><span class="removes"><span>~/Library/Caches/ccache</span><span>~/.ccache</span><span>~/.cache/ccache</span></span></li>
               <li><span class="name">Conan packages</span><span class="removes"><span>~/.conan2/p</span><span>~/.conan/data</span></span></li>
               <li><span class="name">vcpkg cache</span><span class="removes"><span>~/.cache/vcpkg</span><span>~/Library/Caches/vcpkg</span></span></li>
             </ul>
           </details>
           <details>
-            <summary><span class="title">Dart, Zig, Nim, Julia, R, Crystal, D</span><span class="count">7 caches</span><span class="hint">pub, Zig, Nim, Julia, R, Crystal, dub</span></summary>
-            <ul class="caches">
+            <summary><span class="title">Dart, Zig, Nim, Julia, R, Crystal, D</span><span class="count">7 targets</span><span class="hint">pub, Zig, Nim, Julia, R, Crystal, dub</span></summary>
+            <ul class="targets">
               <li><span class="name">Dart / Flutter pub cache</span><span class="removes"><span>~/.pub-cache</span></span><span class="state">Off by default</span></li>
               <li><span class="name">Zig cache</span><span class="removes"><span>~/.cache/zig</span></span></li>
               <li><span class="name">Nim cache</span><span class="removes"><span>~/.cache/nim</span><span>~/.nimble/pkgcache</span></span></li>
@@ -298,8 +298,8 @@
             </ul>
           </details>
           <details>
-            <summary><span class="title">Containers &amp; VMs</span><span class="count">9 caches</span><span class="hint">Docker, Podman, minikube, Vagrant, Lima, Colima</span></summary>
-            <ul class="caches">
+            <summary><span class="title">Containers &amp; VMs</span><span class="count">9 targets</span><span class="hint">Docker, Podman, minikube, Vagrant, Lima, Colima</span></summary>
+            <ul class="targets">
               <li><span class="name">Docker build cache</span><span class="removes"><span><b>$ </b>docker builder prune -af</span></span></li>
               <li><span class="name">Docker dangling images</span><span class="removes"><span><b>$ </b>docker image prune -f</span></span></li>
               <li><span class="name">Docker unused images (all)</span><span class="removes"><span><b>$ </b>docker image prune -af</span></span><span class="state">Off by default</span></li>
@@ -312,8 +312,8 @@
             </ul>
           </details>
           <details>
-            <summary><span class="title">IDEs &amp; dev tools</span><span class="count">14 caches</span><span class="hint">Homebrew, JetBrains, VS Code, Cursor, Playwright, Cypress, Puppeteer, Terraform, Pulumi, Helm, AWS CLI, Ollama, Claude Code, Codex</span></summary>
-            <ul class="caches">
+            <summary><span class="title">IDEs &amp; dev tools</span><span class="count">14 targets</span><span class="hint">Homebrew, JetBrains, VS Code, Cursor, Playwright, Cypress, Puppeteer, Terraform, Pulumi, Helm, AWS CLI, Ollama, Claude Code, Codex</span></summary>
+            <ul class="targets">
               <li><span class="name">Homebrew downloads</span><span class="removes"><span><b>$ </b>brew cleanup --prune=all -s</span></span></li>
               <li><span class="name">JetBrains caches</span><span class="removes"><span>~/Library/Caches/JetBrains</span></span></li>
               <li><span class="name">VS Code caches</span><span class="removes"><span>~/Library/Application Support/Code/Cache</span><span>~/Library/Application Support/Code/CachedData</span><span>~/Library/Application Support/Code/CachedExtensionVSIXs</span></span></li>
@@ -331,8 +331,8 @@
             </ul>
           </details>
           <details>
-            <summary><span class="title">Apps &amp; system</span><span class="count">6 caches</span><span class="hint">App updater leftovers, Spotify, Slack, Chrome, Brave, Edge, user logs, Trash</span></summary>
-            <ul class="caches">
+            <summary><span class="title">Apps &amp; system</span><span class="count">6 targets</span><span class="hint">App updater leftovers, Spotify, Slack, Chrome, Brave, Edge, user logs, Trash</span></summary>
+            <ul class="targets">
               <li><span class="name">App updater leftovers</span><span class="removes"><span>~/Library/Caches/*.ShipIt</span></span></li>
               <li><span class="name">Spotify cache</span><span class="removes"><span>~/Library/Caches/com.spotify.client</span></span></li>
               <li><span class="name">Slack cache</span><span class="removes"><span>~/Library/Application Support/Slack/Cache</span><span>~/Library/Application Support/Slack/Service Worker/CacheStorage</span></span></li>
@@ -592,9 +592,9 @@ grep MacOS-Flusher.dmg SHA256SUMS | shasum -a 256 -c -</pre>
         </div>
       </details>
       <details>
-        <summary><span class="title">How do I add a cache that is missing?</span></summary>
+        <summary><span class="title">How do I add a target that is missing?</span></summary>
         <div class="answer">
-          <p>Adding a cache is one line in <code>Sources/MacOSFlusher/Catalog.swift</code>. Open a pull request on the <a href="https://github.com/bircex/macos-flusher">project page</a>, or <a href="https://github.com/bircex/macos-flusher/issues">open an issue</a> with the folder or the cleanup command.</p>
+          <p>Adding a target is one line in <code>Sources/MacOSFlusher/Targets.swift</code>. Open a pull request on the <a href="https://github.com/bircex/macos-flusher">project page</a>, or <a href="https://github.com/bircex/macos-flusher/issues">open an issue</a> with the folder or the cleanup command.</p>
         </div>
       </details>
     </div>

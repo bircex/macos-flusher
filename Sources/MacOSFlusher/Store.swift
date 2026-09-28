@@ -23,14 +23,14 @@ struct LogEntry: Identifiable, Sendable {
 @MainActor
 final class Store: ObservableObject {
     @Published private(set) var states: [String: ItemState] = [:]
-    @Published var selected: Set<String> = Set(Catalog.allItems.filter(\.defaultOn).map(\.id))
+    @Published var selected: Set<String> = Set(Targets.allItems.filter(\.defaultOn).map(\.id))
     @Published private(set) var busy = false
     @Published private(set) var log: [LogEntry] = []
     @Published private(set) var lastFreed: Int64?
     @Published var hideEmpty = true
     @Published private(set) var progress: Progress?
     @Published private(set) var disk: DiskInfo?
-    @Published var expanded: Set<String> = Set(Catalog.groups.map(\.id))
+    @Published var expanded: Set<String> = Set(Targets.groups.map(\.id))
     @Published private(set) var pathSizes: [String: [String: Int64]] = [:]
     @Published private(set) var locations: [DiskLocation] = []
     @Published private(set) var analysis: Progress?
@@ -43,16 +43,16 @@ final class Store: ObservableObject {
         Shell.warmUp()
     }
 
-    func size(of item: CacheItem) -> Int64? {
+    func size(of item: Target) -> Int64? {
         if case .measured(let bytes) = states[item.id] { return bytes }
         return nil
     }
 
-    func isAvailable(_ item: CacheItem) -> Bool {
+    func isAvailable(_ item: Target) -> Bool {
         states[item.id] != .unavailable
     }
 
-    func isVisible(_ item: CacheItem) -> Bool {
+    func isVisible(_ item: Target) -> Bool {
         guard hideEmpty else { return true }
         switch states[item.id] ?? .unknown {
         case .unavailable: return false
@@ -62,32 +62,32 @@ final class Store: ObservableObject {
     }
 
     var selectedTotal: Int64 {
-        Catalog.allItems.filter { selected.contains($0.id) }.compactMap(size(of:)).reduce(0, +)
+        Targets.allItems.filter { selected.contains($0.id) }.compactMap(size(of:)).reduce(0, +)
     }
 
     var selectedCount: Int {
-        Catalog.allItems.filter { selected.contains($0.id) && isAvailable($0) }.count
+        Targets.allItems.filter { selected.contains($0.id) && isAvailable($0) }.count
     }
 
     var measuredTotal: Int64 {
-        Catalog.allItems.compactMap(size(of:)).reduce(0, +)
+        Targets.allItems.compactMap(size(of:)).reduce(0, +)
     }
 
-    func total(of group: CacheGroup) -> Int64 {
+    func total(of group: TargetGroup) -> Int64 {
         group.items.compactMap(size(of:)).reduce(0, +)
     }
 
-    func selectedTotal(of group: CacheGroup) -> Int64 {
+    func selectedTotal(of group: TargetGroup) -> Int64 {
         group.items.filter { selected.contains($0.id) }.compactMap(size(of:)).reduce(0, +)
     }
 
-    func setGroup(_ group: CacheGroup, on: Bool) {
+    func setGroup(_ group: TargetGroup, on: Bool) {
         for item in group.items where isAvailable(item) {
             if on { selected.insert(item.id) } else { selected.remove(item.id) }
         }
     }
 
-    func toggle(_ item: CacheItem, on: Bool) {
+    func toggle(_ item: Target, on: Bool) {
         if on { selected.insert(item.id) } else { selected.remove(item.id) }
     }
 
@@ -134,7 +134,7 @@ final class Store: ObservableObject {
     }
 
     private func runScan() async {
-        let items = Catalog.allItems
+        let items = Targets.allItems
         refreshDisk()
         progress = Progress(done: 0, total: items.count)
         for item in items { states[item.id] = .scanning }
@@ -163,7 +163,7 @@ final class Store: ObservableObject {
     }
 
     private func runFlush() async {
-        let items = Catalog.allItems.filter { selected.contains($0.id) && isAvailable($0) }
+        let items = Targets.allItems.filter { selected.contains($0.id) && isAvailable($0) }
         let before = items.compactMap(size(of:)).reduce(0, +)
         var after: Int64 = 0
         progress = Progress(done: 0, total: items.count)
@@ -221,11 +221,11 @@ final class Store: ObservableObject {
             }
         }
         guard !Task.isCancelled else { return }
-        let caches = cacheBytes(in: plan)
+        let targets = targetBytes(in: plan)
         locations = plan.map { location in
             var measured = location
             let bytes = location.roots.map { Locations.exclusive($0, raw: raw) }.reduce(0, +)
-            measured.other = max(0, bytes - (caches[location.id]?.total ?? 0))
+            measured.other = max(0, bytes - (targets[location.id]?.total ?? 0))
             return measured
         }
         analysis = nil
@@ -269,7 +269,7 @@ struct Measurement: Sendable {
 }
 
 enum Measurer {
-    static func measure(_ item: CacheItem) async -> Measurement {
+    static func measure(_ item: Target) async -> Measurement {
         if let binary = item.requires, !Shell.exists(binary: binary) {
             return Measurement(state: .unavailable)
         }

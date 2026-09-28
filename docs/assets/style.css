@@ -647,13 +647,13 @@ details > summary::-webkit-details-marker {
   font-size: 14px;
 }
 
-.caches {
+.targets {
   margin: 0;
   padding: 0 0 22px;
   list-style: none;
 }
 
-.caches li {
+.targets li {
   display: grid;
   grid-template-columns: minmax(0, 230px) minmax(0, 1fr) auto;
   gap: 4px 24px;
@@ -663,11 +663,11 @@ details > summary::-webkit-details-marker {
   font-size: 15px;
 }
 
-.caches .name {
+.targets .name {
   font-weight: 550;
 }
 
-.caches .removes {
+.targets .removes {
   display: grid;
   gap: 3px;
   color: var(--muted);
@@ -677,13 +677,13 @@ details > summary::-webkit-details-marker {
   overflow-wrap: anywhere;
 }
 
-.caches .removes b {
+.targets .removes b {
   color: var(--faint);
   font-weight: 400;
   user-select: none;
 }
 
-.caches .state {
+.targets .state {
   padding: 1px 9px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
@@ -822,11 +822,11 @@ footer a:hover {
     display: none;
   }
 
-  .caches li {
+  .targets li {
     grid-template-columns: minmax(0, 1fr) auto;
   }
 
-  .caches .removes {
+  .targets .removes {
     grid-column: 1 / -1;
     grid-row: 2;
   }
