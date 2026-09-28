@@ -458,6 +458,98 @@ section.block {
   display: block;
 }
 
+.editor {
+  max-width: 800px;
+  margin-top: 40px;
+  border-radius: 12px;
+  background: var(--text);
+  color: #f2f2f2;
+  overflow: hidden;
+}
+
+.editor + .actions {
+  margin-top: 28px;
+}
+
+.editor-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 14px;
+  border-bottom: 1px solid #2a2a2a;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.editor-bar i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3a3a3a;
+}
+
+.editor-bar span {
+  margin-left: 8px;
+}
+
+.editor ol {
+  margin: 0;
+  padding: 12px 0;
+  list-style: none;
+  counter-reset: line;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.editor li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: start;
+  padding-right: 12px;
+  counter-increment: line;
+  overflow-wrap: anywhere;
+}
+
+.editor li::before {
+  content: counter(line);
+  padding-right: 16px;
+  color: var(--muted);
+  text-align: right;
+  user-select: none;
+}
+
+.editor .comment {
+  color: var(--faint);
+}
+
+.editor code {
+  padding: 0;
+  background: none;
+  font-size: inherit;
+}
+
+.editor .copy {
+  width: 22px;
+  height: 22px;
+  margin: 0 0 0 10px;
+  border-color: #3a3a3a;
+  border-radius: 6px;
+  background: #161616;
+  color: #b5b5b5;
+}
+
+.editor .copy svg {
+  width: 12px;
+  height: 12px;
+}
+
+.editor .copy:hover {
+  border-color: #f2f2f2;
+  color: #f2f2f2;
+}
+
 details > summary {
   cursor: pointer;
   list-style: none;
@@ -734,6 +826,10 @@ footer a:hover {
 
   .actions .button {
     width: 100%;
+  }
+
+  .editor li {
+    grid-template-columns: 34px minmax(0, 1fr) auto;
   }
 
   .meta {
