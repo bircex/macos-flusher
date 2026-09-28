@@ -459,16 +459,11 @@ section.block {
 }
 
 .editor {
-  max-width: 800px;
-  margin-top: 40px;
+  margin-top: 56px;
   border-radius: 12px;
   background: var(--text);
   color: #f2f2f2;
   overflow: hidden;
-}
-
-.editor + .actions {
-  margin-top: 28px;
 }
 
 .editor-bar {
