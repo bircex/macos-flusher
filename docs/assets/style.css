@@ -205,7 +205,6 @@ code {
 }
 
 .tagline {
-  max-width: 720px;
   margin-top: 28px;
   color: var(--muted);
   font-size: clamp(19px, 2.4vw, 24px);
@@ -255,45 +254,29 @@ code {
 }
 
 section.block {
-  padding: 88px 0;
+  padding: 96px 0;
   border-top: 1px solid var(--line);
 }
 
-.split {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 56px;
+.head {
+  max-width: 680px;
+  margin: 0 auto 56px;
+  text-align: center;
 }
 
-.split > header {
-  position: sticky;
-  top: 92px;
-  align-self: start;
+.head h2 {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
 }
 
-.split > header h2 {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0;
-}
-
-.split > header p {
-  margin-top: 8px;
-  color: var(--faint);
-  font-size: 14.5px;
+.head p {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: clamp(17px, 1.8vw, 19px);
   line-height: 1.5;
-}
-
-.intro {
-  max-width: 640px;
-  font-size: clamp(24px, 3vw, 32px);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.25;
-}
-
-.intro + * {
-  margin-top: 44px;
+  text-wrap: balance;
 }
 
 .columns {
@@ -368,19 +351,23 @@ section.block {
 
 .steps {
   display: grid;
-  gap: 64px;
+  gap: 80px;
 }
 
 .step {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: 44px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
 }
 
 .step.wide {
   grid-template-columns: minmax(0, 1fr);
-  gap: 24px;
+  gap: 28px;
+}
+
+.step > div:first-child {
+  max-width: 600px;
 }
 
 .step h3 {
@@ -402,6 +389,7 @@ section.block {
 }
 
 .step .shot.narrow {
+  justify-self: end;
   max-width: 320px;
 }
 
@@ -765,15 +753,6 @@ footer a:hover {
 }
 
 @media (max-width: 900px) {
-  .split {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-  }
-
-  .split > header {
-    position: static;
-  }
-
   .nav-links {
     display: none;
   }
@@ -789,6 +768,10 @@ footer a:hover {
   .step {
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;
+  }
+
+  .step .shot.narrow {
+    justify-self: start;
   }
 }
 
@@ -811,6 +794,10 @@ footer a:hover {
 
   section.block {
     padding: 64px 0;
+  }
+
+  .head {
+    margin-bottom: 40px;
   }
 
   .columns,
