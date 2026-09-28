@@ -23,7 +23,7 @@ async function showLatestRelease() {
 
 document.querySelectorAll('.copy').forEach((button) => {
   button.addEventListener('click', async () => {
-    await navigator.clipboard.writeText(button.parentElement.querySelector('pre').textContent.trim())
+    await navigator.clipboard.writeText(button.parentElement.querySelector('pre, code').textContent.trim())
     button.classList.add('copied')
     setTimeout(() => button.classList.remove('copied'), 1600)
   })
