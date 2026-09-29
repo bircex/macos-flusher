@@ -11,8 +11,8 @@ struct ContentView: View {
             Divider()
             HStack(spacing: 0) {
                 List {
-                    ForEach(Targets.groups) { group in
-                        GroupSection(group: group)
+                    ForEach(Audience.allCases) { audience in
+                        AudienceSection(audience: audience)
                     }
                 }
                 .listStyle(.inset)
@@ -29,14 +29,14 @@ struct ContentView: View {
         }
         .frame(minWidth: 960, minHeight: 820)
         .confirmationDialog(
-            "Delete \(Format.bytes(store.selectedTotal)) across \(store.selectedCount) targets?",
+            "Delete \(Format.bytes(store.selectedTotal)) across \(Messages.targets(store.selectedCount))?",
             isPresented: $confirmFlush,
             titleVisibility: .visible
         ) {
             Button("Flush", role: .destructive) { store.flush() }
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("Caches are rebuilt on demand. Named Docker volumes and project files are never touched.")
+            Text(store.flushTargets.warning)
         }
         .onAppear { store.scan() }
     }
@@ -45,7 +45,7 @@ struct ContentView: View {
         HStack(spacing: 12) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("MacOS Flusher").font(.title2.bold())
-                Text("Selected: \(Format.bytes(store.selectedTotal)) in \(store.selectedCount) targets")
+                Text("Selected: \(Format.bytes(store.selectedTotal)) in \(Messages.targets(store.selectedCount))")
                     .font(.callout)
                     .foregroundStyle(.secondary)
             }
@@ -152,6 +152,25 @@ struct DiskBar: View {
     }
 }
 
+struct AudienceSection: View {
+    @EnvironmentObject var store: Store
+    let audience: Audience
+
+    private var groups: [TargetGroup] {
+        Targets.groups.filter { $0.audience == audience && $0.items.contains(where: store.isVisible) }
+    }
+
+    var body: some View {
+        if !groups.isEmpty {
+            Section(audience.name) {
+                ForEach(groups) { group in
+                    GroupSection(group: group)
+                }
+            }
+        }
+    }
+}
+
 struct GroupSection: View {
     @EnvironmentObject var store: Store
     let group: TargetGroup
@@ -208,7 +227,15 @@ struct ItemRow: View {
         HStack {
             Toggle(isOn: isOn) {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(item.name)
+                    HStack(spacing: 6) {
+                        Text(item.name)
+                        if let label = item.risk.label {
+                            Text(label)
+                                .font(.caption)
+                                .fontWeight(item.risk == .data ? .semibold : .regular)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                     Text(item.detail)
                         .font(.caption)
                         .foregroundStyle(.secondary)

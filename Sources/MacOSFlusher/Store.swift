@@ -65,8 +65,12 @@ final class Store: ObservableObject {
         Targets.allItems.filter { selected.contains($0.id) }.compactMap(size(of:)).reduce(0, +)
     }
 
+    var flushTargets: [Target] {
+        Targets.allItems.filter { selected.contains($0.id) && isAvailable($0) }
+    }
+
     var selectedCount: Int {
-        Targets.allItems.filter { selected.contains($0.id) && isAvailable($0) }.count
+        flushTargets.count
     }
 
     var measuredTotal: Int64 {
@@ -170,8 +174,7 @@ final class Store: ObservableObject {
     }
 
     private func runFlush() async {
-        let items = Targets.allItems.filter { selected.contains($0.id) && isAvailable($0) }
-        lastFreed = await clean(items).freed
+        lastFreed = await clean(flushTargets).freed
         append("Freed \(Format.bytes(lastFreed ?? 0)).")
     }
 

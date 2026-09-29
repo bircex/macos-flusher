@@ -27,6 +27,58 @@ import Testing
     @Test func detailFallsBackToPaths() {
         let item = Target("sample", "Sample", ["~/a", "~/b"])
         #expect(item.detail == "~/a, ~/b")
-        #expect(item.defaultOn)
+        #expect(item.risk == .rebuilds)
+    }
+
+    @Test func targetAndGroupIdsDoNotCollide() {
+        let shared = Set(Targets.allItems.map(\.id)).intersection(Targets.groups.map(\.id))
+        #expect(shared.isEmpty)
+    }
+
+    @Test func groupsOfAnAudienceStayTogether() {
+        let order = Targets.groups.compactMap { Audience.allCases.firstIndex(of: $0.audience) }
+        #expect(order == order.sorted())
+    }
+
+    @Test func everyAudienceHasTargets() {
+        for audience in Audience.allCases {
+            #expect(Targets.groups.contains { $0.audience == audience }, "\(audience) has no group")
+        }
+    }
+
+    @Test func onlyWhatRebuildsStartsSelected() {
+        for item in Targets.allItems {
+            #expect(item.defaultOn == (item.risk == .rebuilds), "\(item.id)")
+        }
+    }
+
+    @Test(arguments: [
+        ("npm", Risk.rebuilds),
+        ("chrome", .rebuilds),
+        ("xcode-derived", .rebuilds),
+        ("go-mod", .redownload),
+        ("ollama", .redownload),
+        ("docker-images", .redownload),
+        ("trash", .data),
+        ("logs", .data),
+        ("docker-containers", .data),
+        ("podman", .data),
+        ("claude-tmp", .data),
+    ])
+    func riskOfKnownTargets(id: String, risk: Risk) {
+        #expect(Targets.allItems.first { $0.id == id }?.risk == risk)
+    }
+
+    @Test(arguments: [
+        ("chrome", "web"),
+        ("spotify", "media"),
+        ("trash", "system"),
+        ("slack", "chat"),
+        ("huggingface", "models"),
+        ("ollama", "models"),
+        ("pip", "python"),
+    ])
+    func groupOfKnownTargets(id: String, group: String) {
+        #expect(Targets.groups.first { $0.items.contains { $0.id == id } }?.id == group)
     }
 }
