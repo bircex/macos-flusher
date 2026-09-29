@@ -33,8 +33,24 @@ Versions follow calendar versioning, `YYYY.M.PATCH`, for example `2026.9.0`. The
 
 ## What it covers
 
+### Everyone
+
+- Web browsers: Chrome, Brave, Edge
+- Music and video: Spotify
+- System: app updater leftovers, user logs, Trash
+
+### Chat, mail and office
+
+- Chat and meetings: Slack
+
+### AI models
+
+- Downloaded models: Hugging Face, PyTorch hub, Ollama
+
+### Developers
+
 - JavaScript: npm, Yarn, pnpm, Bun, Deno, Corepack, nvm, node-gyp, Electron, Turborepo
-- Python: pip, uv, Poetry, Pipenv, pipx, Conda, Ruff, pre-commit, Hugging Face, PyTorch hub
+- Python: pip, uv, Poetry, Pipenv, pipx, Conda, Ruff, pre-commit
 - Go: build cache, module cache, gopls / goimports / golangci-lint / staticcheck
 - Rust: Cargo registry and git, rustup downloads, sccache
 - JVM: Gradle, Maven, Coursier / sbt / Ivy, Kotlin, Android, Bazel
@@ -45,10 +61,14 @@ Versions follow calendar versioning, `YYYY.M.PATCH`, for example `2026.9.0`. The
 - C / C++: ccache, Conan, vcpkg
 - Dart / Flutter, Zig, Nim, Julia, R, Crystal, D
 - Containers and VMs: Docker build cache, dangling and unused images, anonymous volumes, stopped containers, Podman, minikube, Vagrant, Lima / Colima
-- IDEs and tools: Homebrew, JetBrains, VS Code, Cursor, Playwright, Cypress, Puppeteer, Terraform, Pulumi, Helm, AWS CLI, Ollama, Claude Code, Codex
-- Apps and system: app updater leftovers, Spotify, Slack, browser caches, user logs, Trash
+- IDEs and tools: Homebrew, JetBrains, VS Code, Cursor, Playwright, Cypress, Puppeteer, Terraform, Pulumi, Helm, AWS CLI, Claude Code, Codex
 
-Targets whose tool is not installed are greyed out. Targets that are slow to rebuild or hold user data (Go module cache, Maven, Hugging Face models, Ollama models, Trash, logs, stopped containers) are off by default. Named Docker volumes are never removed.
+Targets whose tool is not installed are greyed out. Two kinds of targets are off by default and labelled in the list:
+
+- slow to get back: Go module cache, Maven, NuGet packages, downloaded models, unused Docker images
+- deleted for good: Trash, user logs, stopped containers
+
+Named Docker volumes are never removed.
 
 ## How it works
 

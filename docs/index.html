@@ -174,7 +174,7 @@
   <div class="container">
     <header class="head">
       <h2>What it cleans</h2>
-      <p>88 targets in 14 groups, with the exact folder or command for each. Open a group to see every folder that is emptied and every command that is run.</p>
+      <p>90 targets in 18 groups, with the exact folder or command for each. Open a group to see every folder that is emptied and every command that is run.</p>
     </header>
     <div>
       <div>
@@ -182,6 +182,52 @@
           <span>Lines starting with $ are commands. Everything else is a folder.</span>
           <button class="button outline small" type="button" data-expand>Expand all</button>
         </div>
+        <h3 class="audience">Everyone</h3>
+        <div class="accordion">
+          <details>
+            <summary><span class="title">Web browsers</span><span class="count">3 targets</span><span class="hint">Chrome, Brave, Edge</span></summary>
+            <ul class="targets">
+              <li><span class="name">Chrome cache</span><span class="removes"><span>~/Library/Caches/Google/Chrome</span></span></li>
+              <li><span class="name">Brave cache</span><span class="removes"><span>~/Library/Caches/BraveSoftware</span></span></li>
+              <li><span class="name">Edge cache</span><span class="removes"><span>~/Library/Caches/Microsoft Edge</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">Music and video</span><span class="count">1 target</span><span class="hint">Spotify</span></summary>
+            <ul class="targets">
+              <li><span class="name">Spotify cache</span><span class="removes"><span>~/Library/Caches/com.spotify.client</span></span></li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="title">System</span><span class="count">3 targets</span><span class="hint">App updater leftovers, user logs, Trash</span></summary>
+            <ul class="targets">
+              <li><span class="name">App updater leftovers</span><span class="removes"><span>~/Library/Caches/*.ShipIt</span></span></li>
+              <li><span class="name">User logs</span><span class="removes"><span>~/Library/Logs</span></span><span class="state">Off by default, deleted for good</span></li>
+              <li><span class="name">Trash</span><span class="removes"><span>~/.Trash</span></span><span class="state">Off by default, deleted for good</span></li>
+            </ul>
+          </details>
+        </div>
+        <h3 class="audience">Chat, mail and office</h3>
+        <div class="accordion">
+          <details>
+            <summary><span class="title">Chat and meetings</span><span class="count">1 target</span><span class="hint">Slack</span></summary>
+            <ul class="targets">
+              <li><span class="name">Slack cache</span><span class="removes"><span>~/Library/Application Support/Slack/Cache</span><span>~/Library/Application Support/Slack/Service Worker/CacheStorage</span></span></li>
+            </ul>
+          </details>
+        </div>
+        <h3 class="audience">AI models</h3>
+        <div class="accordion">
+          <details>
+            <summary><span class="title">Downloaded models</span><span class="count">3 targets</span><span class="hint">Hugging Face, PyTorch, Ollama</span></summary>
+            <ul class="targets">
+              <li><span class="name">Hugging Face hub</span><span class="removes"><span>~/.cache/huggingface</span></span><span class="state">Off by default, slow to get back</span></li>
+              <li><span class="name">PyTorch hub</span><span class="removes"><span>~/.cache/torch</span></span><span class="state">Off by default, slow to get back</span></li>
+              <li><span class="name">Ollama models</span><span class="removes"><span>~/.ollama/models</span></span><span class="state">Off by default, slow to get back</span></li>
+            </ul>
+          </details>
+        </div>
+        <h3 class="audience">Developers</h3>
         <div class="accordion">
           <details>
             <summary><span class="title">JavaScript / TypeScript</span><span class="count">10 targets</span><span class="hint">npm, Yarn, pnpm, Bun, Deno, Corepack, nvm, node-gyp, Electron, Turborepo</span></summary>
@@ -199,7 +245,7 @@
             </ul>
           </details>
           <details>
-            <summary><span class="title">Python</span><span class="count">10 targets</span><span class="hint">pip, uv, Poetry, Pipenv, pipx, Conda, Ruff, pre-commit, Hugging Face, PyTorch</span></summary>
+            <summary><span class="title">Python</span><span class="count">8 targets</span><span class="hint">pip, uv, Poetry, Pipenv, pipx, Conda, Ruff, pre-commit</span></summary>
             <ul class="targets">
               <li><span class="name">pip cache</span><span class="removes"><span>~/Library/Caches/pip</span></span></li>
               <li><span class="name">uv cache</span><span class="removes"><span>~/.cache/uv</span></span></li>
@@ -209,16 +255,14 @@
               <li><span class="name">Conda package cache</span><span class="removes"><span>~/miniconda3/pkgs</span><span>~/anaconda3/pkgs</span><span>~/miniforge3/pkgs</span><span>~/.conda/pkgs</span></span></li>
               <li><span class="name">Ruff cache</span><span class="removes"><span>~/Library/Caches/ruff</span><span>~/.cache/ruff</span></span></li>
               <li><span class="name">pre-commit environments</span><span class="removes"><span>~/.cache/pre-commit</span></span></li>
-              <li><span class="name">Hugging Face hub</span><span class="removes"><span>~/.cache/huggingface</span></span><span class="state">Off by default</span></li>
-              <li><span class="name">PyTorch hub</span><span class="removes"><span>~/.cache/torch</span></span><span class="state">Off by default</span></li>
             </ul>
           </details>
           <details>
             <summary><span class="title">Go</span><span class="count">3 targets</span><span class="hint">Build cache, module cache, gopls, goimports, golangci-lint, staticcheck</span></summary>
             <ul class="targets">
               <li><span class="name">Go build cache</span><span class="removes"><span><b>$ </b>go clean -cache</span></span></li>
-              <li><span class="name">Go module cache</span><span class="removes"><span><b>$ </b>go clean -modcache</span></span><span class="state">Off by default</span></li>
-              <li><span class="name">Go tools</span><span class="removes"><span>~/Library/Caches/gopls</span><span>~/Library/Caches/goimports</span><span>~/Library/Caches/golangci-lint</span><span>~/Library/Caches/staticcheck</span></span></li>
+              <li><span class="name">Go module cache</span><span class="removes"><span><b>$ </b>go clean -modcache</span></span><span class="state">Off by default, slow to get back</span></li>
+              <li><span class="name">Go tools (gopls, goimports, golangci-lint, staticcheck)</span><span class="removes"><span>~/Library/Caches/gopls</span><span>~/Library/Caches/goimports</span><span>~/Library/Caches/golangci-lint</span><span>~/Library/Caches/staticcheck</span></span></li>
             </ul>
           </details>
           <details>
@@ -233,17 +277,17 @@
             <summary><span class="title">JVM (Java, Kotlin, Scala, Clojure, Android)</span><span class="count">6 targets</span><span class="hint">Gradle, Maven, Coursier, sbt, Ivy, Kotlin, Android, Bazel</span></summary>
             <ul class="targets">
               <li><span class="name">Gradle caches</span><span class="removes"><span>~/.gradle/caches</span><span>~/.gradle/daemon</span></span></li>
-              <li><span class="name">Maven repository</span><span class="removes"><span>~/.m2/repository</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Maven repository</span><span class="removes"><span>~/.m2/repository</span></span><span class="state">Off by default, slow to get back</span></li>
               <li><span class="name">Coursier / sbt cache</span><span class="removes"><span>~/Library/Caches/Coursier</span><span>~/.cache/coursier</span><span>~/.sbt/boot</span><span>~/.ivy2/cache</span></span></li>
               <li><span class="name">Kotlin daemon &amp; konan</span><span class="removes"><span>~/.kotlin</span><span>~/.konan/cache</span></span></li>
               <li><span class="name">Android build cache</span><span class="removes"><span>~/.android/cache</span><span>~/.android/build-cache</span></span></li>
-              <li><span class="name">Bazel cache</span><span class="removes"><span>~/.cache/bazel</span><span>/private/var/tmp/_bazel_*</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Bazel cache</span><span class="removes"><span>~/.cache/bazel</span><span>/private/var/tmp/_bazel_*</span></span><span class="state">Off by default, slow to get back</span></li>
             </ul>
           </details>
           <details>
             <summary><span class="title">.NET</span><span class="count">2 targets</span><span class="hint">NuGet packages and HTTP cache</span></summary>
             <ul class="targets">
-              <li><span class="name">NuGet packages</span><span class="removes"><span>~/.nuget/packages</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">NuGet packages</span><span class="removes"><span>~/.nuget/packages</span></span><span class="state">Off by default, slow to get back</span></li>
               <li><span class="name">NuGet HTTP cache</span><span class="removes"><span>~/.local/share/NuGet/http-cache</span><span>~/.nuget/v3-cache</span></span></li>
             </ul>
           </details>
@@ -251,7 +295,7 @@
             <summary><span class="title">Swift / Objective-C</span><span class="count">6 targets</span><span class="hint">Xcode DerivedData, DeviceSupport, Simulator, Swift PM, CocoaPods, Carthage</span></summary>
             <ul class="targets">
               <li><span class="name">Xcode DerivedData</span><span class="removes"><span>~/Library/Developer/Xcode/DerivedData</span></span></li>
-              <li><span class="name">Xcode iOS DeviceSupport</span><span class="removes"><span>~/Library/Developer/Xcode/iOS DeviceSupport</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Xcode iOS DeviceSupport</span><span class="removes"><span>~/Library/Developer/Xcode/iOS DeviceSupport</span></span><span class="state">Off by default, slow to get back</span></li>
               <li><span class="name">iOS Simulator caches</span><span class="removes"><span>~/Library/Developer/CoreSimulator/Caches</span></span></li>
               <li><span class="name">Swift PM cache</span><span class="removes"><span>~/Library/Caches/org.swift.swiftpm</span></span></li>
               <li><span class="name">CocoaPods cache</span><span class="removes"><span>~/Library/Caches/CocoaPods</span></span></li>
@@ -273,7 +317,7 @@
               <li><span class="name">Hex package cache</span><span class="removes"><span>~/.hex</span><span>~/.cache/hex</span></span></li>
               <li><span class="name">rebar3 cache</span><span class="removes"><span>~/.cache/rebar3</span></span></li>
               <li><span class="name">Cabal packages</span><span class="removes"><span>~/.cabal/packages</span><span>~/.cache/cabal</span></span></li>
-              <li><span class="name">Stack indices</span><span class="removes"><span>~/.stack/indices</span><span>~/.stack/pantry</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Stack indices</span><span class="removes"><span>~/.stack/indices</span><span>~/.stack/pantry</span></span><span class="state">Off by default, slow to get back</span></li>
               <li><span class="name">opam download cache</span><span class="removes"><span>~/.opam/download-cache</span></span></li>
             </ul>
           </details>
@@ -288,7 +332,7 @@
           <details>
             <summary><span class="title">Dart, Zig, Nim, Julia, R, Crystal, D</span><span class="count">7 targets</span><span class="hint">pub, Zig, Nim, Julia, R, Crystal, dub</span></summary>
             <ul class="targets">
-              <li><span class="name">Dart / Flutter pub cache</span><span class="removes"><span>~/.pub-cache</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Dart / Flutter pub cache</span><span class="removes"><span>~/.pub-cache</span></span><span class="state">Off by default, slow to get back</span></li>
               <li><span class="name">Zig cache</span><span class="removes"><span>~/.cache/zig</span></span></li>
               <li><span class="name">Nim cache</span><span class="removes"><span>~/.cache/nim</span><span>~/.nimble/pkgcache</span></span></li>
               <li><span class="name">Julia compiled cache</span><span class="removes"><span>~/.julia/compiled</span><span>~/.julia/logs</span></span></li>
@@ -302,17 +346,17 @@
             <ul class="targets">
               <li><span class="name">Docker build cache</span><span class="removes"><span><b>$ </b>docker builder prune -af</span></span></li>
               <li><span class="name">Docker dangling images</span><span class="removes"><span><b>$ </b>docker image prune -f</span></span></li>
-              <li><span class="name">Docker unused images (all)</span><span class="removes"><span><b>$ </b>docker image prune -af</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Docker unused images (all)</span><span class="removes"><span><b>$ </b>docker image prune -af</span></span><span class="state">Off by default, slow to get back</span></li>
               <li><span class="name">Docker anonymous unused volumes</span><span class="removes"><span><b>$ </b>docker volume prune -f</span></span></li>
-              <li><span class="name">Docker stopped containers</span><span class="removes"><span><b>$ </b>docker container prune -f</span></span><span class="state">Off by default</span></li>
-              <li><span class="name">Podman unused data</span><span class="removes"><span><b>$ </b>podman system prune -af</span></span><span class="state">Off by default</span></li>
-              <li><span class="name">minikube cache</span><span class="removes"><span>~/.minikube/cache</span></span><span class="state">Off by default</span></li>
-              <li><span class="name">Vagrant boxes</span><span class="removes"><span>~/.vagrant.d/boxes</span></span><span class="state">Off by default</span></li>
-              <li><span class="name">Lima / Colima cache</span><span class="removes"><span>~/Library/Caches/lima</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Docker stopped containers</span><span class="removes"><span><b>$ </b>docker container prune -f</span></span><span class="state">Off by default, deleted for good</span></li>
+              <li><span class="name">Podman unused data</span><span class="removes"><span><b>$ </b>podman system prune -af</span></span><span class="state">Off by default, deleted for good</span></li>
+              <li><span class="name">minikube cache</span><span class="removes"><span>~/.minikube/cache</span></span><span class="state">Off by default, slow to get back</span></li>
+              <li><span class="name">Vagrant boxes</span><span class="removes"><span>~/.vagrant.d/boxes</span></span><span class="state">Off by default, slow to get back</span></li>
+              <li><span class="name">Lima / Colima cache</span><span class="removes"><span>~/Library/Caches/lima</span></span><span class="state">Off by default, slow to get back</span></li>
             </ul>
           </details>
           <details>
-            <summary><span class="title">IDEs &amp; dev tools</span><span class="count">14 targets</span><span class="hint">Homebrew, JetBrains, VS Code, Cursor, Playwright, Cypress, Puppeteer, Terraform, Pulumi, Helm, AWS CLI, Ollama, Claude Code, Codex</span></summary>
+            <summary><span class="title">IDEs &amp; dev tools</span><span class="count">13 targets</span><span class="hint">Homebrew, JetBrains, VS Code, Cursor, Playwright, Cypress, Puppeteer, Terraform, Pulumi, Helm, AWS CLI, Claude Code, Codex</span></summary>
             <ul class="targets">
               <li><span class="name">Homebrew downloads</span><span class="removes"><span><b>$ </b>brew cleanup --prune=all -s</span></span></li>
               <li><span class="name">JetBrains caches</span><span class="removes"><span>~/Library/Caches/JetBrains</span></span></li>
@@ -322,23 +366,11 @@
               <li><span class="name">Cypress binaries</span><span class="removes"><span>~/Library/Caches/Cypress</span></span></li>
               <li><span class="name">Puppeteer &amp; Chrome DevTools browsers</span><span class="removes"><span>~/.cache/puppeteer</span><span>~/.cache/chrome-devtools-mcp</span></span></li>
               <li><span class="name">Terraform plugin cache</span><span class="removes"><span>~/.terraform.d/plugin-cache</span></span></li>
-              <li><span class="name">Pulumi plugins</span><span class="removes"><span>~/.pulumi/plugins</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Pulumi plugins</span><span class="removes"><span>~/.pulumi/plugins</span></span><span class="state">Off by default, slow to get back</span></li>
               <li><span class="name">Helm cache</span><span class="removes"><span>~/Library/Caches/helm</span></span></li>
               <li><span class="name">AWS CLI cache</span><span class="removes"><span>~/Library/Caches/aws</span></span></li>
-              <li><span class="name">Ollama models</span><span class="removes"><span>~/.ollama/models</span></span><span class="state">Off by default</span></li>
-              <li><span class="name">Claude Code scratchpads</span><span class="removes"><span>/private/tmp/claude-*</span></span><span class="state">Off by default</span></li>
+              <li><span class="name">Claude Code scratchpads</span><span class="removes"><span>/private/tmp/claude-*</span></span><span class="state">Off by default, deleted for good</span></li>
               <li><span class="name">Codex caches</span><span class="removes"><span>~/Library/Caches/com.openai.codex</span><span>~/.cache/codex-runtimes</span></span></li>
-            </ul>
-          </details>
-          <details>
-            <summary><span class="title">Apps &amp; system</span><span class="count">6 targets</span><span class="hint">App updater leftovers, Spotify, Slack, Chrome, Brave, Edge, user logs, Trash</span></summary>
-            <ul class="targets">
-              <li><span class="name">App updater leftovers</span><span class="removes"><span>~/Library/Caches/*.ShipIt</span></span></li>
-              <li><span class="name">Spotify cache</span><span class="removes"><span>~/Library/Caches/com.spotify.client</span></span></li>
-              <li><span class="name">Slack cache</span><span class="removes"><span>~/Library/Application Support/Slack/Cache</span><span>~/Library/Application Support/Slack/Service Worker/CacheStorage</span></span></li>
-              <li><span class="name">Chrome / Brave / Edge cache</span><span class="removes"><span>~/Library/Caches/Google/Chrome</span><span>~/Library/Caches/BraveSoftware</span><span>~/Library/Caches/Microsoft Edge</span></span></li>
-              <li><span class="name">User logs</span><span class="removes"><span>~/Library/Logs</span></span><span class="state">Off by default</span></li>
-              <li><span class="name">Trash</span><span class="removes"><span>~/.Trash</span></span><span class="state">Off by default</span></li>
             </ul>
           </details>
         </div>
