@@ -161,7 +161,7 @@ struct GroupChart: View {
     @EnvironmentObject var store: Store
 
     private var rows: [(group: TargetGroup, selected: Int64, total: Int64)] {
-        Targets.groups
+        store.groups
             .map { (group: $0, selected: store.selectedTotal(of: $0), total: store.total(of: $0)) }
             .filter { $0.total > 0 }
             .sorted { $0.total > $1.total }

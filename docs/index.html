@@ -23,6 +23,7 @@
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
       <a href="#targets">What it cleans</a>
+      <a href="#mine">My targets</a>
       <a href="#install">Install</a>
       <a href="#privacy">Privacy</a>
       <a href="#faq">FAQ</a>
@@ -82,7 +83,7 @@
 <div class="showcase">
   <div class="container">
     <div class="shot lifted">
-      <img src="assets/shots/main-light.png" width="2360" height="1760" alt="Main window with the disk overview, the list of caches, two charts and the activity log">
+      <img src="assets/shots/main-light.png" width="2360" height="1760" alt="Main window with the disk overview, the list of targets by audience, two charts and the activity log">
     </div>
   </div>
 </div>
@@ -153,7 +154,7 @@
           </ul>
         </div>
         <div class="shot narrow">
-          <img src="assets/shots/charts-light.png" width="642" height="986" loading="lazy" alt="Charts of disk usage by location and caches by category">
+          <img src="assets/shots/charts-light.png" width="642" height="986" loading="lazy" alt="Charts of disk usage by location and targets by group">
         </div>
       </div>
       <div class="step wide">
@@ -393,6 +394,44 @@
   </div>
 </section>
 
+<section class="block" id="mine">
+  <div class="container">
+    <header class="head">
+      <h2>My targets</h2>
+      <p>Add the folders and commands the list does not know. The built-in targets stay as they are, yours are kept next to them.</p>
+    </header>
+    <div class="step">
+      <div>
+        <h3>Add a folder or a command</h3>
+        <p>Press Add target, give it a name and choose the folders. Everything inside them is deleted and the folders stay. A command runs in zsh exactly as written and replaces the emptying.</p>
+        <ul class="list">
+          <li>Folders are inside your home folder, at least two levels deep, inside Library three</li>
+          <li>No wildcards and no <code>..</code></li>
+          <li>Your targets start unselected and are labelled deleted for good</li>
+          <li>You confirm the responsibility text when you add a target and when you change its folders or command</li>
+        </ul>
+      </div>
+      <div class="shot medium">
+        <img src="assets/shots/editor-light.png" width="1040" height="918" loading="lazy" alt="Editor for a target with a name, folders, a command and the responsibility text">
+      </div>
+    </div>
+    <div class="columns" style="margin-top: 64px">
+      <div class="item">
+        <h3>Built-in targets are read only</h3>
+        <p>They cannot be edited or deleted. What you add is extra.</p>
+      </div>
+      <div class="item">
+        <h3>Kept on your Mac</h3>
+        <p>Your targets are one file, <code>~/Library/Application Support/MacOS Flusher/targets.json</code>.</p>
+      </div>
+      <div class="item">
+        <h3>Checked before every flush</h3>
+        <p>A folder that now leads outside your home folder is refused and nothing is deleted.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="install">
   <div class="container">
     <header class="head">
@@ -489,7 +528,7 @@ grep MacOS-Flusher.dmg SHA256SUMS | shasum -a 256 -c -</pre>
           <summary><span class="title">Update and uninstall</span></summary>
           <div class="answer">
             <p>The app does not update itself. Install the new version the same way you installed the first one. The version is shown under MacOS Flusher, About MacOS Flusher in the menu bar.</p>
-            <p>To uninstall, quit the app and delete it from Applications. The app keeps no data of its own. macOS stores the window position in <code>~/Library/Preferences/com.bircex.MacOSFlusher.plist</code>, which you can delete as well.</p>
+            <p>To uninstall, quit the app and delete it from Applications. The targets you added are kept in <code>~/Library/Application Support/MacOS Flusher</code> and macOS stores the window position in <code>~/Library/Preferences/com.bircex.MacOSFlusher.plist</code>. Delete both to leave nothing behind.</p>
           </div>
         </details>
       </div>
@@ -518,6 +557,7 @@ grep MacOS-Flusher.dmg SHA256SUMS | shasum -a 256 -c -</pre>
           <h3>What the app changes</h3>
           <ul class="list">
             <li>It deletes only what you select, after you confirm</li>
+            <li>It writes one file of its own, the targets you add</li>
             <li>It installs no helper, login item or background service</li>
             <li>It never asks for an administrator password</li>
             <li>It does not ask for Full Disk Access</li>
@@ -626,7 +666,7 @@ grep MacOS-Flusher.dmg SHA256SUMS | shasum -a 256 -c -</pre>
       <details>
         <summary><span class="title">How do I add a target that is missing?</span></summary>
         <div class="answer">
-          <p>Adding a target is one line in <code>Sources/MacOSFlusher/Targets.swift</code>. Open a pull request on the <a href="https://github.com/bircex/macos-flusher">project page</a>, or <a href="https://github.com/bircex/macos-flusher/issues">open an issue</a> with the folder or the cleanup command.</p>
+          <p>For yourself, press Add target in the app and see <a href="#mine">My targets</a>. For everyone, a target is one line in <code>Sources/MacOSFlusher/Targets.swift</code>. Open a pull request on the <a href="https://github.com/bircex/macos-flusher">project page</a>, or <a href="https://github.com/bircex/macos-flusher/issues">open an issue</a> with the folder or the cleanup command.</p>
         </div>
       </details>
     </div>
