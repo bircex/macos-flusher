@@ -1,6 +1,23 @@
 import Foundation
 import Darwin
 
+private final class Output: @unchecked Sendable {
+    private let lock = NSLock()
+    private var data = Data()
+
+    func append(_ chunk: Data) {
+        lock.lock()
+        data.append(chunk)
+        lock.unlock()
+    }
+
+    var text: String {
+        lock.lock()
+        defer { lock.unlock() }
+        return String(decoding: data, as: UTF8.self)
+    }
+}
+
 enum Shell {
     static let home = FileManager.default.homeDirectoryForCurrentUser.path
 
@@ -14,23 +31,25 @@ enum Shell {
             .joined(separator: ":")
     }()
 
-    static func run(_ executable: String, _ arguments: [String]) async -> (status: Int32, output: String) {
+    static let timedOut: Int32 = 124
+
+    static func run(_ executable: String, _ arguments: [String], timeout: TimeInterval = .infinity) async -> (status: Int32, output: String) {
         await withCheckedContinuation { continuation in
             DispatchQueue.global(qos: .utility).async {
-                continuation.resume(returning: runSync(executable, arguments, path: path))
+                continuation.resume(returning: runSync(executable, arguments, path: path, timeout: timeout))
             }
         }
     }
 
-    static func command(_ command: String) async -> (status: Int32, output: String) {
-        await run("/bin/zsh", ["-c", command])
+    static func command(_ command: String, timeout: TimeInterval = .infinity) async -> (status: Int32, output: String) {
+        await run("/bin/zsh", ["-c", command], timeout: timeout)
     }
 
     static func warmUp() {
         DispatchQueue.global(qos: .utility).async { _ = path }
     }
 
-    private static func runSync(_ executable: String, _ arguments: [String], path: String?) -> (status: Int32, output: String) {
+    private static func runSync(_ executable: String, _ arguments: [String], path: String?, timeout: TimeInterval = .infinity) -> (status: Int32, output: String) {
         let process = Process()
         process.executableURL = URL(fileURLWithPath: executable)
         process.arguments = arguments
@@ -41,14 +60,41 @@ enum Shell {
         process.standardOutput = pipe
         process.standardError = pipe
         process.standardInput = FileHandle.nullDevice
+        let output = Output()
+        let finished = DispatchSemaphore(value: 0)
+        pipe.fileHandleForReading.readabilityHandler = { handle in
+            let chunk = handle.availableData
+            if chunk.isEmpty {
+                handle.readabilityHandler = nil
+                finished.signal()
+            } else {
+                output.append(chunk)
+            }
+        }
+        process.terminationHandler = { _ in finished.signal() }
         do {
             try process.run()
         } catch {
+            pipe.fileHandleForReading.readabilityHandler = nil
             return (127, error.localizedDescription)
         }
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        process.waitUntilExit()
-        return (process.terminationStatus, String(decoding: data, as: UTF8.self))
+        let deadline: DispatchTime = timeout.isFinite ? .now() + timeout : .distantFuture
+        for _ in 0..<2 {
+            guard finished.wait(timeout: deadline) == .success else {
+                pipe.fileHandleForReading.readabilityHandler = nil
+                stop(process)
+                return (timedOut, output.text)
+            }
+        }
+        return (process.terminationStatus, output.text)
+    }
+
+    private static func stop(_ process: Process) {
+        let group = -process.processIdentifier
+        process.terminate()
+        DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + 2) {
+            kill(group, SIGKILL)
+        }
     }
 
     static func exists(binary: String) -> Bool {

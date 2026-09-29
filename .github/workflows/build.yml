@@ -10,6 +10,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
+      - run: make test
       - run: make package ARCHS="arm64 x86_64"
       - run: test -x "dist/MacOS Flusher.app/Contents/MacOS/MacOSFlusher"
       - run: lipo "dist/MacOS Flusher.app/Contents/MacOS/MacOSFlusher" -verify_arch arm64 x86_64
