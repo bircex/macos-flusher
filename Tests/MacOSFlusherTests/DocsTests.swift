@@ -5,6 +5,7 @@ import Testing
 @Suite struct DocsTests {
     private let site: String
     private let rows: [String: String]
+    private let bundle: String
 
     init() throws {
         let root = URL(fileURLWithPath: #filePath)
@@ -12,6 +13,8 @@ import Testing
             .deletingLastPathComponent()
             .deletingLastPathComponent()
         site = try String(contentsOf: root.appendingPathComponent("docs/index.html"), encoding: .utf8)
+        let info = try PropertyListSerialization.propertyList(from: Data(contentsOf: root.appendingPathComponent("Info.plist")), format: nil)
+        bundle = (info as? [String: Any])?["CFBundleIdentifier"] as? String ?? ""
         var rows: [String: String] = [:]
         for line in site.components(separatedBy: "\n") where line.contains("<li><span class=\"name\">") {
             let name = line.components(separatedBy: "<span class=\"name\">")[1].components(separatedBy: "</span>")[0]
@@ -66,6 +69,11 @@ import Testing
             #expect(site.contains(summary), "\(group.id)")
         }
         #expect(site.contains("<p>\(Targets.allItems.count) targets in \(Targets.groups.count) groups,"))
+    }
+
+    @Test func siteNamesThePreferencesFile() {
+        #expect(bundle == "com.bircex.MacOSFlusher")
+        #expect(site.contains("<code>~/Library/Preferences/\(bundle).plist</code>"))
     }
 
     @Test func siteNamesEveryAudienceInOrder() {
