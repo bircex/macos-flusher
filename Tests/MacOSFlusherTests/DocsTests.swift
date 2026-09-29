@@ -76,10 +76,16 @@ import Testing
         #expect(site.contains("<code>~/Library/Preferences/\(bundle).plist</code>"))
     }
 
+    @Test func siteNamesTheDataFile() {
+        #expect(Storage.folder.path.hasSuffix("/Library/Application Support/MacOS Flusher"))
+        #expect(site.contains("<code>~/Library/Application Support/MacOS Flusher/targets.json</code>"))
+        #expect(site.contains("<code>~/Library/Application Support/MacOS Flusher</code>"))
+    }
+
     @Test func siteNamesEveryAudienceInOrder() {
         let headings = site.components(separatedBy: "<h3 class=\"audience\">").dropFirst().map {
             $0.components(separatedBy: "</h3>")[0]
         }
-        #expect(headings == Audience.allCases.map { escaped($0.name) })
+        #expect(headings == Audience.allCases.filter { $0 != .mine }.map { escaped($0.name) })
     }
 }

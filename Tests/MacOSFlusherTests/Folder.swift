@@ -1,4 +1,5 @@
 import Foundation
+@testable import MacOSFlusher
 
 struct Folder {
     let path: String
@@ -27,5 +28,13 @@ struct Folder {
 
     func remove() {
         try? FileManager.default.removeItem(atPath: path)
+    }
+
+    var home: String { path + "/home" }
+    var data: URL { URL(fileURLWithPath: path + "/data") }
+
+    @MainActor
+    func store() -> Store {
+        Store(folder: data, home: home)
     }
 }

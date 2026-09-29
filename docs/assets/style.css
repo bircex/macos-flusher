@@ -393,6 +393,11 @@ section.block {
   max-width: 320px;
 }
 
+.step .shot.medium {
+  justify-self: end;
+  max-width: 520px;
+}
+
 .code {
   display: flex;
   align-items: flex-start;
@@ -788,7 +793,8 @@ footer a:hover {
     gap: 24px;
   }
 
-  .step .shot.narrow {
+  .step .shot.narrow,
+  .step .shot.medium {
     justify-self: start;
   }
 }
