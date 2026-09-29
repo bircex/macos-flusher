@@ -95,6 +95,10 @@ final class Store: ObservableObject {
         disk.map { $0.free + selectedTotal }
     }
 
+    var idle: Bool {
+        !busy && analysis == nil
+    }
+
     func refreshDisk() {
         disk = DiskInfo.current()
     }
@@ -134,8 +138,13 @@ final class Store: ObservableObject {
     }
 
     private func runScan() async {
-        let items = Targets.allItems
         refreshDisk()
+        await measure(Targets.allItems)
+        refreshDisk()
+        append(Task.isCancelled ? "Scan stopped." : "Scan finished.")
+    }
+
+    func measure(_ items: [Target]) async {
         progress = Progress(done: 0, total: items.count)
         for item in items { states[item.id] = .scanning }
         await withTaskGroup(of: (String, Measurement).self) { group in
@@ -158,40 +167,57 @@ final class Store: ObservableObject {
         }
         for item in items where states[item.id] == .scanning { states[item.id] = .unknown }
         progress = nil
-        refreshDisk()
-        append(Task.isCancelled ? "Scan stopped." : "Scan finished.")
     }
 
     private func runFlush() async {
         let items = Targets.allItems.filter { selected.contains($0.id) && isAvailable($0) }
-        let before = items.compactMap(size(of:)).reduce(0, +)
-        var after: Int64 = 0
+        lastFreed = await clean(items).freed
+        append("Freed \(Format.bytes(lastFreed ?? 0)).")
+    }
+
+    func clean(_ items: [Target]) async -> [ItemResult] {
+        await clean(items, until: { _ in false })
+    }
+
+    func clean(_ items: [Target], until reached: ([ItemResult]) -> Bool) async -> [ItemResult] {
+        var results: [ItemResult] = []
         progress = Progress(done: 0, total: items.count)
         for (index, item) in items.enumerated() {
-            if Task.isCancelled { break }
+            let before = size(of: item) ?? 0
+            if Task.isCancelled || reached(results) {
+                results.append(ItemResult(id: item.id, name: item.name, before: before, after: before, status: .skipped, message: ""))
+                continue
+            }
             progress = Progress(done: index, total: items.count)
             states[item.id] = .scanning
-            let result: (status: Int32, output: String)
+            let outcome: (status: Int32, output: String)
             switch item.flush {
             case .removePaths:
-                result = await Shell.removePaths(item.paths)
+                outcome = await Shell.removePaths(item.paths)
             case .command(let command):
-                result = await Shell.command(command)
+                outcome = await Shell.command(command)
             }
             let measurement = await Measurer.measure(item)
             apply(measurement, to: item.id)
-            if case .measured(let bytes) = measurement.state { after += bytes }
-            if result.status == 0 {
+            let message = outcome.output.trimmingCharacters(in: .whitespacesAndNewlines)
+            if outcome.status == 0 {
                 append("Flushed \(item.name)")
             } else {
-                append("\(item.name): \(result.output.trimmingCharacters(in: .whitespacesAndNewlines))", level: .error)
+                append("\(item.name): \(message)", level: .error)
             }
+            results.append(ItemResult(
+                id: item.id,
+                name: item.name,
+                before: before,
+                after: size(of: item) ?? 0,
+                status: outcome.status == 0 ? .cleaned : .failed,
+                message: outcome.status == 0 ? "" : message
+            ))
         }
         for item in items where states[item.id] == .scanning { states[item.id] = .unknown }
         progress = nil
         refreshDisk()
-        lastFreed = max(0, before - after)
-        append("Freed \(Format.bytes(lastFreed ?? 0)).")
+        return results
     }
 
     private func runAnalysis() async {
@@ -266,6 +292,27 @@ struct DiskInfo: Equatable {
 struct Measurement: Sendable {
     let state: ItemState
     var paths: [String: Int64] = [:]
+}
+
+struct ItemResult: Equatable, Sendable {
+    enum Status: Sendable {
+        case cleaned
+        case failed
+        case skipped
+    }
+
+    let id: String
+    let name: String
+    let before: Int64
+    let after: Int64
+    let status: Status
+    let message: String
+}
+
+extension Array where Element == ItemResult {
+    var freed: Int64 {
+        Swift.max(0, map(\.before).reduce(0, +) - map(\.after).reduce(0, +))
+    }
 }
 
 enum Measurer {
