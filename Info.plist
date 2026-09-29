@@ -5,7 +5,7 @@
     <key>CFBundleDevelopmentRegion</key><string>en</string>
     <key>CFBundleExecutable</key><string>MacOSFlusher</string>
     <key>CFBundleIconFile</key><string>AppIcon</string>
-    <key>CFBundleIdentifier</key><string>com.recepkizilarslan.MacOSFlusher</string>
+    <key>CFBundleIdentifier</key><string>com.bircex.MacOSFlusher</string>
     <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
     <key>CFBundleName</key><string>MacOS Flusher</string>
     <key>CFBundleDisplayName</key><string>MacOS Flusher</string>
