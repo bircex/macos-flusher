@@ -5,11 +5,19 @@ VERSION ?=
 BUNDLE := dist/$(NAME).app
 PACKAGE := dist/MacOS-Flusher
 INSTALL_DIR ?= /Applications
+TOOLS := /Library/Developer/CommandLineTools/Library/Developer
 
-.PHONY: build bundle package run install uninstall clean icon
+ifeq ($(shell xcode-select -p),/Library/Developer/CommandLineTools)
+TEST_FLAGS := -Xswiftc -F -Xswiftc $(TOOLS)/Frameworks -Xlinker -F -Xlinker $(TOOLS)/Frameworks -Xlinker -rpath -Xlinker $(TOOLS)/Frameworks -Xlinker -rpath -Xlinker $(TOOLS)/usr/lib
+endif
+
+.PHONY: build test bundle package run install uninstall clean icon
 
 build:
 	for arch in $(ARCHS); do swift build -c release --arch $$arch || exit 1; done
+
+test:
+	swift test $(TEST_FLAGS)
 
 bundle: build
 	rm -rf "$(BUNDLE)"

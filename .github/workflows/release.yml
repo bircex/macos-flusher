@@ -31,6 +31,7 @@ jobs:
           month="$(date -u +%Y.%-m)"
           last="$(git tag --list "v${month}.*" | sed "s/^v${month}\.//" | sort -n | tail -1)"
           echo "version=${month}.$(( ${last:--1} + 1 ))" >> "$GITHUB_OUTPUT"
+      - run: make test
       - run: make package ARCHS="arm64 x86_64" VERSION="${{ steps.version.outputs.version }}"
       - name: Publish
         env:

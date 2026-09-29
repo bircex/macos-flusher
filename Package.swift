@@ -13,5 +13,11 @@ let package = Package(
             path: "Sources/MacOSFlusher",
             swiftSettings: [.unsafeFlags(["-swift-version", "5"])]
         ),
+        .testTarget(
+            name: "MacOSFlusherTests",
+            dependencies: ["MacOSFlusher"],
+            path: "Tests/MacOSFlusherTests",
+            swiftSettings: [.unsafeFlags(["-swift-version", "5"])]
+        ),
     ]
 )
