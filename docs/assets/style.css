@@ -205,6 +205,17 @@ code {
   padding: 112px 0 72px;
 }
 
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-mark {
+  border-radius: 14px;
+  flex: none;
+}
+
 .hero h1 {
   font-size: clamp(52px, 9vw, 104px);
   font-weight: 700;
@@ -819,6 +830,11 @@ footer a:hover {
 
   .hero {
     padding: 72px 0 52px;
+  }
+
+  .hero-mark {
+    width: 44px;
+    height: 44px;
   }
 
   .showcase {

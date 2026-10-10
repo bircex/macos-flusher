@@ -6,12 +6,43 @@
 <title>MacOS Flusher: get your disk space back</title>
 <meta name="description" content="A free, open source Mac app for developers. It finds the caches that package managers, build tools, Docker and IDEs leave behind, shows what fills your disk and deletes what you choose.">
 <meta name="color-scheme" content="light">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://bircex.github.io/macos-flusher/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MacOS Flusher: get your disk space back">
 <meta property="og:description" content="Find and delete developer caches on your Mac, and see what is filling the disk.">
 <meta property="og:image" content="https://bircex.github.io/macos-flusher/assets/shots/main-light.png">
+<meta property="og:url" content="https://bircex.github.io/macos-flusher/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MacOS Flusher: get your disk space back">
+<meta name="twitter:description" content="Find and delete developer caches on your Mac, and see what is filling the disk.">
+<meta name="twitter:image" content="https://bircex.github.io/macos-flusher/assets/shots/main-light.png">
 <link rel="icon" type="image/png" href="assets/icon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MacOS Flusher",
+  "description": "A free, open source Mac app for developers. It finds the caches that package managers, build tools, Docker and IDEs leave behind, shows what fills your disk and deletes what you choose.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "macOS 13+",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "downloadUrl": "https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg",
+  "image": "https://bircex.github.io/macos-flusher/assets/shots/main-light.png",
+  "url": "https://bircex.github.io/macos-flusher/",
+  "license": "https://github.com/bircex/macos-flusher/blob/main/LICENSE",
+  "author": {
+    "@type": "Person",
+    "name": "Recep Kızılarslan"
+  }
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -36,7 +67,10 @@
 
 <div class="hero" id="top">
   <div class="container">
-    <h1>MacOS Flusher</h1>
+    <div class="hero-brand">
+      <img src="assets/icon.png" width="64" height="64" alt="MacOS Flusher logo, a hand-drawn witch's broom" class="hero-mark">
+      <h1>MacOS Flusher</h1>
+    </div>
     <p class="tagline"><strong>Get your disk space back.</strong> A small Mac app that finds the caches your developer tools leave behind, shows what fills the disk and deletes what you choose.</p>
     <div class="actions">
       <a class="button" href="https://github.com/bircex/macos-flusher/releases/latest/download/MacOS-Flusher.dmg">
@@ -83,7 +117,7 @@
 <div class="showcase">
   <div class="container">
     <div class="shot lifted">
-      <img src="assets/shots/main-light.png" width="2360" height="1744" alt="Main window with the sidebar, the disk line, the scan progress and the findings table">
+      <img src="assets/shots/main-light.png" width="2360" height="1744" alt="Main window with the sidebar, the scan progress panel and the findings table">
     </div>
   </div>
 </div>
@@ -102,7 +136,7 @@
         </div>
         <div class="item">
           <h3>Measure first, delete second</h3>
-          <p>Every cache is measured before anything is removed. The disk bar shows how full the disk is now and after the flush.</p>
+          <p>Every cache is measured before anything is removed. The Scan page shows how many targets were scanned and how much is selected.</p>
         </div>
         <div class="item">
           <h3>See what fills the disk</h3>
@@ -136,10 +170,10 @@
         <div>
           <p class="kicker">01</p>
           <h3>Scan</h3>
-          <p>The app measures every target as soon as it opens. The line at the top shows the free space now and what it will be after the flush.</p>
+          <p>The app measures every target as soon as it opens. Scan shows a status line, a progress bar, and how much is scanned, selected and free.</p>
         </div>
         <div class="shot">
-          <img src="assets/shots/overview-light.png" width="2360" height="300" loading="lazy" alt="Toolbar with Scan and Flush selected, and the disk line below it">
+          <img src="assets/shots/overview-light.png" width="2360" height="300" loading="lazy" alt="Scan page status line and progress bar after a finished scan">
         </div>
       </div>
       <div class="step wide">
@@ -149,12 +183,12 @@
           <p>Open Scan, tick the targets you want to delete, sort any column or filter by category. Reports shows where the space is and how much of it you have selected.</p>
           <ul class="list">
             <li>Select or clear a whole group at once</li>
-            <li>The disk line shows the change before you make it</li>
-            <li>Hover a bar to see the exact sizes</li>
+            <li>A Flush bar shows the change before you make it</li>
+            <li>Hover a row to see the exact folders</li>
           </ul>
         </div>
         <div class="shot">
-          <img src="assets/shots/reports-overview-light.png" width="2360" height="1744" loading="lazy" alt="Reports Overview page with the disk donut, the summary cards and the ten largest targets">
+          <img src="assets/shots/main-light.png" width="2360" height="1744" loading="lazy" alt="Scan page with category filters and the sortable findings table">
         </div>
       </div>
       <div class="step wide">

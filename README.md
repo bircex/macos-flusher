@@ -1,8 +1,20 @@
-# MacOS Flusher
+<p align="center">
+  <img src="docs/assets/icon.png" width="120" height="120" alt="MacOS Flusher logo, a hand-drawn witch's broom">
+</p>
 
-A small native macOS app that finds and deletes developer caches: package manager and build caches for most programming languages, Docker leftovers, IDE and tool caches, app updater leftovers.
+<h1 align="center">MacOS Flusher</h1>
 
-Pick the targets, see how much each one takes, press Flush. The disk line shows how full the disk is now and how much will be free after the flush. The Home page in the app explains the three steps.
+<p align="center">
+  A small native macOS app that finds and deletes developer caches: package manager and build caches for most programming languages, Docker leftovers, IDE and tool caches, app updater leftovers.
+</p>
+
+<p align="center">
+  <a href="https://bircex.github.io/macos-flusher/">Website</a> ·
+  <a href="https://github.com/bircex/macos-flusher/releases/latest">Latest release</a> ·
+  <a href="https://github.com/bircex/macos-flusher/issues">Report a problem</a>
+</p>
+
+The full picture, screenshots and the list of what it cleans are on the [website](https://bircex.github.io/macos-flusher/). This file covers installing and building from source.
 
 ## Install
 
@@ -29,69 +41,13 @@ Versions follow calendar versioning, `YYYY.M.PATCH`, for example `2026.9.0`. The
 
 ## What it covers
 
-### Browsers
+Ten categories — Browsers, Communication, Office and documents, Media, Design and photo, Games, AI, System, Developers, and your own targets — ninety built-in targets today, most of them in Developers. The full list, with exact folders and commands, is on the website's [What it cleans](https://bircex.github.io/macos-flusher/#targets) section.
 
-- Web browsers: Chrome, Brave, Edge
-
-### Communication
-
-- Chat and meetings: Slack
-
-### Office and documents
-
-More targets are coming in a future release.
-
-### Media
-
-- Music and video: Spotify
-
-### Design and photo
-
-More targets are coming in a future release.
-
-### Games
-
-More targets are coming in a future release.
-
-### AI
-
-- Downloaded models: Hugging Face, PyTorch hub, Ollama
-
-### System
-
-- App updater leftovers, user logs, Trash
-
-### Developers
-
-- JavaScript: npm, Yarn, pnpm, Bun, Deno, Corepack, nvm, node-gyp, Electron, Turborepo
-- Python: pip, uv, Poetry, Pipenv, pipx, Conda, Ruff, pre-commit
-- Go: build cache, module cache, gopls / goimports / golangci-lint / staticcheck
-- Rust: Cargo registry and git, rustup downloads, sccache
-- JVM: Gradle, Maven, Coursier / sbt / Ivy, Kotlin, Android, Bazel
-- .NET: NuGet packages and HTTP cache
-- Swift / Objective-C: Xcode DerivedData, iOS DeviceSupport, Simulator, Swift PM, CocoaPods, Carthage
-- Ruby, PHP, Perl, Lua: RubyGems / Bundler, Composer, CPAN, LuaRocks
-- Elixir, Erlang, Haskell, OCaml: Hex / Mix, rebar3, Cabal, Stack, opam
-- C / C++: ccache, Conan, vcpkg
-- Dart / Flutter, Zig, Nim, Julia, R, Crystal, D
-- Containers and VMs: Docker build cache, dangling and unused images, anonymous volumes, stopped containers, Podman, minikube, Vagrant, Lima / Colima
-- IDEs and tools: Homebrew, JetBrains, VS Code, Cursor, Playwright, Cypress, Puppeteer, Terraform, Pulumi, Helm, AWS CLI, Claude Code, Codex
-
-Targets whose tool is not installed are greyed out. Two kinds of targets are off by default and labelled in the list:
-
-- slow to get back: Go module cache, Maven, NuGet packages, downloaded models, unused Docker images
-- deleted for good: Trash, user logs, stopped containers
-
-Named Docker volumes are never removed.
+Targets whose tool is not installed are greyed out. Targets that are slow to rebuild or that delete data for good start unticked. Named Docker volumes are never removed.
 
 ## My targets
 
-Press Add target to add a folder or a command of your own. Built-in targets cannot be edited or deleted; what you add is extra and is kept in `~/Library/Application Support/MacOS Flusher/targets.json`.
-
-- Folders are inside your home folder, at least two levels deep, inside `Library` three. No wildcards.
-- A command runs in zsh exactly as written and replaces the emptying of the folders.
-- Your targets start unselected and are labelled "deleted for good".
-- You confirm a responsibility text when you add a target and when you change its folders or command.
+Press Add target to add a folder or a command of your own. Built-in targets cannot be edited or deleted; what you add is extra and is kept in `~/Library/Application Support/MacOS Flusher/targets.json`. Details are on the website's [My targets](https://bircex.github.io/macos-flusher/#mine) section.
 
 ## Languages
 
@@ -102,6 +58,10 @@ English, German, Spanish, French, Portuguese (Brazil), Russian, Turkish, Azerbai
 Sizes come from `du` for directories and from the tool's own reporting for Docker. Deleting is either removing the directory contents or running the tool's own cleanup command (`go clean -cache`, `npm cache clean`, `docker builder prune`, `brew cleanup`). All work runs off the main thread; the UI never blocks and a scan or flush can be stopped.
 
 Adding a built-in target is one line in `Sources/MacOSFlusher/Targets.swift`, plus its entry on the website. The `id` of a target is stored in the files of users, so it never changes. The app icon is generated by `make icon` from `Tools/make-icon.swift`.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Found a security issue? See [SECURITY.md](SECURITY.md) instead of opening a public issue.
 
 ## License
 
