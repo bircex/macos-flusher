@@ -1,6 +1,5 @@
 import SwiftUI
 import AppKit
-import UniformTypeIdentifiers
 
 struct Theme: Identifiable {
     typealias Pair = (light: Int, dark: Int)
@@ -350,25 +349,6 @@ extension Store {
     }
 }
 
-enum CSV {
-    static func text(_ header: [String], _ rows: [[String]]) -> String {
-        ([header] + rows).map { $0.map(field).joined(separator: ",") }.joined(separator: "\r\n")
-    }
-
-    private static func field(_ value: String) -> String {
-        guard value.contains(",") || value.contains("\"") || value.contains("\n") else { return value }
-        return "\"" + value.replacingOccurrences(of: "\"", with: "\"\"") + "\""
-    }
-
-    static func save(_ text: String, suggestedName: String) {
-        let panel = NSSavePanel()
-        panel.nameFieldStringValue = suggestedName
-        panel.allowedContentTypes = [.commaSeparatedText]
-        guard panel.runModal() == .OK, let url = panel.url else { return }
-        try? text.write(to: url, atomically: true, encoding: .utf8)
-    }
-}
-
 struct CategoryChart: View {
     @EnvironmentObject var store: Store
 
@@ -437,12 +417,41 @@ struct LargestTargetsCard: View {
     }
 }
 
-struct ReportToolbar: ToolbarContent {
-    let action: () -> Void
+enum ReportTab: String, CaseIterable, Identifiable {
+    case overview
+    case locations
+    case categories
 
-    var body: some ToolbarContent {
-        ToolbarItem(placement: .primaryAction) {
-            Button(Messages.exportCSV, action: action)
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .overview: return Messages.overview
+        case .locations: return Messages.locations
+        case .categories: return Messages.categories
+        }
+    }
+}
+
+struct ReportsPage: View {
+    @State private var tab = ReportTab.overview
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Picker("", selection: $tab) {
+                ForEach(ReportTab.allCases) { tab in
+                    Text(tab.title).tag(tab)
+                }
+            }
+            .pickerStyle(.segmented)
+            .labelsHidden()
+            .padding()
+            Divider()
+            switch tab {
+            case .overview: OverviewPage()
+            case .locations: LocationsPage()
+            case .categories: CategoriesPage()
+            }
         }
     }
 }
@@ -461,12 +470,6 @@ struct OverviewPage: View {
             }
             .padding()
         }
-        .toolbar { ReportToolbar(action: exportCSV) }
-    }
-
-    private func exportCSV() {
-        let rows = store.largestTargets.map { [$0.name, $0.groupName, String($0.bytes)] }
-        CSV.save(CSV.text(["Target", "Group", "Bytes"], rows), suggestedName: "Overview.csv")
     }
 }
 
@@ -475,16 +478,6 @@ struct LocationsPage: View {
 
     var body: some View {
         LocationChart()
-            .toolbar { ReportToolbar(action: exportCSV) }
-    }
-
-    private func exportCSV() {
-        let rows = store.locationRows.flatMap { row -> [[String]] in
-            var lines = [[row.name, String(row.other), String(row.targets.unselected), String(row.targets.selected), String(row.total)]]
-            lines += row.children.map { [$0.name, String($0.other), String($0.targets.unselected), String($0.targets.selected), String($0.total)] }
-            return lines
-        }
-        CSV.save(CSV.text(["Location", "Other data", "Unselected", "Selected", "Total"], rows), suggestedName: "Locations.csv")
     }
 }
 
@@ -497,13 +490,5 @@ struct CategoriesPage: View {
             Divider()
             GroupChart()
         }
-        .toolbar { ReportToolbar(action: exportCSV) }
-    }
-
-    private func exportCSV() {
-        let rows = store.groups.filter { $0.audience != .mine }.map { group in
-            [group.audience.name, localized(group.name), String(store.selectedTotal(of: group)), String(store.total(of: group))]
-        }
-        CSV.save(CSV.text(["Category", "Group", "Selected", "Total"], rows), suggestedName: "Categories.csv")
     }
 }

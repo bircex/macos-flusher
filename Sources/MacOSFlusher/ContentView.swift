@@ -1,27 +1,33 @@
 import SwiftUI
+import AppKit
 
 enum Page: Hashable {
     case home
-    case all
-    case audience(Audience)
-    case overview
-    case locations
-    case categories
-    case activity
+    case scan
+    case reports
+    case logs
     case settings
     case about
 
     var title: String {
         switch self {
         case .home: return Messages.home
-        case .all: return Messages.all
-        case .audience(let audience): return audience.name
-        case .overview: return Messages.overview
-        case .locations: return Messages.locations
-        case .categories: return Messages.categories
-        case .activity: return Messages.activity
+        case .scan: return Messages.scan
+        case .reports: return Messages.reports
+        case .logs: return Messages.logs
         case .settings: return Messages.settings
         case .about: return Messages.about
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .home: return "house"
+        case .scan: return "magnifyingglass"
+        case .reports: return "chart.bar.doc.horizontal"
+        case .logs: return "list.bullet.rectangle"
+        case .settings: return "gearshape"
+        case .about: return "info.circle"
         }
     }
 }
@@ -49,9 +55,10 @@ struct ContentView: View {
                     Button(Messages.stop) { store.stop() }
                 } else {
                     Button(Messages.scan) { store.scan() }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.blue)
+                        .controlSize(.large)
                 }
-                Button(Messages.flushSelected) { store.confirmFlush = true }
-                    .disabled(store.busy || store.selectedCount == 0)
             }
         }
         .frame(minWidth: 900, minHeight: 600)
@@ -80,12 +87,9 @@ struct ContentView: View {
     private var page: some View {
         switch store.page {
         case .home: HomePage()
-        case .all: AllPage()
-        case .audience(let audience): TargetsPage(audience: audience)
-        case .overview: OverviewPage()
-        case .locations: LocationsPage()
-        case .categories: CategoriesPage()
-        case .activity: ActivityPage()
+        case .scan: ScanPage()
+        case .reports: ReportsPage()
+        case .logs: LogsPage()
         case .settings: SettingsPage()
         case .about: AboutPage()
         }
@@ -101,39 +105,23 @@ struct Sidebar: View {
 
     var body: some View {
         List(selection: selection) {
-            Text(Messages.home).tag(Page.home)
-            Section(Messages.scans) {
-                row(Messages.all, bytes: store.measuredTotal).tag(Page.all)
-                ForEach(Audience.allCases) { audience in
-                    row(audience.name, bytes: store.total(of: audience)).tag(Page.audience(audience))
+            Section {
+                HStack(spacing: 9) {
+                    Image(nsImage: NSApp.applicationIconImage)
+                        .resizable()
+                        .frame(width: 22, height: 22)
+                    Text(Messages.appName)
+                        .font(.headline)
                 }
-            }
-            Section(Messages.reports) {
-                Text(Messages.overview).tag(Page.overview)
-                Text(Messages.locations).tag(Page.locations)
-                Text(Messages.categories).tag(Page.categories)
+                .padding(.vertical, 2)
             }
             Section {
-                Text(Messages.activity).tag(Page.activity)
-            }
-            Section {
-                Text(Messages.settings).tag(Page.settings)
-                Text(Messages.about).tag(Page.about)
+                ForEach([Page.home, .scan, .reports, .settings, .logs, .about], id: \.self) { page in
+                    Label(page.title, systemImage: page.icon).tag(page)
+                }
             }
         }
         .listStyle(.sidebar)
-    }
-
-    private func row(_ name: String, bytes: Int64) -> some View {
-        HStack {
-            Text(name)
-            Spacer()
-            if bytes > 0 {
-                Text(Format.bytes(bytes))
-                    .font(.system(.caption, design: .monospaced))
-                    .foregroundStyle(.secondary)
-            }
-        }
     }
 }
 
@@ -153,8 +141,7 @@ struct HomePage: View {
                 step("+", Messages.homeOwn, Messages.homeOwnText)
                 Text(Messages.homeMore).foregroundStyle(.secondary)
                 HStack(spacing: 10) {
-                    Button(Messages.scan) { store.scan() }.disabled(store.busy)
-                    Button(Messages.all) { store.page = .all }
+                    Button(Messages.scan) { store.scan(); store.page = .scan }.disabled(store.busy)
                     Button(Messages.addTarget) { store.edited = UserTarget() }
                 }
             }
@@ -178,60 +165,7 @@ struct HomePage: View {
     }
 }
 
-struct AllPage: View {
-    @EnvironmentObject var store: Store
-
-    private func groups(of audience: Audience) -> [TargetGroup] {
-        store.groups.filter { $0.audience == audience && $0.items.contains(where: store.isVisible) }
-    }
-
-    var body: some View {
-        List {
-            ForEach(Audience.allCases) { audience in
-                let groups = groups(of: audience)
-                if !groups.isEmpty {
-                    Section(audience.name) {
-                        ForEach(groups) { group in
-                            GroupSection(group: group)
-                        }
-                    }
-                }
-            }
-        }
-        .listStyle(.inset)
-    }
-}
-
-struct TargetsPage: View {
-    @EnvironmentObject var store: Store
-    let audience: Audience
-
-    private var groups: [TargetGroup] {
-        store.groups.filter { $0.audience == audience && $0.items.contains(where: store.isVisible) }
-    }
-
-    var body: some View {
-        if groups.isEmpty {
-            VStack(spacing: 12) {
-                Text(audience == .mine ? Messages.noOwnTargets : Messages.nothingHere)
-                    .foregroundStyle(.secondary)
-                if audience == .mine {
-                    Button(Messages.addTarget) { store.edited = UserTarget() }
-                }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } else {
-            List {
-                ForEach(groups) { group in
-                    GroupSection(group: group)
-                }
-            }
-            .listStyle(.inset)
-        }
-    }
-}
-
-struct ActivityPage: View {
+struct LogsPage: View {
     var body: some View {
         LogView()
     }
@@ -265,7 +199,7 @@ struct Footer: View {
     var body: some View {
         HStack(spacing: 8) {
             Button {
-                store.page = .activity
+                store.page = .logs
             } label: {
                 HStack(spacing: 6) {
                     if let entry = store.log.last {
@@ -282,9 +216,11 @@ struct Footer: View {
             .buttonStyle(.plain)
             .foregroundStyle(.secondary)
             Spacer()
-            Link(Messages.credit, destination: Links.website)
-                .foregroundStyle(.secondary)
-                .fixedSize()
+            Link(destination: Links.repository) {
+                Text("© 2026 ") + Text(Messages.credit)
+            }
+            .foregroundStyle(.secondary)
+            .fixedSize()
         }
         .font(.caption)
         .padding(.horizontal)
@@ -363,109 +299,6 @@ struct PercentBar: View {
             Text(label)
                 .font(.system(.callout, design: .monospaced).weight(.semibold))
                 .frame(width: 100, alignment: .trailing)
-        }
-    }
-}
-
-struct GroupSection: View {
-    @EnvironmentObject var store: Store
-    let group: TargetGroup
-
-    private var visibleItems: [Target] {
-        group.items.filter(store.isVisible)
-    }
-
-    private var isExpanded: Binding<Bool> {
-        Binding(
-            get: { store.expanded.contains(group.id) },
-            set: { on in
-                if on { store.expanded.insert(group.id) } else { store.expanded.remove(group.id) }
-            }
-        )
-    }
-
-    var body: some View {
-        if !visibleItems.isEmpty {
-            DisclosureGroup(isExpanded: isExpanded) {
-                ForEach(visibleItems) { item in
-                    ItemRow(item: item)
-                }
-            } label: {
-                HStack {
-                    Text(localized(group.name)).font(.headline)
-                    Spacer()
-                    Text(Format.bytes(store.total(of: group)))
-                        .font(.system(.callout, design: .monospaced))
-                        .foregroundStyle(.secondary)
-                    Button(Messages.all_) { store.setGroup(group, on: true) }
-                    Button(Messages.none) { store.setGroup(group, on: false) }
-                }
-                .buttonStyle(.link)
-                .font(.caption)
-                .padding(.vertical, 4)
-            }
-        }
-    }
-}
-
-struct ItemRow: View {
-    @EnvironmentObject var store: Store
-    let item: Target
-
-    private var isOn: Binding<Bool> {
-        Binding(
-            get: { store.selected.contains(item.id) },
-            set: { store.toggle(item, on: $0) }
-        )
-    }
-
-    var body: some View {
-        HStack {
-            Toggle(isOn: isOn) {
-                VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 6) {
-                        Text(item.name)
-                        if let label = item.risk.label {
-                            Text(label)
-                                .font(.caption)
-                                .fontWeight(item.risk == .data ? .semibold : .regular)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    Text(item.detail)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                        .truncationMode(.middle)
-                }
-            }
-            .toggleStyle(.checkbox)
-            .disabled(!store.isAvailable(item))
-            Spacer()
-            if item.custom {
-                Button(Messages.edit) { store.edited = store.userTargets.first { $0.id == item.id } }
-                    .buttonStyle(.link)
-                    .font(.caption)
-            }
-            sizeLabel
-        }
-        .padding(.vertical, 2)
-        .opacity(store.isAvailable(item) ? 1 : 0.5)
-    }
-
-    @ViewBuilder
-    private var sizeLabel: some View {
-        switch store.states[item.id] ?? .unknown {
-        case .unknown:
-            Text("–").foregroundStyle(.secondary)
-        case .unavailable:
-            Text(Messages.notInstalled).font(.caption).foregroundStyle(.secondary)
-        case .scanning:
-            ProgressView().controlSize(.mini)
-        case .measured(let bytes):
-            Text(bytes == 0 ? Messages.empty : Format.bytes(bytes))
-                .font(.system(.body, design: .monospaced))
-                .foregroundStyle(bytes == 0 ? .secondary : .primary)
         }
     }
 }

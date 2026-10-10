@@ -1,7 +1,7 @@
 NAME := MacOS Flusher
 EXEC := MacOSFlusher
 ARCHS ?= $(shell uname -m)
-VERSION ?=
+VERSION ?= $(shell git describe --tags --always --dirty 2>/dev/null)
 BUNDLE := dist/$(NAME).app
 PACKAGE := dist/MacOS-Flusher
 INSTALL_DIR ?= /Applications

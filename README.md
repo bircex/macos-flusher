@@ -95,7 +95,7 @@ Press Add target to add a folder or a command of your own. Built-in targets cann
 
 ## Languages
 
-English, German, Spanish, French, Portuguese (Brazil), Russian, Turkish, Azerbaijani, Kurdish (Kurmanji and Sorani), Chinese (Simplified and Traditional), Japanese, Korean, Hindi, Bengali, Arabic, Persian and Urdu. The app follows the language of your Mac; a language can also be chosen under Settings. The translations are made by BirceX, the AI assistant behind the app; corrections are welcome as issues.
+English, German, Spanish, French, Portuguese (Brazil), Russian, Turkish, Azerbaijani, Kurdish (Kurmanji and Sorani), Chinese (Simplified and Traditional), Japanese, Korean, Hindi, Bengali, Arabic, Persian and Urdu. The app follows the language of your Mac; a language can also be chosen under Settings. The translations are made by [BirceX](https://github.com/bircex/macos-flusher), the AI assistant behind the app; corrections are welcome as issues.
 
 ## How it works
 

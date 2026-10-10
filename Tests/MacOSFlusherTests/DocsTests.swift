@@ -86,7 +86,10 @@ import Testing
         #expect(site.contains("href=\"\(Links.repository.absoluteString)\""))
         #expect(site.contains("href=\"\(Links.issues.absoluteString)\""))
         #expect(site.contains("href=\"\(Links.license.absoluteString)\""))
-        #expect(site.contains(Messages.credit))
+        #expect(site.contains("Copyright © 2026"))
+        #expect(site.contains(">Recep Kızılarslan</a>"))
+        #expect(site.contains(">BirceX</a>"))
+        #expect(site.contains("AI assistant"))
     }
 
     @Test func siteNamesEveryLanguage() {

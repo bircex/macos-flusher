@@ -175,11 +175,18 @@ struct AboutSettings: View {
                     .padding(.vertical, 3)
                     .background(Capsule().fill(Color.secondary.opacity(0.12)))
             }
-            Text(Messages.credit)
-                .font(.callout)
-                .multilineTextAlignment(.center)
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: 360)
+            VStack(spacing: 2) {
+                Link(destination: Links.repository) {
+                    Text(Messages.credit)
+                        .font(.callout)
+                        .multilineTextAlignment(.center)
+                }
+                Text("© 2026")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: 360)
             VStack(spacing: 1) {
                 ForEach(Array(links.enumerated()), id: \.offset) { index, link in
                     if index > 0 { Divider() }

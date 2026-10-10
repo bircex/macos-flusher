@@ -18,9 +18,9 @@ struct MacOSFlusherApp: App {
                 Divider()
                 Button(Messages.home) { store.page = .home }
                     .keyboardShortcut("1")
-                Button(Messages.overview) { store.page = .overview }
+                Button(Messages.scan) { store.page = .scan }
                     .keyboardShortcut("2")
-                Button(Messages.activity) { store.page = .activity }
+                Button(Messages.logs) { store.page = .logs }
                     .keyboardShortcut("3")
             }
             CommandMenu(Messages.flushMenu) {
