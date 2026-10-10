@@ -41,9 +41,11 @@ import Testing
     }
 
     @Test func everyAudienceHasTargets() {
-        for audience in Audience.allCases {
+        for audience in Audience.allCases where audience != .mine {
             #expect(Targets.groups.contains { $0.audience == audience }, "\(audience) has no group")
         }
+        #expect(!Targets.groups.contains { $0.audience == .mine })
+        #expect(Targets.allItems.allSatisfy { !$0.custom })
     }
 
     @Test func onlyWhatRebuildsStartsSelected() {

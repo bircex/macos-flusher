@@ -8,14 +8,16 @@ import Testing
         return Target(id, "Sample " + id, [folder.path + "/" + id])
     }
 
-    @Test func startsIdle() {
-        #expect(Store().idle)
+    @Test func startsIdle() throws {
+        let folder = try Folder()
+        defer { folder.remove() }
+        #expect(folder.store().idle)
     }
 
     @Test func measuresOnlyWhatIsAsked() async throws {
         let folder = try Folder()
         defer { folder.remove() }
-        let store = Store()
+        let store = folder.store()
         let first = try target("first", in: folder)
         let second = try target("second", in: folder, bytes: 400_000)
         await store.measure([first, second])
@@ -28,7 +30,7 @@ import Testing
     @Test func cleansAndReports() async throws {
         let folder = try Folder()
         defer { folder.remove() }
-        let store = Store()
+        let store = folder.store()
         let item = try target("first", in: folder)
         await store.measure([item])
         let results = await store.clean([item])
@@ -48,7 +50,7 @@ import Testing
     @Test func reportsFailedCommand() async throws {
         let folder = try Folder()
         defer { folder.remove() }
-        let store = Store()
+        let store = folder.store()
         try folder.add("first/blob", bytes: 200_000)
         let item = Target("first", "Sample first", [folder.path + "/first"], flush: .command("print nope; exit 2"))
         await store.measure([item])
@@ -65,7 +67,7 @@ import Testing
     @Test func stopsWhenTheGoalIsReached() async throws {
         let folder = try Folder()
         defer { folder.remove() }
-        let store = Store()
+        let store = folder.store()
         let items = [try target("first", in: folder), try target("second", in: folder), try target("third", in: folder)]
         await store.measure(items)
         let results = await store.clean(items, until: { $0.freed >= 200_000 })
@@ -79,7 +81,7 @@ import Testing
     @Test func skipsEverythingWhenCancelled() async throws {
         let folder = try Folder()
         defer { folder.remove() }
-        let store = Store()
+        let store = folder.store()
         let items = [try target("first", in: folder), try target("second", in: folder)]
         await store.measure(items)
         let work = Task { @MainActor in await store.clean(items) }

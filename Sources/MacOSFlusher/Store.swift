@@ -30,17 +30,71 @@ final class Store: ObservableObject {
     @Published var hideEmpty = true
     @Published private(set) var progress: Progress?
     @Published private(set) var disk: DiskInfo?
-    @Published var expanded: Set<String> = Set(Targets.groups.map(\.id))
+    @Published var expanded: Set<String> = Set(Targets.groups.map(\.id) + [Store.mine])
     @Published private(set) var pathSizes: [String: [String: Int64]] = [:]
     @Published private(set) var locations: [DiskLocation] = []
     @Published private(set) var analysis: Progress?
+    @Published private(set) var userTargets: [UserTarget] = []
+    @Published var edited: UserTarget?
+
+    static let mine = "mine"
 
     private var current: Task<Void, Never>?
     private var logSequence = 0
     private let concurrency = 4
+    private let folder: URL
+    private let home: String
 
-    init() {
+    init(folder: URL = Storage.folder, home: String = Shell.home) {
+        self.folder = folder
+        self.home = home
         Shell.warmUp()
+        switch Storage.load("targets", from: folder) as Loaded<[UserTarget]> {
+        case .missing: break
+        case .value(let targets): userTargets = targets
+        case .broken(let kept): append(Messages.storageBroken + kept + ".", level: .error)
+        }
+    }
+
+    var groups: [TargetGroup] {
+        let mine = userTargets.filter { $0.accepted != nil }.map(\.target)
+        if mine.isEmpty { return Targets.groups }
+        return Targets.groups + [TargetGroup(id: Store.mine, name: Messages.addedByYou, audience: .mine, items: mine)]
+    }
+
+    var allItems: [Target] {
+        groups.flatMap(\.items)
+    }
+
+    func refusal(of path: String) -> String? {
+        Folders.refusal(of: path, home: home, own: folder.path)
+    }
+
+    func save(_ target: UserTarget) {
+        if let index = userTargets.firstIndex(where: { $0.id == target.id }) {
+            userTargets[index] = target
+        } else {
+            userTargets.append(target)
+        }
+        persist()
+        let item = target.target
+        Task { apply(await Measurer.measure(item), to: item.id) }
+    }
+
+    func remove(_ target: UserTarget) {
+        userTargets.removeAll { $0.id == target.id }
+        selected.remove(target.id)
+        states[target.id] = nil
+        pathSizes[target.id] = nil
+        persist()
+    }
+
+    private func persist() {
+        do {
+            try Storage.save(userTargets, as: "targets", in: folder)
+        } catch {
+            append(Messages.storageFailed + error.localizedDescription, level: .error)
+        }
     }
 
     func size(of item: Target) -> Int64? {
@@ -53,7 +107,7 @@ final class Store: ObservableObject {
     }
 
     func isVisible(_ item: Target) -> Bool {
-        guard hideEmpty else { return true }
+        guard hideEmpty, !item.custom else { return true }
         switch states[item.id] ?? .unknown {
         case .unavailable: return false
         case .measured(let bytes): return bytes > 0
@@ -62,11 +116,11 @@ final class Store: ObservableObject {
     }
 
     var selectedTotal: Int64 {
-        Targets.allItems.filter { selected.contains($0.id) }.compactMap(size(of:)).reduce(0, +)
+        allItems.filter { selected.contains($0.id) }.compactMap(size(of:)).reduce(0, +)
     }
 
     var flushTargets: [Target] {
-        Targets.allItems.filter { selected.contains($0.id) && isAvailable($0) }
+        allItems.filter { selected.contains($0.id) && isAvailable($0) }
     }
 
     var selectedCount: Int {
@@ -74,7 +128,7 @@ final class Store: ObservableObject {
     }
 
     var measuredTotal: Int64 {
-        Targets.allItems.compactMap(size(of:)).reduce(0, +)
+        allItems.compactMap(size(of:)).reduce(0, +)
     }
 
     func total(of group: TargetGroup) -> Int64 {
@@ -143,7 +197,7 @@ final class Store: ObservableObject {
 
     private func runScan() async {
         refreshDisk()
-        await measure(Targets.allItems)
+        await measure(allItems)
         refreshDisk()
         append(Task.isCancelled ? "Scan stopped." : "Scan finished.")
     }
@@ -189,6 +243,11 @@ final class Store: ObservableObject {
             let before = size(of: item) ?? 0
             if Task.isCancelled || reached(results) {
                 results.append(ItemResult(id: item.id, name: item.name, before: before, after: before, status: .skipped, message: ""))
+                continue
+            }
+            if item.custom, let refused = item.paths.compactMap(refusal).first {
+                append("\(item.name): \(refused)", level: .error)
+                results.append(ItemResult(id: item.id, name: item.name, before: before, after: before, status: .failed, message: refused))
                 continue
             }
             progress = Progress(done: index, total: items.count)
@@ -325,6 +384,9 @@ enum Measurer {
         }
         if let command = item.sizeCommand {
             return Measurement(state: .measured(Shell.parseSizes(await Shell.command(command).output)))
+        }
+        if item.custom, item.paths.isEmpty {
+            return Measurement(state: .unknown)
         }
         let paths = await Shell.sizesOfPaths(item.paths)
         return Measurement(state: .measured(paths.values.reduce(0, +)), paths: paths)

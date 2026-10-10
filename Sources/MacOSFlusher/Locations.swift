@@ -87,7 +87,7 @@ enum Locations {
 extension Store {
     func targetBytes(in plan: [DiskLocation]) -> [String: TargetBytes] {
         var targets: [String: TargetBytes] = [:]
-        for item in Targets.allItems {
+        for item in allItems {
             let isSelected = selected.contains(item.id)
             var found = pathSizes[item.id]?.map { (Locations.location(of: $0.key, in: plan) ?? "", $0.value) } ?? []
             if item.sizeCommand != nil, item.requires == "docker" {

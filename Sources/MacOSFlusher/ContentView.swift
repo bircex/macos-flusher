@@ -38,6 +38,9 @@ struct ContentView: View {
         } message: {
             Text(store.flushTargets.warning)
         }
+        .sheet(item: $store.edited) { target in
+            TargetEditor(target: target)
+        }
         .onAppear { store.scan() }
     }
 
@@ -50,6 +53,7 @@ struct ContentView: View {
                     .foregroundStyle(.secondary)
             }
             Spacer()
+            Button(Messages.addTarget) { store.edited = UserTarget() }
             Toggle("Hide empty", isOn: $store.hideEmpty)
                 .toggleStyle(.checkbox)
             if store.busy {
@@ -157,7 +161,7 @@ struct AudienceSection: View {
     let audience: Audience
 
     private var groups: [TargetGroup] {
-        Targets.groups.filter { $0.audience == audience && $0.items.contains(where: store.isVisible) }
+        store.groups.filter { $0.audience == audience && $0.items.contains(where: store.isVisible) }
     }
 
     var body: some View {
@@ -246,6 +250,11 @@ struct ItemRow: View {
             .toggleStyle(.checkbox)
             .disabled(!store.isAvailable(item))
             Spacer()
+            if item.custom {
+                Button(Messages.edit) { store.edited = store.userTargets.first { $0.id == item.id } }
+                    .buttonStyle(.link)
+                    .font(.caption)
+            }
             sizeLabel
         }
         .padding(.vertical, 2)

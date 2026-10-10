@@ -10,6 +10,7 @@ enum Audience: String, CaseIterable, Identifiable, Sendable {
     case office
     case ai
     case developers
+    case mine
 
     var id: String { rawValue }
 }
@@ -29,6 +30,7 @@ struct Target: Identifiable, Sendable {
     let flush: FlushAction
     let requires: String?
     let risk: Risk
+    let custom: Bool
 
     var defaultOn: Bool { risk == .rebuilds }
 
@@ -40,7 +42,8 @@ struct Target: Identifiable, Sendable {
         sizeCommand: String? = nil,
         flush: FlushAction = .removePaths,
         requires: String? = nil,
-        risk: Risk = .rebuilds
+        risk: Risk = .rebuilds,
+        custom: Bool = false
     ) {
         self.id = id
         self.name = name
@@ -50,6 +53,7 @@ struct Target: Identifiable, Sendable {
         self.flush = flush
         self.requires = requires
         self.risk = risk
+        self.custom = custom
     }
 }
 
