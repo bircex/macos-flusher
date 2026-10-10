@@ -82,6 +82,13 @@ import Testing
         #expect(site.contains("<code>~/Library/Application Support/MacOS Flusher</code>"))
     }
 
+    @Test func siteSharesTheLinksAndTheCredit() {
+        #expect(site.contains("href=\"\(Links.repository.absoluteString)\""))
+        #expect(site.contains("href=\"\(Links.issues.absoluteString)\""))
+        #expect(site.contains("href=\"\(Links.license.absoluteString)\""))
+        #expect(site.contains(Messages.credit))
+    }
+
     @Test func siteNamesEveryAudienceInOrder() {
         let headings = site.components(separatedBy: "<h3 class=\"audience\">").dropFirst().map {
             $0.components(separatedBy: "</h3>")[0]

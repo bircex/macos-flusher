@@ -5,7 +5,7 @@ struct MacOSFlusherApp: App {
     @StateObject private var store = Store()
 
     var body: some Scene {
-        WindowGroup("MacOS Flusher") {
+        WindowGroup(Messages.appName) {
             ContentView().environmentObject(store)
         }
         .commands {
@@ -32,6 +32,9 @@ struct MacOSFlusherApp: App {
                     .keyboardShortcut(".")
                     .disabled(!store.busy)
             }
+        }
+        Settings {
+            SettingsView().environmentObject(store)
         }
     }
 }
