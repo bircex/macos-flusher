@@ -22,11 +22,11 @@
 "Appearance" = "المظهر";
 "Applications" = "التطبيقات";
 "Browsers" = "المتصفحات";
+"By category" = "حسب الفئة";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "تُعاد بناء ذاكرات التخزين المؤقت عند الحاجة.";
 "Cancel" = "إلغاء";
-"Charts" = "الرسوم البيانية";
-"Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "تعرض الرسوم البيانية أين تقع المساحة. تحتوي الإعدادات (⌘,) على المظهر وروابط المشروع.";
+"Categories" = "الفئات";
 "Chat and meetings" = "الدردشة والاجتماعات";
 "Choose" = "اختيار";
 "Choose folder…" = "اختيار مجلد…";
@@ -53,6 +53,7 @@
 "empty" = "فارغ";
 "ERROR" = "خطأ";
 "Everything else" = "كل شيء آخر";
+"Export CSV" = "تصدير CSV";
 "Flush" = "تنظيف";
 "Flush selected" = "تنظيف المحدد";
 "Flushed %@" = "تم تنظيف %@";
@@ -76,8 +77,10 @@
 "JavaScript / TypeScript" = "JavaScript / TypeScript";
 "JVM (Java, Kotlin, Scala, Clojure, Android)" = "JVM (Java, Kotlin, Scala, Clojure, Android)";
 "Language" = "اللغة";
+"Largest targets" = "أكبر الأهداف";
 "Library" = "Library";
 "Light" = "فاتح";
+"Locations" = "المواقع";
 "MacOS Flusher" = "MacOS Flusher";
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "يحذف MacOS Flusher كل ما بداخل هذه المجلدات وينفّذ الأمر كما هو مكتوب تمامًا. لا يُنقل شيء إلى سلة المهملات ولا يمكن استعادة شيء. أنت المسؤول عمّا يزيله هذا الهدف.";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "يعثر MacOS Flusher على ذاكرات التخزين المؤقت والبقايا التي تتركها تطبيقاتك وأدواتك، ويعرض ما يملأ القرص، ويحذف ما تختاره.";
@@ -104,9 +107,12 @@
 "Other data" = "بيانات أخرى";
 "Other Docker data" = "بيانات Docker الأخرى";
 "Other home items" = "عناصر المنزل الأخرى";
+"Overview" = "نظرة عامة";
 "Press Flush selected (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Activity." = "اضغط تنظيف المحدد (⌘⏎) ثم أكّد. يُنظَّف كل هدف ويُقاس مجددًا. تُدرج كل خطوة ضمن النشاط.";
 "Python" = "Python";
 "Report a problem" = "الإبلاغ عن مشكلة";
+"Reports" = "التقارير";
+"Reports shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "تعرض التقارير أين تقع المساحة. تحتوي الإعدادات (⌘,) على المظهر وروابط المشروع.";
 "Ruby / PHP / Perl / Lua" = "Ruby / PHP / Perl / Lua";
 "Rust" = "Rust";
 "Save" = "حفظ";

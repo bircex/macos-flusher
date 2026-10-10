@@ -148,6 +148,10 @@ final class Store: ObservableObject {
         groups.filter { $0.audience == audience }.flatMap(\.items).compactMap(size(of:)).reduce(0, +)
     }
 
+    func selectedTotal(of audience: Audience) -> Int64 {
+        groups.filter { $0.audience == audience }.flatMap(\.items).filter { selected.contains($0.id) }.compactMap(size(of:)).reduce(0, +)
+    }
+
     func total(of group: TargetGroup) -> Int64 {
         group.items.compactMap(size(of:)).reduce(0, +)
     }

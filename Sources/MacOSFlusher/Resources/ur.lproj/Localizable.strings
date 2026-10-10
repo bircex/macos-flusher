@@ -22,11 +22,11 @@
 "Appearance" = "ظاہری شکل";
 "Applications" = "ایپلیکیشنز";
 "Browsers" = "براؤزرز";
+"By category" = "زمرے کے لحاظ سے";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "کیش ضرورت پڑنے پر دوبارہ بن جاتے ہیں۔";
 "Cancel" = "منسوخ";
-"Charts" = "چارٹس";
-"Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "چارٹس دکھاتا ہے کہ جگہ کہاں ہے۔ ترتیبات (⌘,) میں ظاہری شکل اور پروجیکٹ کے لنکس ہیں۔";
+"Categories" = "زمرہ جات";
 "Chat and meetings" = "چیٹ اور میٹنگز";
 "Choose" = "منتخب کریں";
 "Choose folder…" = "فولڈر منتخب کریں…";
@@ -53,6 +53,7 @@
 "empty" = "خالی";
 "ERROR" = "خرابی";
 "Everything else" = "باقی سب کچھ";
+"Export CSV" = "CSV برآمد کریں";
 "Flush" = "صاف کریں";
 "Flush selected" = "منتخب صاف کریں";
 "Flushed %@" = "%@ صاف ہوا";
@@ -76,8 +77,10 @@
 "JavaScript / TypeScript" = "JavaScript / TypeScript";
 "JVM (Java, Kotlin, Scala, Clojure, Android)" = "JVM (Java, Kotlin, Scala, Clojure, Android)";
 "Language" = "زبان";
+"Largest targets" = "سب سے بڑے اہداف";
 "Library" = "Library";
 "Light" = "لائٹ";
+"Locations" = "مقامات";
 "MacOS Flusher" = "MacOS Flusher";
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher ان فولڈرز کے اندر کی ہر چیز حذف کر دیتا ہے اور کمانڈ کو بالکل ویسے ہی چلاتا ہے جیسے لکھی گئی ہے۔ کچھ بھی ٹریش میں نہیں جاتا اور کچھ بھی واپس نہیں لایا جا سکتا۔ یہ ہدف جو ہٹاتا ہے اس کی ذمہ داری آپ کی ہے۔";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher آپ کی ایپس اور ٹولز کے چھوڑے ہوئے کیش اور بچا کھچا ڈھونڈتا ہے، دکھاتا ہے کہ ڈسک کس چیز سے بھری ہے، اور جو آپ منتخب کریں اسے حذف کرتا ہے۔";
@@ -104,9 +107,12 @@
 "Other data" = "دیگر ڈیٹا";
 "Other Docker data" = "دیگر Docker ڈیٹا";
 "Other home items" = "ہوم فولڈر کی دیگر چیزیں";
+"Overview" = "جائزہ";
 "Press Flush selected (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Activity." = "منتخب صاف کریں (⌘⏎) دبائیں اور تصدیق کریں۔ ہر ہدف صاف ہو کر دوبارہ ناپا جاتا ہے۔ ہر قدم سرگرمی میں درج ہوتا ہے۔";
 "Python" = "Python";
 "Report a problem" = "مسئلہ رپورٹ کریں";
+"Reports" = "رپورٹس";
+"Reports shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "رپورٹس دکھاتا ہے کہ جگہ کہاں ہے۔ ترتیبات (⌘,) میں ظاہری شکل اور پروجیکٹ کے لنکس ہیں۔";
 "Ruby / PHP / Perl / Lua" = "Ruby / PHP / Perl / Lua";
 "Rust" = "Rust";
 "Save" = "محفوظ کریں";

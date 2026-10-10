@@ -22,11 +22,11 @@
 "Appearance" = "Оформление";
 "Applications" = "Программы";
 "Browsers" = "Браузеры";
+"By category" = "По категориям";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "Кэши создаются заново по мере надобности.";
 "Cancel" = "Отменить";
-"Charts" = "Диаграммы";
-"Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "Диаграммы показывают, где занято место. В Настройках (⌘,) находятся оформление и ссылки на проект.";
+"Categories" = "Категории";
 "Chat and meetings" = "Чаты и встречи";
 "Choose" = "Выбор";
 "Choose folder…" = "Выбрать папку…";
@@ -53,6 +53,7 @@
 "empty" = "пусто";
 "ERROR" = "ОШИБКА";
 "Everything else" = "Всё остальное";
+"Export CSV" = "Экспорт в CSV";
 "Flush" = "Очистка";
 "Flush selected" = "Очистить выбранное";
 "Flushed %@" = "Очищено: %@";
@@ -76,8 +77,10 @@
 "JavaScript / TypeScript" = "JavaScript / TypeScript";
 "JVM (Java, Kotlin, Scala, Clojure, Android)" = "JVM (Java, Kotlin, Scala, Clojure, Android)";
 "Language" = "Язык";
+"Largest targets" = "Крупнейшие цели";
 "Library" = "Library";
 "Light" = "Светлое";
+"Locations" = "Расположение";
 "MacOS Flusher" = "MacOS Flusher";
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher удаляет всё содержимое этих папок и выполняет команду ровно так, как она написана. Ничего не попадает в Корзину, и ничего нельзя восстановить. Вы отвечаете за то, что удаляет эта цель.";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher находит кэши и остатки, которые оставляют ваши программы и инструменты, показывает, что занимает диск, и удаляет то, что вы выберете.";
@@ -104,9 +107,12 @@
 "Other data" = "Другие данные";
 "Other Docker data" = "Другие данные Docker";
 "Other home items" = "Другие объекты домашней папки";
+"Overview" = "Обзор";
 "Press Flush selected (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Activity." = "Нажмите Очистить выбранное (⌘⏎) и подтвердите. Каждая цель очищается и измеряется заново. Каждый шаг записывается в Журнал.";
 "Python" = "Python";
 "Report a problem" = "Сообщить о проблеме";
+"Reports" = "Отчёты";
+"Reports shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "Отчёты показывают, где занято место. В Настройках (⌘,) находятся оформление и ссылки на проект.";
 "Ruby / PHP / Perl / Lua" = "Ruby / PHP / Perl / Lua";
 "Rust" = "Rust";
 "Save" = "Сохранить";
