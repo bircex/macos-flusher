@@ -18,8 +18,8 @@ import Testing
         text.components(separatedBy: "%").dropFirst().map { String($0.prefix(1)) }.filter { "@d".contains($0) }.sorted()
     }
 
-    @Test func fourteenLanguages() {
-        #expect(Localization.codes == ["ar", "bn", "de", "en", "es", "fr", "hi", "ja", "ko", "pt-BR", "ru", "tr", "zh-Hans", "zh-Hant"])
+    @Test func nineteenLanguages() {
+        #expect(Localization.codes == ["ar", "az", "bn", "ckb", "de", "en", "es", "fa", "fr", "hi", "ja", "ko", "ku", "pt-BR", "ru", "tr", "ur", "zh-Hans", "zh-Hant"])
         #expect(Localization.name(of: "en") == "English")
         #expect(Localization.name(of: "tr") == "Türkçe")
         #expect(Localization.name(of: "ar") == "العربية")
@@ -92,8 +92,8 @@ import Testing
         #expect(entry.message.contains("npm cache"))
     }
 
-    @Test func directionOfArabic() {
-        #expect(Locale.Language(identifier: "ar").characterDirection == .rightToLeft)
-        #expect(Locale.Language(identifier: "tr").characterDirection == .leftToRight)
+    @Test func directionOfEachLanguage() {
+        let rightToLeft = Localization.codes.filter { Locale.Language(identifier: $0).characterDirection == .rightToLeft }
+        #expect(rightToLeft == ["ar", "ckb", "fa", "ur"])
     }
 }
