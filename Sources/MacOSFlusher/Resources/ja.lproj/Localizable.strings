@@ -53,7 +53,6 @@
 "empty" = "空";
 "ERROR" = "エラー";
 "Everything else" = "その他すべて";
-"Export CSV" = "CSV に書き出す";
 "Findings" = "検出結果";
 "Flush" = "掃除";
 "Flush selected" = "選択項目を掃除";

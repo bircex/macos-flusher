@@ -122,7 +122,6 @@ enum Messages {
     static var byGroup: String { localized("Targets by group") }
     static var byCategory: String { localized("By category") }
     static var largestTargets: String { localized("Largest targets") }
-    static var exportCSV: String { localized("Export CSV") }
     static var found: String { localized("%@ found") }
     static var scanning: String { localized("Scanning…") }
     static var noTargetsFound: String { localized("No targets found") }

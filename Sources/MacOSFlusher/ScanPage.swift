@@ -199,10 +199,6 @@ struct ScanProgressPanel: View {
         return Messages.scanFinished
     }
 
-    private var fraction: Double {
-        store.progress?.fraction ?? 1
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -214,8 +210,6 @@ struct ScanProgressPanel: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            ProgressView(value: fraction)
-                .tint(store.busy ? .blue : .green)
             HStack(spacing: 10) {
                 statTile(Messages.scanned, "\(store.allItems.filter { store.states[$0.id] != nil && store.states[$0.id] != .unknown }.count) / \(store.allItems.count)")
                 statTile(Messages.selectedTargets, Format.bytes(store.selectedTotal))

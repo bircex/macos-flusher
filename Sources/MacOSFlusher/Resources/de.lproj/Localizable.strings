@@ -53,7 +53,6 @@
 "empty" = "leer";
 "ERROR" = "FEHLER";
 "Everything else" = "Alles andere";
-"Export CSV" = "Als CSV exportieren";
 "Findings" = "Befunde";
 "Flush" = "Leeren";
 "Flush selected" = "Auswahl leeren";
