@@ -1,5 +1,4 @@
 "%@ found" = "%@ bulundu";
-"%@ free of %@" = "%@ boş, toplam %@";
 "%@ of disk" = "diskin %@ kadarı";
 "%@ selected in %@, %@ free after flush" = "%@ seçili (%@), temizlikten sonra %@ boş";
 "%@ used" = "%@ kullanılıyor";
@@ -61,7 +60,6 @@
 "Folders cannot contain * or ?." = "Klasör yolunda * ya da ? olamaz.";
 "Folders cannot contain \"..\"." = "Klasör yolunda \"..\" olamaz.";
 "Free" = "Boş";
-"Freed %@" = "%@ boşaltıldı";
 "Freed %@." = "%@ boşaltıldı.";
 "Games" = "Oyunlar";
 "General" = "Genel";

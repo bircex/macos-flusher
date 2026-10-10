@@ -1,5 +1,4 @@
 "%@ found" = "找到 %@";
-"%@ free of %@" = "可用 %@，共 %@";
 "%@ of disk" = "佔磁碟 %@";
 "%@ selected in %@, %@ free after flush" = "已選 %@（%@），清理後可用 %@";
 "%@ used" = "已用 %@";
@@ -61,7 +60,6 @@
 "Folders cannot contain * or ?." = "資料夾路徑不能包含 * 或 ?。";
 "Folders cannot contain \"..\"." = "資料夾路徑不能包含「..」。";
 "Free" = "可用";
-"Freed %@" = "已釋放 %@";
 "Freed %@." = "已釋放 %@。";
 "Games" = "遊戲";
 "General" = "一般";

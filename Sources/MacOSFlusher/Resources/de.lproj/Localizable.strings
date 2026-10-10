@@ -1,5 +1,4 @@
 "%@ found" = "%@ gefunden";
-"%@ free of %@" = "%@ frei von %@";
 "%@ of disk" = "%@ der Festplatte";
 "%@ selected in %@, %@ free after flush" = "%@ ausgewählt (%@), %@ frei nach dem Leeren";
 "%@ used" = "%@ belegt";
@@ -61,7 +60,6 @@
 "Folders cannot contain * or ?." = "Ordner dürfen weder * noch ? enthalten.";
 "Folders cannot contain \"..\"." = "Ordner dürfen kein \"..\" enthalten.";
 "Free" = "Frei";
-"Freed %@" = "%@ freigegeben";
 "Freed %@." = "%@ freigegeben.";
 "Games" = "Spiele";
 "General" = "Allgemein";
