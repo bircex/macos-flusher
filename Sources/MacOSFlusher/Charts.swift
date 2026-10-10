@@ -37,9 +37,9 @@ struct Series: Identifiable {
 
     var id: String { name }
 
-    static func otherData(_ bytes: Int64 = 0) -> Series { Series(name: "Other data", color: Palette.otherData, bytes: bytes) }
-    static func unselected(_ bytes: Int64 = 0) -> Series { Series(name: "Unselected", color: Palette.unselected, bytes: bytes) }
-    static func selected(_ bytes: Int64 = 0) -> Series { Series(name: "Selected", color: Palette.selected, bytes: bytes) }
+    static func otherData(_ bytes: Int64 = 0) -> Series { Series(name: Messages.otherData, color: Palette.otherData, bytes: bytes) }
+    static func unselected(_ bytes: Int64 = 0) -> Series { Series(name: Messages.unselected, color: Palette.unselected, bytes: bytes) }
+    static func selected(_ bytes: Int64 = 0) -> Series { Series(name: Messages.selected, color: Palette.selected, bytes: bytes) }
 }
 
 struct DiskSlice: Identifiable {
@@ -55,10 +55,10 @@ extension Store {
         let chosen = min(selectedTotal, disk.used)
         let kept = min(max(0, measuredTotal - selectedTotal), disk.used - chosen)
         return [
-            DiskSlice(id: "other", name: "Other data", bytes: disk.used - chosen - kept, color: Palette.otherData),
-            DiskSlice(id: "unselected", name: "Unselected targets", bytes: kept, color: Palette.unselected),
-            DiskSlice(id: "selected", name: "Selected targets", bytes: chosen, color: Palette.selected),
-            DiskSlice(id: "free", name: "Free", bytes: disk.free, color: Palette.free),
+            DiskSlice(id: "other", name: Messages.otherData, bytes: disk.used - chosen - kept, color: Palette.otherData),
+            DiskSlice(id: "unselected", name: Messages.unselectedTargets, bytes: kept, color: Palette.unselected),
+            DiskSlice(id: "selected", name: Messages.selectedTargets, bytes: chosen, color: Palette.selected),
+            DiskSlice(id: "free", name: Messages.free, bytes: disk.free, color: Palette.free),
         ]
     }
 }
@@ -86,7 +86,7 @@ struct DiskDonut: View {
             VStack(spacing: 0) {
                 Text(Format.percent(store.disk?.usedFraction ?? 0))
                     .font(.system(size: 24, weight: .semibold))
-                Text("used")
+                Text(Messages.used)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -117,7 +117,7 @@ struct DiskLegend: View {
                         .font(.system(size: 17, weight: .semibold))
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
-                    Text("\(Format.percent(Double(slice.bytes) / total)) of disk")
+                    Text(String(format: Messages.ofDisk, Format.percent(Double(slice.bytes) / total)))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -135,18 +135,18 @@ struct LocationChart: View {
     @EnvironmentObject var store: Store
 
     private var detail: String {
-        if let analysis = store.analysis { return "Analyzing \(analysis.done) of \(analysis.total)" }
-        return "\(Format.bytes(store.disk?.used ?? 0)) used"
+        if let analysis = store.analysis { return String(format: Messages.analyzingOf, analysis.done, analysis.total) }
+        return String(format: Messages.usedAmount, Format.bytes(store.disk?.used ?? 0))
     }
 
     var body: some View {
         let rows = store.locationRows
         let scale = Double(max(rows.map(\.total).max() ?? 1, 1))
         ChartPanel(
-            title: "Disk usage by location",
+            title: Messages.byLocation,
             detail: detail,
             legend: [.otherData(), .unselected(), .selected()],
-            placeholder: rows.isEmpty ? (store.busy || store.analysis != nil ? "Analyzing disk…" : "Not analyzed yet") : nil
+            placeholder: rows.isEmpty ? (store.busy || store.analysis != nil ? Messages.analyzingDisk : Messages.notAnalyzed) : nil
         ) {
             ForEach(rows) { row in
                 bar(row, scale: scale, nested: false)
@@ -159,7 +159,7 @@ struct LocationChart: View {
 
     private func bar(_ row: LocationRow, scale: Double, nested: Bool) -> some View {
         ChartRow(
-            name: row.name,
+            name: localized(row.name),
             series: [.otherData(row.other), .unselected(row.targets.unselected), .selected(row.targets.selected)],
             scale: scale,
             nested: nested
@@ -181,14 +181,14 @@ struct GroupChart: View {
         let rows = rows
         let scale = Double(max(rows.first?.total ?? 1, 1))
         ChartPanel(
-            title: "Targets by group",
-            detail: "\(Format.bytes(store.measuredTotal)) found",
+            title: Messages.byGroup,
+            detail: String(format: Messages.found, Format.bytes(store.measuredTotal)),
             legend: [.unselected(), .selected()],
-            placeholder: rows.isEmpty ? (store.busy ? "Scanning…" : "No targets found") : nil
+            placeholder: rows.isEmpty ? (store.busy ? Messages.scanning : Messages.noTargetsFound) : nil
         ) {
             ForEach(rows, id: \.group.id) { row in
                 ChartRow(
-                    name: row.group.name,
+                    name: localized(row.group.name),
                     series: [.unselected(row.total - row.selected), .selected(row.selected)],
                     scale: scale
                 )

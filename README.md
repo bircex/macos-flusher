@@ -75,6 +75,10 @@ Press Add target to add a folder or a command of your own. Built-in targets cann
 - Your targets start unselected and are labelled "deleted for good".
 - You confirm a responsibility text when you add a target and when you change its folders or command.
 
+## Languages
+
+English, Turkish and Arabic. The app follows the language of your Mac; a language can also be chosen under Settings. More languages are on the way. The translations are made by BirceX, the AI assistant behind the app; corrections are welcome as issues.
+
 ## How it works
 
 Sizes come from `du` for directories and from the tool's own reporting for Docker. Deleting is either removing the directory contents or running the tool's own cleanup command (`go clean -cache`, `npm cache clean`, `docker builder prune`, `brew cleanup`). All work runs off the main thread; the UI never blocks and a scan or flush can be stopped.

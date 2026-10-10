@@ -79,6 +79,12 @@ struct GeneralSettings: View {
             .onChange(of: appearance) { value in
                 (Appearance(rawValue: value) ?? .system).apply()
             }
+            Picker(Messages.language, selection: $store.language) {
+                Text(Messages.appearanceSystem).tag(Localization.system)
+                ForEach(Localization.codes, id: \.self) { code in
+                    Text(Localization.name(of: code)).tag(code)
+                }
+            }
             Toggle(Messages.hideEmpty, isOn: $store.hideEmpty)
         }
         .padding(20)

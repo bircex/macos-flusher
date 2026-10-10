@@ -80,14 +80,14 @@ struct TargetEditor: View {
             }
             HStack {
                 if exists {
-                    Button("Delete", role: .destructive) {
+                    Button(Messages.delete, role: .destructive) {
                         store.remove(original)
                         dismiss()
                     }
                 }
                 Spacer()
-                Button("Cancel", role: .cancel) { dismiss() }
-                Button("Save") {
+                Button(Messages.cancel, role: .cancel) { dismiss() }
+                Button(Messages.save) {
                     store.save(UserTarget(
                         id: original.id,
                         name: title,

@@ -17,7 +17,12 @@ struct LogEntry: Identifiable, Sendable {
     let id: Int
     let date: Date
     let level: LogLevel
-    let message: String
+    let key: String
+    var arguments: [String] = []
+
+    var message: String {
+        arguments.isEmpty ? localized(key) : String(format: localized(key), arguments: arguments)
+    }
 }
 
 @MainActor
@@ -38,6 +43,9 @@ final class Store: ObservableObject {
     @Published var edited: UserTarget?
     @Published var page = Page.home
     @Published var confirmFlush = false
+    @Published var language = Localization.selected {
+        didSet { UserDefaults.standard.set(language, forKey: Localization.key) }
+    }
 
     static let mine = "mine"
 
@@ -54,7 +62,7 @@ final class Store: ObservableObject {
         switch Storage.load("targets", from: folder) as Loaded<[UserTarget]> {
         case .missing: break
         case .value(let targets): userTargets = targets
-        case .broken(let kept): append(Messages.storageBroken + kept + ".", level: .error)
+        case .broken(let kept): append(Messages.storageBroken, kept, level: .error)
         }
     }
 
@@ -95,7 +103,7 @@ final class Store: ObservableObject {
         do {
             try Storage.save(userTargets, as: "targets", in: folder)
         } catch {
-            append(Messages.storageFailed + error.localizedDescription, level: .error)
+            append(Messages.storageFailed, error.localizedDescription, level: .error)
         }
     }
 
@@ -175,7 +183,7 @@ final class Store: ObservableObject {
         guard !busy else { return }
         busy = true
         lastFreed = nil
-        append("Scanning…")
+        append(Messages.scanningKey)
         current?.cancel()
         current = Task { [weak self] in
             await self?.runScan()
@@ -205,7 +213,7 @@ final class Store: ObservableObject {
         refreshDisk()
         await measure(allItems)
         refreshDisk()
-        append(Task.isCancelled ? "Scan stopped." : "Scan finished.")
+        append(Task.isCancelled ? Messages.scanStoppedKey : Messages.scanFinishedKey)
     }
 
     func measure(_ items: [Target]) async {
@@ -235,7 +243,7 @@ final class Store: ObservableObject {
 
     private func runFlush() async {
         lastFreed = await clean(flushTargets).freed
-        append("Freed \(Format.bytes(lastFreed ?? 0)).")
+        append(Messages.freedLine, Format.bytes(lastFreed ?? 0))
     }
 
     func clean(_ items: [Target]) async -> [ItemResult] {
@@ -252,7 +260,7 @@ final class Store: ObservableObject {
                 continue
             }
             if item.custom, let refused = item.paths.compactMap(refusal).first {
-                append("\(item.name): \(refused)", level: .error)
+                append(Messages.namedProblem, item.name, refused, level: .error)
                 results.append(ItemResult(id: item.id, name: item.name, before: before, after: before, status: .failed, message: refused))
                 continue
             }
@@ -269,9 +277,9 @@ final class Store: ObservableObject {
             apply(measurement, to: item.id)
             let message = outcome.output.trimmingCharacters(in: .whitespacesAndNewlines)
             if outcome.status == 0 {
-                append("Flushed \(item.name)")
+                append(Messages.flushed, item.name)
             } else {
-                append("\(item.name): \(message)", level: .error)
+                append(Messages.namedProblem, item.name, message, level: .error)
             }
             results.append(ItemResult(
                 id: item.id,
@@ -324,12 +332,12 @@ final class Store: ObservableObject {
         }
         analysis = nil
         refreshDisk()
-        append("Disk analysis finished.")
+        append(Messages.analysisFinishedKey)
     }
 
-    private func append(_ message: String, level: LogLevel = .info) {
+    private func append(_ key: String, _ arguments: String..., level: LogLevel = .info) {
         logSequence += 1
-        log.append(LogEntry(id: logSequence, date: Date(), level: level, message: message))
+        log.append(LogEntry(id: logSequence, date: Date(), level: level, key: key, arguments: arguments))
         if log.count > 300 { log.removeFirst(log.count - 300) }
     }
 }
