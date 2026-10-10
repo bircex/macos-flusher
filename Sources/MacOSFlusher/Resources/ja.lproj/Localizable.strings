@@ -120,6 +120,7 @@
 "Scan" = "スキャン";
 "Scan finished." = "スキャンが完了しました。";
 "Scan stopped." = "スキャンを停止しました。";
+"Scanned" = "スキャン済み";
 "Scanning…" = "スキャン中…";
 "Scans" = "スキャン";
 "Selected" = "選択中";
