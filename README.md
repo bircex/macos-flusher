@@ -77,7 +77,7 @@ Press Add target to add a folder or a command of your own. Built-in targets cann
 
 ## Languages
 
-English, German, Spanish, French, Portuguese (Brazil), Russian, Turkish and Arabic. The app follows the language of your Mac; a language can also be chosen under Settings. More languages are on the way. The translations are made by BirceX, the AI assistant behind the app; corrections are welcome as issues.
+English, German, Spanish, French, Portuguese (Brazil), Russian, Turkish, Chinese (Simplified and Traditional), Japanese, Korean, Hindi, Bengali and Arabic. The app follows the language of your Mac; a language can also be chosen under Settings. More languages are on the way. The translations are made by BirceX, the AI assistant behind the app; corrections are welcome as issues.
 
 ## How it works
 
