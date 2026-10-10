@@ -22,11 +22,11 @@
 "Appearance" = "Görünüş";
 "Applications" = "Tətbiqlər";
 "Browsers" = "Brauzerlər";
+"By category" = "Kateqoriyaya görə";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "Keşlər lazım olduqda yenidən yaradılır.";
 "Cancel" = "Ləğv et";
-"Charts" = "Qrafiklər";
-"Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "Qrafiklər yerin harada olduğunu göstərir. Ayarlar (⌘,) görünüşü və layihəyə keçidləri saxlayır.";
+"Categories" = "Kateqoriyalar";
 "Chat and meetings" = "Söhbət və görüşlər";
 "Choose" = "Seç";
 "Choose folder…" = "Qovluq seç…";
@@ -53,6 +53,7 @@
 "empty" = "boş";
 "ERROR" = "XƏTA";
 "Everything else" = "Qalan hər şey";
+"Export CSV" = "CSV ixrac et";
 "Flush" = "Təmizlə";
 "Flush selected" = "Seçilənləri təmizlə";
 "Flushed %@" = "%@ təmizləndi";
@@ -76,8 +77,10 @@
 "JavaScript / TypeScript" = "JavaScript / TypeScript";
 "JVM (Java, Kotlin, Scala, Clojure, Android)" = "JVM (Java, Kotlin, Scala, Clojure, Android)";
 "Language" = "Dil";
+"Largest targets" = "Ən böyük hədəflər";
 "Library" = "Library";
 "Light" = "Açıq";
+"Locations" = "Yerlər";
 "MacOS Flusher" = "MacOS Flusher";
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher bu qovluqların içindəki hər şeyi silir və əmri yazıldığı kimi icra edir. Heç nə Zibil qutusuna getmir və heç nə bərpa edilə bilməz. Bu hədəfin sildiklərinə görə məsuliyyət sizindir.";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher tətbiqlərinizin və alətlərinizin qoyub getdiyi keşləri və qalıqları tapır, diski nəyin doldurduğunu göstərir və seçdiklərinizi silir.";
@@ -104,9 +107,12 @@
 "Other data" = "Digər məlumatlar";
 "Other Docker data" = "Digər Docker məlumatları";
 "Other home items" = "Ev qovluğunun digər elementləri";
+"Overview" = "Ümumi baxış";
 "Press Flush selected (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Activity." = "Seçilənləri təmizlə (⌘⏎) düyməsini basın və təsdiqləyin. Hər hədəf təmizlənir və yenidən ölçülür. Hər addım Fəaliyyət altında sıralanır.";
 "Python" = "Python";
 "Report a problem" = "Problem bildir";
+"Reports" = "Hesabatlar";
+"Reports shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "Hesabatlar yerin harada olduğunu göstərir. Ayarlar (⌘,) görünüşü və layihəyə keçidləri saxlayır.";
 "Ruby / PHP / Perl / Lua" = "Ruby / PHP / Perl / Lua";
 "Rust" = "Rust";
 "Save" = "Yadda saxla";

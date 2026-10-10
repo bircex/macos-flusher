@@ -22,11 +22,11 @@
 "Appearance" = "外观";
 "Applications" = "应用程序";
 "Browsers" = "浏览器";
+"By category" = "按类别";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "缓存会在需要时重新生成。";
 "Cancel" = "取消";
-"Charts" = "图表";
-"Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "“图表”显示空间的分布。“设置”(⌘,) 包含外观和项目链接。";
+"Categories" = "类别";
 "Chat and meetings" = "聊天与会议";
 "Choose" = "选择";
 "Choose folder…" = "选择文件夹…";
@@ -53,6 +53,7 @@
 "empty" = "空";
 "ERROR" = "错误";
 "Everything else" = "其他所有内容";
+"Export CSV" = "导出 CSV";
 "Flush" = "清理";
 "Flush selected" = "清理所选";
 "Flushed %@" = "已清理 %@";
@@ -76,8 +77,10 @@
 "JavaScript / TypeScript" = "JavaScript / TypeScript";
 "JVM (Java, Kotlin, Scala, Clojure, Android)" = "JVM (Java, Kotlin, Scala, Clojure, Android)";
 "Language" = "语言";
+"Largest targets" = "最大的目标";
 "Library" = "Library";
 "Light" = "浅色";
+"Locations" = "位置";
 "MacOS Flusher" = "MacOS Flusher";
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher 会删除这些文件夹中的所有内容，并原样运行该命令。不会放入废纸篓，也无法恢复。此目标删除的内容由你自行负责。";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher 找出应用和工具留下的缓存与残留，显示是什么占满了磁盘，并删除你选择的内容。";
@@ -104,9 +107,12 @@
 "Other data" = "其他数据";
 "Other Docker data" = "其他 Docker 数据";
 "Other home items" = "个人文件夹中的其他项目";
+"Overview" = "概览";
 "Press Flush selected (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Activity." = "按“清理所选”(⌘⏎) 并确认。每个目标都会被清理并重新测量。每一步都会记录在“活动”中。";
 "Python" = "Python";
 "Report a problem" = "报告问题";
+"Reports" = "报告";
+"Reports shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "“报告”显示空间的分布。“设置”(⌘,) 包含外观和项目链接。";
 "Ruby / PHP / Perl / Lua" = "Ruby / PHP / Perl / Lua";
 "Rust" = "Rust";
 "Save" = "保存";

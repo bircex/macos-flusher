@@ -4,7 +4,9 @@ enum Page: Hashable {
     case home
     case all
     case audience(Audience)
-    case charts
+    case overview
+    case locations
+    case categories
     case activity
     case settings
     case about
@@ -14,7 +16,9 @@ enum Page: Hashable {
         case .home: return Messages.home
         case .all: return Messages.all
         case .audience(let audience): return audience.name
-        case .charts: return Messages.charts
+        case .overview: return Messages.overview
+        case .locations: return Messages.locations
+        case .categories: return Messages.categories
         case .activity: return Messages.activity
         case .settings: return Messages.settings
         case .about: return Messages.about
@@ -78,7 +82,9 @@ struct ContentView: View {
         case .home: HomePage()
         case .all: AllPage()
         case .audience(let audience): TargetsPage(audience: audience)
-        case .charts: ChartsPage()
+        case .overview: OverviewPage()
+        case .locations: LocationsPage()
+        case .categories: CategoriesPage()
         case .activity: ActivityPage()
         case .settings: SettingsPage()
         case .about: AboutPage()
@@ -102,8 +108,12 @@ struct Sidebar: View {
                     row(audience.name, bytes: store.total(of: audience)).tag(Page.audience(audience))
                 }
             }
+            Section(Messages.reports) {
+                Text(Messages.overview).tag(Page.overview)
+                Text(Messages.locations).tag(Page.locations)
+                Text(Messages.categories).tag(Page.categories)
+            }
             Section {
-                Text(Messages.charts).tag(Page.charts)
                 Text(Messages.activity).tag(Page.activity)
             }
             Section {
@@ -217,24 +227,6 @@ struct TargetsPage: View {
                 }
             }
             .listStyle(.inset)
-        }
-    }
-}
-
-struct ChartsPage: View {
-    var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 16) {
-                DiskDonut()
-                DiskLegend()
-            }
-            .padding()
-            Divider()
-            HStack(spacing: 0) {
-                LocationChart()
-                Divider()
-                GroupChart()
-            }
         }
     }
 }

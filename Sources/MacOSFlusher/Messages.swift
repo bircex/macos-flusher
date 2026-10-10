@@ -29,7 +29,10 @@ enum Messages {
     static var home: String { localized("Home") }
     static var all: String { localized("All") }
     static var scans: String { localized("Scans") }
-    static var charts: String { localized("Charts") }
+    static var reports: String { localized("Reports") }
+    static var overview: String { localized("Overview") }
+    static var locations: String { localized("Locations") }
+    static var categories: String { localized("Categories") }
     static var activity: String { localized("Activity") }
     static var nothingHere: String { localized("Nothing to clean here.") }
     static var noOwnTargets: String { localized("No targets of your own yet.") }
@@ -61,7 +64,7 @@ enum Messages {
     static var homeStepFlushText: String { localized("Press Flush selected (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Activity.") }
     static var homeOwn: String { localized("Your own targets") }
     static var homeOwnText: String { localized("Add a folder or a command of your own with File, Add target (⌘N). They appear under My targets and are never ticked from the start.") }
-    static var homeMore: String { localized("Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project.") }
+    static var homeMore: String { localized("Reports shows where the space is. Settings (⌘,) holds the appearance and the links to the project.") }
     static var edit: String { localized("Edit") }
     static var editorName: String { localized("Name") }
     static var editorFolders: String { localized("Folders") }
@@ -117,6 +120,9 @@ enum Messages {
     static var analyzingDisk: String { localized("Analyzing disk…") }
     static var notAnalyzed: String { localized("Not analyzed yet") }
     static var byGroup: String { localized("Targets by group") }
+    static var byCategory: String { localized("By category") }
+    static var largestTargets: String { localized("Largest targets") }
+    static var exportCSV: String { localized("Export CSV") }
     static var found: String { localized("%@ found") }
     static var scanning: String { localized("Scanning…") }
     static var noTargetsFound: String { localized("No targets found") }
