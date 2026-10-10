@@ -18,8 +18,8 @@ import Testing
         text.components(separatedBy: "%").dropFirst().map { String($0.prefix(1)) }.filter { "@d".contains($0) }.sorted()
     }
 
-    @Test func eightLanguages() {
-        #expect(Localization.codes == ["ar", "de", "en", "es", "fr", "pt-BR", "ru", "tr"])
+    @Test func fourteenLanguages() {
+        #expect(Localization.codes == ["ar", "bn", "de", "en", "es", "fr", "hi", "ja", "ko", "pt-BR", "ru", "tr", "zh-Hans", "zh-Hant"])
         #expect(Localization.name(of: "en") == "English")
         #expect(Localization.name(of: "tr") == "Türkçe")
         #expect(Localization.name(of: "ar") == "العربية")
