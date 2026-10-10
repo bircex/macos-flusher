@@ -13,7 +13,7 @@ import Testing
     @Test func titles() {
         #expect(Page.home.title == "Home")
         #expect(Page.all.title == "All")
-        #expect(Page.audience(.everyone).title == "General")
+        #expect(Page.audience(.browsers).title == "Browsers")
         #expect(Page.audience(.developers).title == "Developers")
         #expect(Page.audience(.mine).title == "My targets")
         #expect(Page.charts.title == "Charts")

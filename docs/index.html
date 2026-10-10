@@ -183,7 +183,7 @@
           <span>Lines starting with $ are commands. Everything else is a folder.</span>
           <button class="button outline small" type="button" data-expand>Expand all</button>
         </div>
-        <h3 class="audience">General</h3>
+        <h3 class="audience">Browsers</h3>
         <div class="accordion">
           <details>
             <summary><span class="title">Web browsers</span><span class="count">3 targets</span><span class="hint">Chrome, Brave, Edge</span></summary>
@@ -193,22 +193,8 @@
               <li><span class="name">Edge cache</span><span class="removes"><span>~/Library/Caches/Microsoft Edge</span></span></li>
             </ul>
           </details>
-          <details>
-            <summary><span class="title">Music and video</span><span class="count">1 target</span><span class="hint">Spotify</span></summary>
-            <ul class="targets">
-              <li><span class="name">Spotify cache</span><span class="removes"><span>~/Library/Caches/com.spotify.client</span></span></li>
-            </ul>
-          </details>
-          <details>
-            <summary><span class="title">System</span><span class="count">3 targets</span><span class="hint">App updater leftovers, user logs, Trash</span></summary>
-            <ul class="targets">
-              <li><span class="name">App updater leftovers</span><span class="removes"><span>~/Library/Caches/*.ShipIt</span></span></li>
-              <li><span class="name">User logs</span><span class="removes"><span>~/Library/Logs</span></span><span class="state">Off by default, deleted for good</span></li>
-              <li><span class="name">Trash</span><span class="removes"><span>~/.Trash</span></span><span class="state">Off by default, deleted for good</span></li>
-            </ul>
-          </details>
         </div>
-        <h3 class="audience">Chat, mail and office</h3>
+        <h3 class="audience">Communication</h3>
         <div class="accordion">
           <details>
             <summary><span class="title">Chat and meetings</span><span class="count">1 target</span><span class="hint">Slack</span></summary>
@@ -217,7 +203,22 @@
             </ul>
           </details>
         </div>
-        <h3 class="audience">AI models</h3>
+        <h3 class="audience">Office and documents</h3>
+          <p class="audience-empty">More targets are coming in a future release.</p>
+        <h3 class="audience">Media</h3>
+        <div class="accordion">
+          <details>
+            <summary><span class="title">Music and video</span><span class="count">1 target</span><span class="hint">Spotify</span></summary>
+            <ul class="targets">
+              <li><span class="name">Spotify cache</span><span class="removes"><span>~/Library/Caches/com.spotify.client</span></span></li>
+            </ul>
+          </details>
+        </div>
+        <h3 class="audience">Design and photo</h3>
+          <p class="audience-empty">More targets are coming in a future release.</p>
+        <h3 class="audience">Games</h3>
+          <p class="audience-empty">More targets are coming in a future release.</p>
+        <h3 class="audience">AI</h3>
         <div class="accordion">
           <details>
             <summary><span class="title">Downloaded models</span><span class="count">3 targets</span><span class="hint">Hugging Face, PyTorch, Ollama</span></summary>
@@ -225,6 +226,17 @@
               <li><span class="name">Hugging Face hub</span><span class="removes"><span>~/.cache/huggingface</span></span><span class="state">Off by default, slow to get back</span></li>
               <li><span class="name">PyTorch hub</span><span class="removes"><span>~/.cache/torch</span></span><span class="state">Off by default, slow to get back</span></li>
               <li><span class="name">Ollama models</span><span class="removes"><span>~/.ollama/models</span></span><span class="state">Off by default, slow to get back</span></li>
+            </ul>
+          </details>
+        </div>
+        <h3 class="audience">System</h3>
+        <div class="accordion">
+          <details>
+            <summary><span class="title">System</span><span class="count">3 targets</span><span class="hint">App updater leftovers, user logs, Trash</span></summary>
+            <ul class="targets">
+              <li><span class="name">App updater leftovers</span><span class="removes"><span>~/Library/Caches/*.ShipIt</span></span></li>
+              <li><span class="name">User logs</span><span class="removes"><span>~/Library/Logs</span></span><span class="state">Off by default, deleted for good</span></li>
+              <li><span class="name">Trash</span><span class="removes"><span>~/.Trash</span></span><span class="state">Off by default, deleted for good</span></li>
             </ul>
           </details>
         </div>

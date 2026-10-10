@@ -6,9 +6,14 @@ enum FlushAction: Sendable {
 }
 
 enum Audience: String, CaseIterable, Identifiable, Sendable {
-    case everyone
+    case browsers
+    case communication
     case office
+    case media
+    case design
+    case games
     case ai
+    case system
     case developers
     case mine
 
@@ -70,26 +75,26 @@ private func dockerDF(_ type: String) -> String {
 
 enum Targets {
     static let groups: [TargetGroup] = [
-        TargetGroup(id: "web", name: "Web browsers", audience: .everyone, items: [
+        TargetGroup(id: "web", name: "Web browsers", audience: .browsers, items: [
             Target("chrome", "Chrome cache", ["~/Library/Caches/Google/Chrome"]),
             Target("brave", "Brave cache", ["~/Library/Caches/BraveSoftware"]),
             Target("edge", "Edge cache", ["~/Library/Caches/Microsoft Edge"]),
         ]),
-        TargetGroup(id: "media", name: "Music and video", audience: .everyone, items: [
-            Target("spotify", "Spotify cache", ["~/Library/Caches/com.spotify.client"]),
-        ]),
-        TargetGroup(id: "system", name: "System", audience: .everyone, items: [
-            Target("shipit", "App updater leftovers", ["~/Library/Caches/*.ShipIt"]),
-            Target("logs", "User logs", ["~/Library/Logs"], risk: .data),
-            Target("trash", "Trash", ["~/.Trash"], risk: .data),
-        ]),
-        TargetGroup(id: "chat", name: "Chat and meetings", audience: .office, items: [
+        TargetGroup(id: "chat", name: "Chat and meetings", audience: .communication, items: [
             Target("slack", "Slack cache", ["~/Library/Application Support/Slack/Cache", "~/Library/Application Support/Slack/Service Worker/CacheStorage"]),
+        ]),
+        TargetGroup(id: "media", name: "Music and video", audience: .media, items: [
+            Target("spotify", "Spotify cache", ["~/Library/Caches/com.spotify.client"]),
         ]),
         TargetGroup(id: "models", name: "Downloaded models", audience: .ai, items: [
             Target("huggingface", "Hugging Face hub", ["~/.cache/huggingface"], risk: .redownload),
             Target("torch", "PyTorch hub", ["~/.cache/torch"], risk: .redownload),
             Target("ollama", "Ollama models", ["~/.ollama/models"], risk: .redownload),
+        ]),
+        TargetGroup(id: "system", name: "System", audience: .system, items: [
+            Target("shipit", "App updater leftovers", ["~/Library/Caches/*.ShipIt"]),
+            Target("logs", "User logs", ["~/Library/Logs"], risk: .data),
+            Target("trash", "Trash", ["~/.Trash"], risk: .data),
         ]),
         TargetGroup(id: "js", name: "JavaScript / TypeScript", audience: .developers, items: [
             Target("npm", "npm cache", ["~/.npm/_cacache"], flush: .command("npm cache clean --force"), requires: "npm"),

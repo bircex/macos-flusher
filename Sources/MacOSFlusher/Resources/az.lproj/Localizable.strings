@@ -15,22 +15,23 @@
 "Add a folder or a command." = "Qovluq və ya əmr əlavə edin.";
 "Add target…" = "Hədəf əlavə et…";
 "Added by you" = "Sizin əlavə etdikləriniz";
-"AI models" = "Süni intellekt modelləri";
+"AI" = "Süni intellekt";
 "All" = "Hamısı";
 "Analyzing %d of %d" = "Təhlil edilir %d / %d";
 "Analyzing disk…" = "Disk təhlil edilir…";
 "Appearance" = "Görünüş";
 "Applications" = "Tətbiqlər";
+"Browsers" = "Brauzerlər";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "Keşlər lazım olduqda yenidən yaradılır.";
 "Cancel" = "Ləğv et";
 "Charts" = "Qrafiklər";
 "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "Qrafiklər yerin harada olduğunu göstərir. Ayarlar (⌘,) görünüşü və layihəyə keçidləri saxlayır.";
 "Chat and meetings" = "Söhbət və görüşlər";
-"Chat, mail and office" = "Söhbət, poçt və ofis";
 "Choose" = "Seç";
 "Choose folder…" = "Qovluq seç…";
 "Command" = "Əmr";
+"Communication" = "Ünsiyyət";
 "Containers & VMs" = "Konteynerlər və virtual maşınlar";
 "Dark" = "Tünd";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
@@ -39,6 +40,7 @@
 "Delete %@ across %@?" = "%@ (%@) silinsin?";
 "deleted for good" = "birdəfəlik silinir";
 "Deleted for good: " = "Birdəfəlik silinir: ";
+"Design and photo" = "Dizayn və foto";
 "Developers" = "Tərtibatçılar";
 "Development build" = "Tərtibat yığması";
 "Disk analysis finished." = "Disk təhlili bitdi.";
@@ -60,6 +62,7 @@
 "Free" = "Boş";
 "Freed %@" = "%@ boşaldıldı";
 "Freed %@." = "%@ boşaldıldı.";
+"Games" = "Oyunlar";
 "General" = "Ümumi";
 "Get your disk space back" = "Disk yerinizi geri alın";
 "GitHub repository" = "GitHub deposu";
@@ -79,6 +82,7 @@
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher bu qovluqların içindəki hər şeyi silir və əmri yazıldığı kimi icra edir. Heç nə Zibil qutusuna getmir və heç nə bərpa edilə bilməz. Bu hədəfin sildiklərinə görə məsuliyyət sizindir.";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher tətbiqlərinizin və alətlərinizin qoyub getdiyi keşləri və qalıqları tapır, diski nəyin doldurduğunu göstərir və seçdiklərinizi silir.";
 "Made by BirceX, Recep's AI assistant." = "Recep-in süni intellekt köməkçisi BirceX tərəfindən hazırlanıb.";
+"Media" = "Media";
 "MIT License" = "MIT lisenziyası";
 "Music and video" = "Musiqi və video";
 "My targets" = "Hədəflərim";
@@ -93,6 +97,7 @@
 "Not analyzed yet" = "Hələ təhlil edilməyib";
 "not installed" = "quraşdırılmayıb";
 "Nothing to clean here." = "Burada təmizləməyə heç nə yoxdur.";
+"Office and documents" = "Ofis və sənədlər";
 "One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "Hər sətirdə bir qovluq, Finder-in tərcümə olunmuş adları ilə deyil, Terminalın göstərdiyi adlarla. İçindəki hər şey silinir, qovluğun özü qalır.";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "Skanlar altında bir səhifə açın və silmək istədiklərinizi işarələyin. Özünü yenidən yaradan hədəflər əvvəlcədən işarələnib. Geri qaytarması yavaş və ya birdəfəlik silinir kimi işarələnmiş hədəflər işarəsiz başlayır.";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "İstəyə bağlı. zsh-də yazıldığı kimi icra edilir. Əmr olduqda qovluqlar yalnız ölçülür.";

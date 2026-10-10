@@ -15,22 +15,23 @@
 "Add a folder or a command." = "یک پوشه یا یک فرمان اضافه کنید.";
 "Add target…" = "افزودن هدف…";
 "Added by you" = "افزوده‌شده توسط شما";
-"AI models" = "مدل‌های هوش مصنوعی";
+"AI" = "هوش مصنوعی";
 "All" = "همه";
 "Analyzing %d of %d" = "در حال تحلیل %d از %d";
 "Analyzing disk…" = "در حال تحلیل دیسک…";
 "Appearance" = "ظاهر";
 "Applications" = "برنامه‌ها";
+"Browsers" = "مرورگرها";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "کش‌ها در صورت نیاز دوباره ساخته می‌شوند.";
 "Cancel" = "لغو";
 "Charts" = "نمودارها";
 "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "نمودارها نشان می‌دهد فضا کجا رفته است. تنظیمات (⌘,) ظاهر و پیوندهای پروژه را در خود دارد.";
 "Chat and meetings" = "گفت‌وگو و جلسات";
-"Chat, mail and office" = "گفت‌وگو، ایمیل و آفیس";
 "Choose" = "انتخاب";
 "Choose folder…" = "انتخاب پوشه…";
 "Command" = "فرمان";
+"Communication" = "ارتباطات";
 "Containers & VMs" = "کانتینرها و ماشین‌های مجازی";
 "Dark" = "تیره";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
@@ -39,6 +40,7 @@
 "Delete %@ across %@?" = "%@ (%@) حذف شود؟";
 "deleted for good" = "برای همیشه حذف می‌شود";
 "Deleted for good: " = "برای همیشه حذف می‌شود: ";
+"Design and photo" = "طراحی و عکس";
 "Developers" = "توسعه‌دهندگان";
 "Development build" = "نسخهٔ توسعه";
 "Disk analysis finished." = "تحلیل دیسک تمام شد.";
@@ -60,6 +62,7 @@
 "Free" = "آزاد";
 "Freed %@" = "%@ آزاد شد";
 "Freed %@." = "%@ آزاد شد.";
+"Games" = "بازی‌ها";
 "General" = "عمومی";
 "Get your disk space back" = "فضای دیسک خود را پس بگیرید";
 "GitHub repository" = "مخزن GitHub";
@@ -79,6 +82,7 @@
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher همهٔ محتوای این پوشه‌ها را حذف می‌کند و فرمان را دقیقاً همان‌طور که نوشته شده اجرا می‌کند. هیچ‌چیز به سطل زباله نمی‌رود و هیچ‌چیز قابل بازیابی نیست. مسئولیت آنچه این هدف حذف می‌کند با شماست.";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher کش‌ها و باقی‌مانده‌هایی را که برنامه‌ها و ابزارهایتان به جا می‌گذارند پیدا می‌کند، نشان می‌دهد چه چیزی دیسک را پر کرده و آنچه را انتخاب می‌کنید حذف می‌کند.";
 "Made by BirceX, Recep's AI assistant." = "ساخته‌شده توسط BirceX، دستیار هوش مصنوعی Recep.";
+"Media" = "رسانه";
 "MIT License" = "مجوز MIT";
 "Music and video" = "موسیقی و ویدیو";
 "My targets" = "اهداف من";
@@ -93,6 +97,7 @@
 "Not analyzed yet" = "هنوز تحلیل نشده";
 "not installed" = "نصب نشده";
 "Nothing to clean here." = "اینجا چیزی برای پاک‌سازی نیست.";
+"Office and documents" = "آفیس و اسناد";
 "One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "هر پوشه در یک خط، با نام‌هایی که ترمینال نشان می‌دهد، نه نام‌های ترجمه‌شدهٔ Finder. همهٔ محتوای داخل حذف می‌شود، خود پوشه می‌ماند.";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "صفحه‌ای را زیر اسکن‌ها باز کنید و آنچه را می‌خواهید حذف شود تیک بزنید. اهدافی که خودشان دوباره ساخته می‌شوند از ابتدا تیک دارند. اهدافی که با «بازگشت کُند» یا «برای همیشه حذف می‌شود» نشان‌گذاری شده‌اند بدون تیک شروع می‌شوند.";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "اختیاری. در zsh دقیقاً همان‌طور که نوشته شده اجرا می‌شود. با وجود فرمان، پوشه‌ها فقط اندازه‌گیری می‌شوند.";

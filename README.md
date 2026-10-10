@@ -29,19 +29,37 @@ Versions follow calendar versioning, `YYYY.M.PATCH`, for example `2026.9.0`. The
 
 ## What it covers
 
-### General
+### Browsers
 
 - Web browsers: Chrome, Brave, Edge
-- Music and video: Spotify
-- System: app updater leftovers, user logs, Trash
 
-### Chat, mail and office
+### Communication
 
 - Chat and meetings: Slack
 
-### AI models
+### Office and documents
+
+More targets are coming in a future release.
+
+### Media
+
+- Music and video: Spotify
+
+### Design and photo
+
+More targets are coming in a future release.
+
+### Games
+
+More targets are coming in a future release.
+
+### AI
 
 - Downloaded models: Hugging Face, PyTorch hub, Ollama
+
+### System
+
+- App updater leftovers, user logs, Trash
 
 ### Developers
 
