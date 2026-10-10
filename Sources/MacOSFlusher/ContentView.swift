@@ -57,6 +57,7 @@ struct ContentView: View {
                     Button(Messages.scan) { store.scan() }
                         .buttonStyle(.borderedProminent)
                         .tint(.blue)
+                        .controlSize(.large)
                 }
             }
         }
@@ -215,9 +216,11 @@ struct Footer: View {
             .buttonStyle(.plain)
             .foregroundStyle(.secondary)
             Spacer()
-            Link(Messages.credit, destination: Links.website)
-                .foregroundStyle(.secondary)
-                .fixedSize()
+            Link(destination: Links.repository) {
+                Text("© 2026 ") + Text(Messages.credit)
+            }
+            .foregroundStyle(.secondary)
+            .fixedSize()
         }
         .font(.caption)
         .padding(.horizontal)

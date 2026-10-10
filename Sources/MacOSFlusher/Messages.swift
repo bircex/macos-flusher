@@ -126,7 +126,6 @@ enum Messages {
     static var scanning: String { localized("Scanning…") }
     static var noTargetsFound: String { localized("No targets found") }
     static var scanStopped: String { localized("Scan stopped.") }
-    static var scanFinished: String { localized("Scan finished.") }
     static var analysisFinished: String { localized("Disk analysis finished.") }
     static let flushed = "Flushed %@"
     static var info: String { localized("INFO") }
@@ -136,7 +135,6 @@ enum Messages {
     static var category: String { localized("Category") }
     static var group: String { localized("Group") }
     static var size: String { localized("Size") }
-    static var scanned: String { localized("Scanned") }
 
     static func targets(_ count: Int) -> String {
         count == 1 ? localized("1 target") : String(format: localized("%d targets"), count)
