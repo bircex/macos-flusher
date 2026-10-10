@@ -16,6 +16,8 @@ struct MacOSFlusherApp: App {
             CommandGroup(after: .toolbar) {
                 Toggle(Messages.hideEmpty, isOn: $store.hideEmpty)
                 Divider()
+                Button(Messages.home) { store.page = .home }
+                    .keyboardShortcut("1")
                 Button(Messages.charts) { store.page = .charts }
                     .keyboardShortcut("2")
                 Button(Messages.activity) { store.page = .activity }

@@ -1,7 +1,7 @@
 import Foundation
 
 enum Messages {
-    static let everyone = "Everyone"
+    static let everyone = "General"
     static let office = "Chat, mail and office"
     static let ai = "AI models"
     static let developers = "Developers"
@@ -21,6 +21,9 @@ enum Messages {
     static let stop = "Stop"
     static let hideEmpty = "Hide empty"
     static let flushMenu = "Flush"
+    static let home = "Home"
+    static let all = "All"
+    static let scans = "Scans"
     static let charts = "Charts"
     static let activity = "Activity"
     static let nothingHere = "Nothing to clean here."
@@ -41,6 +44,18 @@ enum Messages {
     static let reportProblem = "Report a problem"
     static let license = "MIT License"
     static let noActivityYet = "No activity yet"
+
+    static let homeTitle = "Get your disk space back"
+    static let homeLead = "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose."
+    static let homeStepScan = "Scan"
+    static let homeStepScanText = "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush."
+    static let homeStepChoose = "Choose"
+    static let homeStepChooseText = "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked."
+    static let homeStepFlush = "Flush"
+    static let homeStepFlushText = "Press Flush selected (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Activity."
+    static let homeOwn = "Your own targets"
+    static let homeOwnText = "Add a folder or a command of your own with File, Add target (⌘N). They appear under My targets and are never ticked from the start."
+    static let homeMore = "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project."
     static let edit = "Edit"
     static let editorName = "Name"
     static let editorFolders = "Folders"

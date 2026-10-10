@@ -36,7 +36,7 @@ final class Store: ObservableObject {
     @Published private(set) var analysis: Progress?
     @Published private(set) var userTargets: [UserTarget] = []
     @Published var edited: UserTarget?
-    @Published var page = Page.audience(.everyone)
+    @Published var page = Page.home
     @Published var confirmFlush = false
 
     static let mine = "mine"

@@ -1,12 +1,16 @@
 import SwiftUI
 
 enum Page: Hashable {
+    case home
+    case all
     case audience(Audience)
     case charts
     case activity
 
     var title: String {
         switch self {
+        case .home: return Messages.home
+        case .all: return Messages.all
         case .audience(let audience): return audience.name
         case .charts: return Messages.charts
         case .activity: return Messages.activity
@@ -65,6 +69,8 @@ struct ContentView: View {
     @ViewBuilder
     private var page: some View {
         switch store.page {
+        case .home: HomePage()
+        case .all: AllPage()
         case .audience(let audience): TargetsPage(audience: audience)
         case .charts: ChartsPage()
         case .activity: ActivityPage()
@@ -81,18 +87,11 @@ struct Sidebar: View {
 
     var body: some View {
         List(selection: selection) {
-            Section {
+            Text(Messages.home).tag(Page.home)
+            Section(Messages.scans) {
+                row(Messages.all, bytes: store.measuredTotal).tag(Page.all)
                 ForEach(Audience.allCases) { audience in
-                    HStack {
-                        Text(audience.name)
-                        Spacer()
-                        if store.total(of: audience) > 0 {
-                            Text(Format.bytes(store.total(of: audience)))
-                                .font(.system(.caption, design: .monospaced))
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    .tag(Page.audience(audience))
+                    row(audience.name, bytes: store.total(of: audience)).tag(Page.audience(audience))
                 }
             }
             Section {
@@ -101,6 +100,83 @@ struct Sidebar: View {
             }
         }
         .listStyle(.sidebar)
+    }
+
+    private func row(_ name: String, bytes: Int64) -> some View {
+        HStack {
+            Text(name)
+            Spacer()
+            if bytes > 0 {
+                Text(Format.bytes(bytes))
+                    .font(.system(.caption, design: .monospaced))
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+}
+
+struct HomePage: View {
+    @EnvironmentObject var store: Store
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 22) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(Messages.homeTitle).font(.title.bold())
+                    Text(Messages.homeLead).foregroundStyle(.secondary)
+                }
+                step("1", Messages.homeStepScan, Messages.homeStepScanText)
+                step("2", Messages.homeStepChoose, Messages.homeStepChooseText)
+                step("3", Messages.homeStepFlush, Messages.homeStepFlushText)
+                step("+", Messages.homeOwn, Messages.homeOwnText)
+                Text(Messages.homeMore).foregroundStyle(.secondary)
+                HStack(spacing: 10) {
+                    Button(Messages.scan) { store.scan() }.disabled(store.busy)
+                    Button(Messages.all) { store.page = .all }
+                    Button(Messages.addTarget) { store.edited = UserTarget() }
+                }
+            }
+            .frame(maxWidth: 640, alignment: .leading)
+            .padding(28)
+            .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private func step(_ number: String, _ title: String, _ text: String) -> some View {
+        HStack(alignment: .top, spacing: 14) {
+            Text(number)
+                .font(.system(.title3, design: .monospaced).weight(.semibold))
+                .foregroundStyle(.secondary)
+                .frame(width: 22, alignment: .trailing)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title).font(.headline)
+                Text(text).foregroundStyle(.secondary)
+            }
+        }
+    }
+}
+
+struct AllPage: View {
+    @EnvironmentObject var store: Store
+
+    private func groups(of audience: Audience) -> [TargetGroup] {
+        store.groups.filter { $0.audience == audience && $0.items.contains(where: store.isVisible) }
+    }
+
+    var body: some View {
+        List {
+            ForEach(Audience.allCases) { audience in
+                let groups = groups(of: audience)
+                if !groups.isEmpty {
+                    Section(audience.name) {
+                        ForEach(groups) { group in
+                            GroupSection(group: group)
+                        }
+                    }
+                }
+            }
+        }
+        .listStyle(.inset)
     }
 }
 

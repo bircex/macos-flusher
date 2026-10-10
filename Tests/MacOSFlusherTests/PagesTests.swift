@@ -4,13 +4,16 @@ import Testing
 
 @MainActor
 @Suite struct PagesTests {
-    @Test func startsOnEveryone() throws {
+    @Test func startsOnHome() throws {
         let folder = try Folder()
         defer { folder.remove() }
-        #expect(folder.store().page == .audience(.everyone))
+        #expect(folder.store().page == .home)
     }
 
     @Test func titles() {
+        #expect(Page.home.title == "Home")
+        #expect(Page.all.title == "All")
+        #expect(Page.audience(.everyone).title == "General")
         #expect(Page.audience(.developers).title == "Developers")
         #expect(Page.audience(.mine).title == "My targets")
         #expect(Page.charts.title == "Charts")
