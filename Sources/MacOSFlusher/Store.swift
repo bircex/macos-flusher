@@ -36,6 +36,8 @@ final class Store: ObservableObject {
     @Published private(set) var analysis: Progress?
     @Published private(set) var userTargets: [UserTarget] = []
     @Published var edited: UserTarget?
+    @Published var page = Page.audience(.everyone)
+    @Published var confirmFlush = false
 
     static let mine = "mine"
 
@@ -129,6 +131,10 @@ final class Store: ObservableObject {
 
     var measuredTotal: Int64 {
         allItems.compactMap(size(of:)).reduce(0, +)
+    }
+
+    func total(of audience: Audience) -> Int64 {
+        groups.filter { $0.audience == audience }.flatMap(\.items).compactMap(size(of:)).reduce(0, +)
     }
 
     func total(of group: TargetGroup) -> Int64 {
