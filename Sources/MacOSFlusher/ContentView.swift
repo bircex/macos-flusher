@@ -6,6 +6,8 @@ enum Page: Hashable {
     case audience(Audience)
     case charts
     case activity
+    case settings
+    case about
 
     var title: String {
         switch self {
@@ -14,6 +16,8 @@ enum Page: Hashable {
         case .audience(let audience): return audience.name
         case .charts: return Messages.charts
         case .activity: return Messages.activity
+        case .settings: return Messages.settings
+        case .about: return Messages.about
         }
     }
 }
@@ -74,6 +78,8 @@ struct ContentView: View {
         case .audience(let audience): TargetsPage(audience: audience)
         case .charts: ChartsPage()
         case .activity: ActivityPage()
+        case .settings: SettingsPage()
+        case .about: AboutPage()
         }
     }
 }
@@ -97,6 +103,10 @@ struct Sidebar: View {
             Section {
                 Text(Messages.charts).tag(Page.charts)
                 Text(Messages.activity).tag(Page.activity)
+            }
+            Section {
+                Text(Messages.settings).tag(Page.settings)
+                Text(Messages.about).tag(Page.about)
             }
         }
         .listStyle(.sidebar)
@@ -230,6 +240,28 @@ struct ChartsPage: View {
 struct ActivityPage: View {
     var body: some View {
         LogView()
+    }
+}
+
+struct SettingsPage: View {
+    var body: some View {
+        ScrollView {
+            GeneralSettings()
+                .frame(maxWidth: 440)
+                .padding(8)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+struct AboutPage: View {
+    var body: some View {
+        ScrollView {
+            AboutSettings()
+                .frame(maxWidth: 520)
+                .padding(8)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
