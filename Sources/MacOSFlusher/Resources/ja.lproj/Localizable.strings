@@ -54,8 +54,8 @@
 "Flush selected" = "選択項目を掃除";
 "Flushed %@" = "%@ を掃除しました";
 "Folders" = "フォルダ";
-"Folders cannot contain \"..\"." = "フォルダに「..」は使えません。";
 "Folders cannot contain * or ?." = "フォルダに * や ? は使えません。";
+"Folders cannot contain \"..\"." = "フォルダに「..」は使えません。";
 "Free" = "空き";
 "Freed %@" = "%@ を解放";
 "Freed %@." = "%@ を解放しました。";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "アプリは起動時にすべてのターゲットを計測します。「スキャン」(⌘R) を押すと再計測します。上部の行には、現在の空き容量と掃除後の空き容量が表示されます。";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "このフォルダはホームフォルダの最上位に近すぎます。少なくとも 2 階層下、Library の中では 3 階層下のフォルダを選んでください。";
 "The folder must be inside your home folder." = "フォルダはホームフォルダの中にある必要があります。";
+"Theme" = "テーマ";
 "This folder holds the data of MacOS Flusher." = "このフォルダには MacOS Flusher のデータが入っています。";
 "Unselected" = "未選択";
 "Unselected targets" = "未選択のターゲット";

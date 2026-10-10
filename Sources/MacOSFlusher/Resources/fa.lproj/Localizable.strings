@@ -54,8 +54,8 @@
 "Flush selected" = "پاک‌سازی انتخاب‌شده‌ها";
 "Flushed %@" = "%@ پاک‌سازی شد";
 "Folders" = "پوشه‌ها";
-"Folders cannot contain \"..\"." = "پوشه‌ها نمی‌توانند شامل \"..\" باشند.";
 "Folders cannot contain * or ?." = "پوشه‌ها نمی‌توانند شامل * یا ? باشند.";
+"Folders cannot contain \"..\"." = "پوشه‌ها نمی‌توانند شامل \"..\" باشند.";
 "Free" = "آزاد";
 "Freed %@" = "%@ آزاد شد";
 "Freed %@." = "%@ آزاد شد.";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "برنامه هنگام باز شدن هر هدف را اندازه‌گیری می‌کند. برای اندازه‌گیری دوباره اسکن (⌘R) را بزنید. خط بالا فضای آزاد فعلی و فضای آزاد پس از پاک‌سازی را نشان می‌دهد.";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "پوشه به بالای پوشهٔ خانهٔ شما خیلی نزدیک است. پوشه‌ای دست‌کم دو سطح پایین‌تر انتخاب کنید، داخل Library سه سطح.";
 "The folder must be inside your home folder." = "پوشه باید داخل پوشهٔ خانهٔ شما باشد.";
+"Theme" = "پوسته";
 "This folder holds the data of MacOS Flusher." = "این پوشه داده‌های MacOS Flusher را نگه می‌دارد.";
 "Unselected" = "انتخاب‌نشده";
 "Unselected targets" = "اهداف انتخاب‌نشده";

@@ -54,8 +54,8 @@
 "Flush selected" = "تنظيف المحدد";
 "Flushed %@" = "تم تنظيف %@";
 "Folders" = "المجلدات";
-"Folders cannot contain \"..\"." = "لا يمكن أن تحتوي المجلدات على \"..\".";
 "Folders cannot contain * or ?." = "لا يمكن أن تحتوي المجلدات على * أو ?.";
+"Folders cannot contain \"..\"." = "لا يمكن أن تحتوي المجلدات على \"..\".";
 "Free" = "حرة";
 "Freed %@" = "تم تحرير %@";
 "Freed %@." = "تم تحرير %@.";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "يقيس التطبيق كل هدف عند فتحه. اضغط فحص (⌘R) للقياس مجددًا. يعرض السطر العلوي المساحة الحرة الآن وما ستكون عليه بعد التنظيف.";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "المجلد قريب جدًا من أعلى مجلد المنزل. اختر مجلدًا بعمق مستويين على الأقل، وثلاثة مستويات داخل Library.";
 "The folder must be inside your home folder." = "يجب أن يكون المجلد داخل مجلد المنزل الخاص بك.";
+"Theme" = "السمة";
 "This folder holds the data of MacOS Flusher." = "يحتوي هذا المجلد على بيانات MacOS Flusher.";
 "Unselected" = "غير محدد";
 "Unselected targets" = "أهداف غير محددة";

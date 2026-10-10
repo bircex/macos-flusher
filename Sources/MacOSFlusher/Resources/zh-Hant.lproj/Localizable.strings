@@ -54,8 +54,8 @@
 "Flush selected" = "清理所選";
 "Flushed %@" = "已清理 %@";
 "Folders" = "資料夾";
-"Folders cannot contain \"..\"." = "資料夾路徑不能包含「..」。";
 "Folders cannot contain * or ?." = "資料夾路徑不能包含 * 或 ?。";
+"Folders cannot contain \"..\"." = "資料夾路徑不能包含「..」。";
 "Free" = "可用";
 "Freed %@" = "已釋放 %@";
 "Freed %@." = "已釋放 %@。";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "App 開啟時會測量每個目標。按「掃描」(⌘R) 重新測量。最上方一行顯示目前的可用空間以及清理後的可用空間。";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "該資料夾離個人資料夾的頂層太近。請選擇至少兩層深的資料夾，在 Library 內則需三層。";
 "The folder must be inside your home folder." = "資料夾必須位於你的個人資料夾內。";
+"Theme" = "主題";
 "This folder holds the data of MacOS Flusher." = "此資料夾存放 MacOS Flusher 的資料。";
 "Unselected" = "未選";
 "Unselected targets" = "未選目標";

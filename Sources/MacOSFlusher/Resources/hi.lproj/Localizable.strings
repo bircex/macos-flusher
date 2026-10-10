@@ -54,8 +54,8 @@
 "Flush selected" = "चुने हुए साफ़ करें";
 "Flushed %@" = "%@ साफ़ हुआ";
 "Folders" = "फ़ोल्डर";
-"Folders cannot contain \"..\"." = "फ़ोल्डर में \"..\" नहीं हो सकता।";
 "Folders cannot contain * or ?." = "फ़ोल्डर में * या ? नहीं हो सकता।";
+"Folders cannot contain \"..\"." = "फ़ोल्डर में \"..\" नहीं हो सकता।";
 "Free" = "खाली";
 "Freed %@" = "%@ खाली हुआ";
 "Freed %@." = "%@ खाली हुआ।";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "ऐप खुलते ही हर लक्ष्य को मापता है। फिर से मापने के लिए स्कैन (⌘R) दबाएँ। ऊपर की पंक्ति अभी की खाली जगह और सफ़ाई के बाद की खाली जगह दिखाती है।";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "फ़ोल्डर आपके होम फ़ोल्डर के शीर्ष के बहुत पास है। कम से कम दो स्तर गहरा फ़ोल्डर चुनें, Library के अंदर तीन।";
 "The folder must be inside your home folder." = "फ़ोल्डर आपके होम फ़ोल्डर के अंदर होना चाहिए।";
+"Theme" = "थीम";
 "This folder holds the data of MacOS Flusher." = "इस फ़ोल्डर में MacOS Flusher का डेटा है।";
 "Unselected" = "नहीं चुने हुए";
 "Unselected targets" = "नहीं चुने हुए लक्ष्य";

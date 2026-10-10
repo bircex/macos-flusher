@@ -54,8 +54,8 @@
 "Flush selected" = "Seçilənləri təmizlə";
 "Flushed %@" = "%@ təmizləndi";
 "Folders" = "Qovluqlar";
-"Folders cannot contain \"..\"." = "Qovluqlarda \"..\" ola bilməz.";
 "Folders cannot contain * or ?." = "Qovluqlarda * və ya ? ola bilməz.";
+"Folders cannot contain \"..\"." = "Qovluqlarda \"..\" ola bilməz.";
 "Free" = "Boş";
 "Freed %@" = "%@ boşaldıldı";
 "Freed %@." = "%@ boşaldıldı.";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "Tətbiq açılanda hər hədəfi ölçür. Yenidən ölçmək üçün Skan et (⌘R) düyməsini basın. Yuxarıdakı sətir indiki boş yeri və təmizləmədən sonra olacaq boş yeri göstərir.";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "Qovluq ev qovluğunuzun yuxarısına çox yaxındır. Ən azı iki səviyyə dərində olanı seçin, Library içində üç.";
 "The folder must be inside your home folder." = "Qovluq ev qovluğunuzun içində olmalıdır.";
+"Theme" = "Tema";
 "This folder holds the data of MacOS Flusher." = "Bu qovluq MacOS Flusher-in məlumatlarını saxlayır.";
 "Unselected" = "Seçilməyib";
 "Unselected targets" = "Seçilməmiş hədəflər";

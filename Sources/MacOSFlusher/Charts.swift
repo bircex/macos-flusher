@@ -1,25 +1,48 @@
 import SwiftUI
 import AppKit
 
-enum Palette {
-    static let blue = (light: 0x1A5CFF, dark: 0x57A3F8)
-    static let green = (light: 0x388A34, dark: 0x86CF86)
-    static let yellow = (light: 0x667309, dark: 0xE0B97F)
-    static let red = (light: 0xAD0707, dark: 0xEF8773)
+struct Theme: Identifiable {
+    typealias Pair = (light: Int, dark: Int)
 
-    static let otherData = dynamic(blue)
-    static let selected = dynamic(green)
-    static let unselected = dynamic(yellow)
-    static let warning = dynamic(red)
-    static let free = Color.secondary.opacity(0.25)
+    let id: String
+    let name: String
+    let blue: Pair
+    let green: Pair
+    let yellow: Pair
+    let red: Pair
 
-    private static func dynamic(_ pair: (light: Int, dark: Int)) -> Color {
-        dynamic(light: pair.light, dark: pair.dark)
+    static let key = "theme"
+
+    static let code2026 = Theme(
+        id: "code-2026",
+        name: "Code 2026",
+        blue: (light: 0x1A5CFF, dark: 0x57A3F8),
+        green: (light: 0x388A34, dark: 0x86CF86),
+        yellow: (light: 0x667309, dark: 0xE0B97F),
+        red: (light: 0xAD0707, dark: 0xEF8773)
+    )
+
+    static let all = [code2026]
+
+    static var stored: Theme {
+        theme(id: UserDefaults.standard.string(forKey: key) ?? "")
     }
 
-    private static func dynamic(light: Int, dark: Int) -> Color {
+    static func theme(id: String) -> Theme {
+        all.first { $0.id == id } ?? code2026
+    }
+}
+
+enum Palette {
+    static var otherData: Color { dynamic(Theme.stored.blue) }
+    static var selected: Color { dynamic(Theme.stored.green) }
+    static var unselected: Color { dynamic(Theme.stored.yellow) }
+    static var warning: Color { dynamic(Theme.stored.red) }
+    static let free = Color.secondary.opacity(0.25)
+
+    private static func dynamic(_ pair: Theme.Pair) -> Color {
         Color(nsColor: NSColor(name: nil) { appearance in
-            let hex = appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? dark : light
+            let hex = appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? pair.dark : pair.light
             return NSColor(
                 srgbRed: CGFloat((hex >> 16) & 0xff) / 255,
                 green: CGFloat((hex >> 8) & 0xff) / 255,

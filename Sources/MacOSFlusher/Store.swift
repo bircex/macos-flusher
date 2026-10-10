@@ -46,6 +46,9 @@ final class Store: ObservableObject {
     @Published var language = Localization.selected {
         didSet { UserDefaults.standard.set(language, forKey: Localization.key) }
     }
+    @Published var theme = Theme.stored.id {
+        didSet { UserDefaults.standard.set(theme, forKey: Theme.key) }
+    }
 
     static let mine = "mine"
 

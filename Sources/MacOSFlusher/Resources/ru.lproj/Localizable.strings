@@ -54,8 +54,8 @@
 "Flush selected" = "Очистить выбранное";
 "Flushed %@" = "Очищено: %@";
 "Folders" = "Папки";
-"Folders cannot contain \"..\"." = "Папки не могут содержать \"..\".";
 "Folders cannot contain * or ?." = "Папки не могут содержать * или ?.";
+"Folders cannot contain \"..\"." = "Папки не могут содержать \"..\".";
 "Free" = "Свободно";
 "Freed %@" = "Освобождено %@";
 "Freed %@." = "Освобождено %@.";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "При открытии программа измеряет каждую цель. Нажмите Сканировать (⌘R), чтобы измерить заново. Строка вверху показывает свободное место сейчас и после очистки.";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "Папка слишком близко к верхнему уровню домашней папки. Выберите папку глубиной не менее двух уровней, внутри Library трёх.";
 "The folder must be inside your home folder." = "Папка должна находиться в вашей домашней папке.";
+"Theme" = "Тема";
 "This folder holds the data of MacOS Flusher." = "В этой папке хранятся данные MacOS Flusher.";
 "Unselected" = "Не выбрано";
 "Unselected targets" = "Невыбранные цели";

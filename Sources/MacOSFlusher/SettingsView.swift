@@ -79,6 +79,11 @@ struct GeneralSettings: View {
             .onChange(of: appearance) { value in
                 (Appearance(rawValue: value) ?? .system).apply()
             }
+            Picker(Messages.theme, selection: $store.theme) {
+                ForEach(Theme.all) { theme in
+                    Text(theme.name).tag(theme.id)
+                }
+            }
             Picker(Messages.language, selection: $store.language) {
                 Text(Messages.appearanceSystem).tag(Localization.system)
                 ForEach(Localization.codes, id: \.self) { code in
