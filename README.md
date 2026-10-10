@@ -2,7 +2,7 @@
 
 A small native macOS app that finds and deletes developer caches: package manager and build caches for most programming languages, Docker leftovers, IDE and tool caches, app updater leftovers.
 
-Pick the targets, see how much each one takes, press Flush. The disk bar shows how full the disk is now and how much will be free after the flush.
+Pick the targets, see how much each one takes, press Flush. The disk line shows how full the disk is now and how much will be free after the flush. The Home page in the app explains the three steps.
 
 ## Install
 
@@ -29,7 +29,7 @@ Versions follow calendar versioning, `YYYY.M.PATCH`, for example `2026.9.0`. The
 
 ## What it covers
 
-### Everyone
+### General
 
 - Web browsers: Chrome, Brave, Edge
 - Music and video: Spotify
