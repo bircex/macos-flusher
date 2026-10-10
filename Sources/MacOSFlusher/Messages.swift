@@ -1,85 +1,122 @@
 import Foundation
 
 enum Messages {
-    static let everyone = "General"
-    static let office = "Chat, mail and office"
-    static let ai = "AI models"
-    static let developers = "Developers"
-    static let mine = "My targets"
-    static let addedByYou = "Added by you"
+    static var everyone: String { localized("General") }
+    static var office: String { localized("Chat, mail and office") }
+    static var ai: String { localized("AI models") }
+    static var developers: String { localized("Developers") }
+    static var mine: String { localized("My targets") }
+    static var addedByYou: String { localized("Added by you") }
 
-    static let slowToGetBack = "slow to get back"
-    static let deletedForGood = "deleted for good"
+    static var slowToGetBack: String { localized("slow to get back") }
+    static var deletedForGood: String { localized("deleted for good") }
 
-    static let rebuiltOnDemand = "Caches are rebuilt on demand."
-    static let slowToGetBackList = "Slow to get back: "
-    static let deletedForGoodList = "Deleted for good: "
-    static let neverTouched = "Named Docker volumes and project files are never touched."
+    static var rebuiltOnDemand: String { localized("Caches are rebuilt on demand.") }
+    static var slowToGetBackList: String { localized("Slow to get back: ") }
+    static var deletedForGoodList: String { localized("Deleted for good: ") }
+    static var neverTouched: String { localized("Named Docker volumes and project files are never touched.") }
 
-    static let scan = "Scan"
-    static let flushSelected = "Flush selected"
-    static let stop = "Stop"
-    static let hideEmpty = "Hide empty"
-    static let flushMenu = "Flush"
-    static let home = "Home"
-    static let all = "All"
-    static let scans = "Scans"
-    static let charts = "Charts"
-    static let activity = "Activity"
-    static let nothingHere = "Nothing to clean here."
-    static let noOwnTargets = "No targets of your own yet."
-    static let addTarget = "Add target…"
-    static let appName = "MacOS Flusher"
-    static let settings = "Settings"
-    static let general = "General"
-    static let about = "About"
-    static let appearance = "Appearance"
-    static let appearanceSystem = "System"
-    static let appearanceLight = "Light"
-    static let appearanceDark = "Dark"
-    static let version = "Version"
-    static let developmentBuild = "Development build"
-    static let credit = "Made by BirceX, Recep's AI assistant."
-    static let repository = "GitHub repository"
-    static let website = "Website"
-    static let reportProblem = "Report a problem"
-    static let license = "MIT License"
-    static let noActivityYet = "No activity yet"
+    static var scan: String { localized("Scan") }
+    static var flushSelected: String { localized("Flush selected") }
+    static var stop: String { localized("Stop") }
+    static var hideEmpty: String { localized("Hide empty") }
+    static var flushMenu: String { localized("Flush") }
+    static var home: String { localized("Home") }
+    static var all: String { localized("All") }
+    static var scans: String { localized("Scans") }
+    static var charts: String { localized("Charts") }
+    static var activity: String { localized("Activity") }
+    static var nothingHere: String { localized("Nothing to clean here.") }
+    static var noOwnTargets: String { localized("No targets of your own yet.") }
+    static var addTarget: String { localized("Add target…") }
+    static var appName: String { localized("MacOS Flusher") }
+    static var settings: String { localized("Settings") }
+    static var general: String { localized("General") }
+    static var about: String { localized("About") }
+    static var appearance: String { localized("Appearance") }
+    static var appearanceSystem: String { localized("System") }
+    static var appearanceLight: String { localized("Light") }
+    static var appearanceDark: String { localized("Dark") }
+    static var version: String { localized("Version") }
+    static var developmentBuild: String { localized("Development build") }
+    static var credit: String { localized("Made by BirceX, Recep's AI assistant.") }
+    static var repository: String { localized("GitHub repository") }
+    static var website: String { localized("Website") }
+    static var reportProblem: String { localized("Report a problem") }
+    static var license: String { localized("MIT License") }
+    static var noActivityYet: String { localized("No activity yet") }
 
-    static let homeTitle = "Get your disk space back"
-    static let homeLead = "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose."
-    static let homeStepScan = "Scan"
-    static let homeStepScanText = "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush."
-    static let homeStepChoose = "Choose"
-    static let homeStepChooseText = "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked."
-    static let homeStepFlush = "Flush"
-    static let homeStepFlushText = "Press Flush selected (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Activity."
-    static let homeOwn = "Your own targets"
-    static let homeOwnText = "Add a folder or a command of your own with File, Add target (⌘N). They appear under My targets and are never ticked from the start."
-    static let homeMore = "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project."
-    static let edit = "Edit"
-    static let editorName = "Name"
-    static let editorFolders = "Folders"
-    static let editorFoldersHint = "One folder per line. Everything inside is deleted, the folder itself stays."
-    static let editorCommand = "Command"
-    static let editorCommandHint = "Optional. Runs in zsh exactly as written. With a command, the folders are only measured."
-    static let chooseFolder = "Choose folder…"
-    static let responsibility = "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes."
-    static let understood = "I understand and take responsibility"
+    static var homeTitle: String { localized("Get your disk space back") }
+    static var homeLead: String { localized("MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose.") }
+    static var homeStepScanText: String { localized("The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush.") }
+    static var homeStepChooseText: String { localized("Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked.") }
+    static var homeStepFlushText: String { localized("Press Flush selected (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Activity.") }
+    static var homeOwn: String { localized("Your own targets") }
+    static var homeOwnText: String { localized("Add a folder or a command of your own with File, Add target (⌘N). They appear under My targets and are never ticked from the start.") }
+    static var homeMore: String { localized("Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project.") }
+    static var edit: String { localized("Edit") }
+    static var editorName: String { localized("Name") }
+    static var editorFolders: String { localized("Folders") }
+    static var editorFoldersHint: String { localized("One folder per line. Everything inside is deleted, the folder itself stays.") }
+    static var editorCommand: String { localized("Command") }
+    static var editorCommandHint: String { localized("Optional. Runs in zsh exactly as written. With a command, the folders are only measured.") }
+    static var chooseFolder: String { localized("Choose folder…") }
+    static var responsibility: String { localized("MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes.") }
+    static var understood: String { localized("I understand and take responsibility") }
 
-    static let nameMissing = "Give the target a name."
-    static let nothingToClean = "Add a folder or a command."
-    static let notAPath = "Start the folder with ~/ or /."
-    static let noWildcards = "Folders cannot contain * or ?."
-    static let noParent = "Folders cannot contain \"..\"."
-    static let outsideHome = "The folder must be inside your home folder."
-    static let tooShallow = "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three."
-    static let ownData = "This folder holds the data of MacOS Flusher."
-    static let storageBroken = "My targets could not be read. The file was kept as "
-    static let storageFailed = "My targets could not be saved: "
+    static var nameMissing: String { localized("Give the target a name.") }
+    static var nothingToClean: String { localized("Add a folder or a command.") }
+    static var notAPath: String { localized("Start the folder with ~/ or /.") }
+    static var noWildcards: String { localized("Folders cannot contain * or ?.") }
+    static var noParent: String { localized("Folders cannot contain \"..\".") }
+    static var outsideHome: String { localized("The folder must be inside your home folder.") }
+    static var tooShallow: String { localized("The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three.") }
+    static var ownData: String { localized("This folder holds the data of MacOS Flusher.") }
+    static var storageBroken: String { localized("My targets could not be read. The file was kept as ") }
+    static var storageFailed: String { localized("My targets could not be saved: ") }
+
+    static var language: String { localized("Language") }
+    static var cancel: String { localized("Cancel") }
+    static var delete: String { localized("Delete") }
+    static var save: String { localized("Save") }
+    static var all_: String { localized("All") }
+    static var none: String { localized("None") }
+    static var notInstalled: String { localized("not installed") }
+    static var empty: String { localized("empty") }
+    static var activityLog: String { localized("Activity log") }
+    static var used: String { localized("used") }
+    static var freeOf: String { localized("%@ free of %@") }
+    static var selectedIn: String { localized("%@ selected in %@, %@ free after flush") }
+    static var freed: String { localized("Freed %@") }
+    static var freedLine: String { localized("Freed %@.") }
+    static var progressOf: String { localized("%d of %d") }
+    static var deleteAcross: String { localized("Delete %@ across %@?") }
+    static var otherData: String { localized("Other data") }
+    static var unselected: String { localized("Unselected") }
+    static var selected: String { localized("Selected") }
+    static var unselectedTargets: String { localized("Unselected targets") }
+    static var selectedTargets: String { localized("Selected targets") }
+    static var free: String { localized("Free") }
+    static var ofDisk: String { localized("%@ of disk") }
+    static var analyzingOf: String { localized("Analyzing %d of %d") }
+    static var usedAmount: String { localized("%@ used") }
+    static var byLocation: String { localized("Disk usage by location") }
+    static var analyzingDisk: String { localized("Analyzing disk…") }
+    static var notAnalyzed: String { localized("Not analyzed yet") }
+    static var byGroup: String { localized("Targets by group") }
+    static var found: String { localized("%@ found") }
+    static var scanning: String { localized("Scanning…") }
+    static var noTargetsFound: String { localized("No targets found") }
+    static var scanStopped: String { localized("Scan stopped.") }
+    static var scanFinished: String { localized("Scan finished.") }
+    static var analysisFinished: String { localized("Disk analysis finished.") }
+    static var flushed: String { localized("Flushed %@") }
+    static var info: String { localized("INFO") }
+    static var error: String { localized("ERROR") }
+    static var choose: String { localized("Choose") }
 
     static func targets(_ count: Int) -> String {
-        count == 1 ? "1 target" : "\(count) targets"
+        count == 1 ? localized("1 target") : String(format: localized("%d targets"), count)
     }
 }
 

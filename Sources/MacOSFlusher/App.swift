@@ -36,7 +36,7 @@ struct MacOSFlusherApp: App {
             }
         }
         Settings {
-            SettingsView().environmentObject(store)
+            SettingsView().environmentObject(store).id(store.language)
         }
     }
 }

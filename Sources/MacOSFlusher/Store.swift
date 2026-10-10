@@ -38,6 +38,9 @@ final class Store: ObservableObject {
     @Published var edited: UserTarget?
     @Published var page = Page.home
     @Published var confirmFlush = false
+    @Published var language = Localization.selected {
+        didSet { UserDefaults.standard.set(language, forKey: Localization.key) }
+    }
 
     static let mine = "mine"
 
@@ -175,7 +178,7 @@ final class Store: ObservableObject {
         guard !busy else { return }
         busy = true
         lastFreed = nil
-        append("Scanning…")
+        append(Messages.scanning)
         current?.cancel()
         current = Task { [weak self] in
             await self?.runScan()
@@ -205,7 +208,7 @@ final class Store: ObservableObject {
         refreshDisk()
         await measure(allItems)
         refreshDisk()
-        append(Task.isCancelled ? "Scan stopped." : "Scan finished.")
+        append(Task.isCancelled ? Messages.scanStopped : Messages.scanFinished)
     }
 
     func measure(_ items: [Target]) async {
@@ -235,7 +238,7 @@ final class Store: ObservableObject {
 
     private func runFlush() async {
         lastFreed = await clean(flushTargets).freed
-        append("Freed \(Format.bytes(lastFreed ?? 0)).")
+        append(String(format: Messages.freedLine, Format.bytes(lastFreed ?? 0)))
     }
 
     func clean(_ items: [Target]) async -> [ItemResult] {
@@ -269,7 +272,7 @@ final class Store: ObservableObject {
             apply(measurement, to: item.id)
             let message = outcome.output.trimmingCharacters(in: .whitespacesAndNewlines)
             if outcome.status == 0 {
-                append("Flushed \(item.name)")
+                append(String(format: Messages.flushed, item.name))
             } else {
                 append("\(item.name): \(message)", level: .error)
             }
@@ -324,7 +327,7 @@ final class Store: ObservableObject {
         }
         analysis = nil
         refreshDisk()
-        append("Disk analysis finished.")
+        append(Messages.analysisFinished)
     }
 
     private func append(_ message: String, level: LogLevel = .info) {

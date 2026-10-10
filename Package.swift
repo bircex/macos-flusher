@@ -11,6 +11,7 @@ let package = Package(
         .executableTarget(
             name: "MacOSFlusher",
             path: "Sources/MacOSFlusher",
+            exclude: ["Resources"],
             swiftSettings: [.unsafeFlags(["-swift-version", "5"])]
         ),
         .testTarget(

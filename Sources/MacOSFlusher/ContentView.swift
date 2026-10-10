@@ -28,7 +28,7 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView {
             Sidebar()
-                .navigationSplitViewColumnWidth(min: 180, ideal: 210, max: 280)
+                .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 320)
         } detail: {
             VStack(spacing: 0) {
                 DiskLine()
@@ -52,18 +52,20 @@ struct ContentView: View {
         }
         .frame(minWidth: 900, minHeight: 600)
         .confirmationDialog(
-            "Delete \(Format.bytes(store.selectedTotal)) across \(Messages.targets(store.selectedCount))?",
+            String(format: Messages.deleteAcross, Format.bytes(store.selectedTotal), Messages.targets(store.selectedCount)),
             isPresented: $store.confirmFlush,
             titleVisibility: .visible
         ) {
-            Button("Flush", role: .destructive) { store.flush() }
-            Button("Cancel", role: .cancel) {}
+            Button(Messages.flushMenu, role: .destructive) { store.flush() }
+            Button(Messages.cancel, role: .cancel) {}
         } message: {
             Text(store.flushTargets.warning)
         }
         .sheet(item: $store.edited) { target in
             TargetEditor(target: target)
         }
+        .environment(\.layoutDirection, Localization.isRightToLeft ? .rightToLeft : .leftToRight)
+        .id(store.language)
         .onAppear {
             Appearance.stored.apply()
             store.scan()
@@ -135,9 +137,9 @@ struct HomePage: View {
                     Text(Messages.homeTitle).font(.title.bold())
                     Text(Messages.homeLead).foregroundStyle(.secondary)
                 }
-                step("1", Messages.homeStepScan, Messages.homeStepScanText)
-                step("2", Messages.homeStepChoose, Messages.homeStepChooseText)
-                step("3", Messages.homeStepFlush, Messages.homeStepFlushText)
+                step("1", Messages.scan, Messages.homeStepScanText)
+                step("2", Messages.choose, Messages.homeStepChooseText)
+                step("3", Messages.flushMenu, Messages.homeStepFlushText)
                 step("+", Messages.homeOwn, Messages.homeOwnText)
                 Text(Messages.homeMore).foregroundStyle(.secondary)
                 HStack(spacing: 10) {
@@ -305,7 +307,7 @@ struct DiskLine: View {
         HStack(spacing: 14) {
             if let disk = store.disk {
                 let expected = max(0, disk.usedFraction - Double(store.selectedTotal) / Double(max(disk.total, 1)))
-                Text("\(Format.bytes(disk.free)) free of \(Format.bytes(disk.total))")
+                Text(String(format: Messages.freeOf, Format.bytes(disk.free), Format.bytes(disk.total)))
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .fixedSize()
@@ -318,13 +320,13 @@ struct DiskLine: View {
                         : Format.percent(disk.usedFraction)
                 )
                 if let after = store.expectedFreeAfterFlush, store.selectedTotal > 0 {
-                    Text("\(Format.bytes(store.selectedTotal)) selected in \(Messages.targets(store.selectedCount)), \(Format.bytes(after)) free after flush")
+                    Text(String(format: Messages.selectedIn, Format.bytes(store.selectedTotal), Messages.targets(store.selectedCount), Format.bytes(after)))
                         .font(.callout.weight(.medium))
                         .foregroundStyle(Palette.selected)
                         .fixedSize()
                 }
                 if let freed = store.lastFreed {
-                    Text("Freed \(Format.bytes(freed))")
+                    Text(String(format: Messages.freed, Format.bytes(freed)))
                         .font(.callout.weight(.medium))
                         .foregroundStyle(Palette.selected)
                         .fixedSize()
@@ -333,7 +335,7 @@ struct DiskLine: View {
             if let progress = store.progress {
                 ProgressView(value: progress.fraction)
                     .frame(width: 90)
-                Text("\(progress.done) of \(progress.total)")
+                Text(String(format: Messages.progressOf, progress.done, progress.total))
                     .font(.system(.caption, design: .monospaced))
                     .foregroundStyle(.secondary)
                     .fixedSize()
@@ -398,13 +400,13 @@ struct GroupSection: View {
                 }
             } label: {
                 HStack {
-                    Text(group.name).font(.headline)
+                    Text(localized(group.name)).font(.headline)
                     Spacer()
                     Text(Format.bytes(store.total(of: group)))
                         .font(.system(.callout, design: .monospaced))
                         .foregroundStyle(.secondary)
-                    Button("All") { store.setGroup(group, on: true) }
-                    Button("None") { store.setGroup(group, on: false) }
+                    Button(Messages.all_) { store.setGroup(group, on: true) }
+                    Button(Messages.none) { store.setGroup(group, on: false) }
                 }
                 .buttonStyle(.link)
                 .font(.caption)
@@ -465,11 +467,11 @@ struct ItemRow: View {
         case .unknown:
             Text("–").foregroundStyle(.secondary)
         case .unavailable:
-            Text("not installed").font(.caption).foregroundStyle(.secondary)
+            Text(Messages.notInstalled).font(.caption).foregroundStyle(.secondary)
         case .scanning:
             ProgressView().controlSize(.mini)
         case .measured(let bytes):
-            Text(bytes == 0 ? "empty" : Format.bytes(bytes))
+            Text(bytes == 0 ? Messages.empty : Format.bytes(bytes))
                 .font(.system(.body, design: .monospaced))
                 .foregroundStyle(bytes == 0 ? .secondary : .primary)
         }
@@ -479,8 +481,8 @@ struct ItemRow: View {
 extension LogLevel {
     var label: String {
         switch self {
-        case .info: return "INFO"
-        case .error: return "ERROR"
+        case .info: return Messages.info
+        case .error: return Messages.error
         }
     }
 
@@ -534,7 +536,7 @@ struct LogView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 12) {
-                Text("Activity log")
+                Text(Messages.activityLog)
                     .font(.callout.weight(.semibold))
                 Spacer()
                 ForEach([LogLevel.info, .error], id: \.self) { level in

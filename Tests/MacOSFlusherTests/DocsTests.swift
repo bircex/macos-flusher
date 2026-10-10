@@ -89,6 +89,12 @@ import Testing
         #expect(site.contains(Messages.credit))
     }
 
+    @Test func siteNamesEveryLanguage() {
+        for code in Localization.codes {
+            #expect(site.contains(Localization.name(of: code)), "\(code)")
+        }
+    }
+
     @Test func siteNamesEveryAudienceInOrder() {
         let headings = site.components(separatedBy: "<h3 class=\"audience\">").dropFirst().map {
             $0.components(separatedBy: "</h3>")[0]

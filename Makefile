@@ -29,6 +29,7 @@ ifneq ($(VERSION),)
 endif
 	mkdir -p "$(BUNDLE)/Contents/Resources"
 	cp Resources/AppIcon.icns "$(BUNDLE)/Contents/Resources/AppIcon.icns"
+	cp -R Sources/MacOSFlusher/Resources/*.lproj "$(BUNDLE)/Contents/Resources/"
 	codesign --force --sign - "$(BUNDLE)"
 
 package: bundle
