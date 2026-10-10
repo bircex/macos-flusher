@@ -54,8 +54,8 @@
 "Flush selected" = "پاککردنەوەی هەڵبژێردراوەکان";
 "Flushed %@" = "%@ پاک کرایەوە";
 "Folders" = "فۆڵدەرەکان";
-"Folders cannot contain \"..\"." = "فۆڵدەرەکان ناتوانن \"..\" لەخۆ بگرن.";
 "Folders cannot contain * or ?." = "فۆڵدەرەکان ناتوانن * یان ? لەخۆ بگرن.";
+"Folders cannot contain \"..\"." = "فۆڵدەرەکان ناتوانن \"..\" لەخۆ بگرن.";
 "Free" = "بەتاڵ";
 "Freed %@" = "%@ بەتاڵ کرا";
 "Freed %@." = "%@ بەتاڵ کرا.";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "بەرنامەکە کاتێک دەکرێتەوە هەموو ئامانجێک دەپێوێت. پشکنین (⌘R) دابگرە بۆ پێوانی دووبارە. دێڕی سەرەوە بۆشایی بەتاڵی ئێستا و دوای پاککردنەوە نیشان دەدات.";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "فۆڵدەرەکە زۆر نزیکە لە سەرەوەی فۆڵدەری ماڵەوەت. یەکێک هەڵبژێرە کە لانیکەم دوو ئاست قووڵ بێت، لەناو Library سێ.";
 "The folder must be inside your home folder." = "فۆڵدەرەکە دەبێت لەناو فۆڵدەری ماڵەوەی تۆدا بێت.";
+"Theme" = "تێم";
 "This folder holds the data of MacOS Flusher." = "ئەم فۆڵدەرە داتای MacOS Flusher هەڵدەگرێت.";
 "Unselected" = "هەڵنەبژێردراو";
 "Unselected targets" = "ئامانجە هەڵنەبژێردراوەکان";

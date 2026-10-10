@@ -54,8 +54,8 @@
 "Flush selected" = "Yên hilbijartî paqij bike";
 "Flushed %@" = "%@ hat paqijkirin";
 "Folders" = "Peldank";
-"Folders cannot contain \"..\"." = "Di peldankan de \"..\" nabe.";
 "Folders cannot contain * or ?." = "Di peldankan de * an ? nabe.";
+"Folders cannot contain \"..\"." = "Di peldankan de \"..\" nabe.";
 "Free" = "Vala";
 "Freed %@" = "%@ hat valakirin";
 "Freed %@." = "%@ hat valakirin.";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "Sepan dema vedibe her armancê dipîve. Ji bo dîsa pîvandinê Skan bike (⌘R) bitikîne. Rêza jorîn cihê vala yê niha û yê piştî paqijkirinê nîşan dide.";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "Peldank pir nêzîkî serê peldanka mala te ye. Yekê herî kêm du asta kûr hilbijêre, di nav Library de sê.";
 "The folder must be inside your home folder." = "Peldank divê di nav peldanka mala te de be.";
+"Theme" = "Tema";
 "This folder holds the data of MacOS Flusher." = "Ev peldank daneyên MacOS Flusher digire.";
 "Unselected" = "Nehilbijartî";
 "Unselected targets" = "Armancên nehilbijartî";

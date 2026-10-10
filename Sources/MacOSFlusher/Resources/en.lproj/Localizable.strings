@@ -54,8 +54,8 @@
 "Flush selected" = "Flush selected";
 "Flushed %@" = "Flushed %@";
 "Folders" = "Folders";
-"Folders cannot contain \"..\"." = "Folders cannot contain \"..\".";
 "Folders cannot contain * or ?." = "Folders cannot contain * or ?.";
+"Folders cannot contain \"..\"." = "Folders cannot contain \"..\".";
 "Free" = "Free";
 "Freed %@" = "Freed %@";
 "Freed %@." = "Freed %@.";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush.";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three.";
 "The folder must be inside your home folder." = "The folder must be inside your home folder.";
+"Theme" = "Theme";
 "This folder holds the data of MacOS Flusher." = "This folder holds the data of MacOS Flusher.";
 "Unselected" = "Unselected";
 "Unselected targets" = "Unselected targets";

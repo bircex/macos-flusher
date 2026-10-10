@@ -54,8 +54,8 @@
 "Flush selected" = "선택 항목 비우기";
 "Flushed %@" = "%@ 비움";
 "Folders" = "폴더";
-"Folders cannot contain \"..\"." = "폴더에 \"..\"을 쓸 수 없습니다.";
 "Folders cannot contain * or ?." = "폴더에 * 또는 ?를 쓸 수 없습니다.";
+"Folders cannot contain \"..\"." = "폴더에 \"..\"을 쓸 수 없습니다.";
 "Free" = "남은 공간";
 "Freed %@" = "%@ 확보";
 "Freed %@." = "%@ 확보했습니다.";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "앱은 열릴 때 모든 대상을 측정합니다. 스캔(⌘R)을 누르면 다시 측정합니다. 맨 위 줄은 지금의 남은 공간과 비운 뒤의 남은 공간을 보여 줍니다.";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "폴더가 홈 폴더의 맨 위와 너무 가깝습니다. 최소 두 단계, Library 안에서는 세 단계 아래의 폴더를 고르세요.";
 "The folder must be inside your home folder." = "폴더는 홈 폴더 안에 있어야 합니다.";
+"Theme" = "테마";
 "This folder holds the data of MacOS Flusher." = "이 폴더에는 MacOS Flusher의 데이터가 들어 있습니다.";
 "Unselected" = "선택 안 됨";
 "Unselected targets" = "선택되지 않은 대상";

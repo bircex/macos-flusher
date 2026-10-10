@@ -37,6 +37,7 @@ enum Messages {
     static var appearanceSystem: String { localized("System") }
     static var appearanceLight: String { localized("Light") }
     static var appearanceDark: String { localized("Dark") }
+    static var theme: String { localized("Theme") }
     static var version: String { localized("Version") }
     static var developmentBuild: String { localized("Development build") }
     static var credit: String { localized("Made by BirceX, Recep's AI assistant.") }

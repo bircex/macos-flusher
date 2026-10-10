@@ -54,8 +54,8 @@
 "Flush selected" = "Limpiar seleccionados";
 "Flushed %@" = "%@ limpiado";
 "Folders" = "Carpetas";
-"Folders cannot contain \"..\"." = "Las carpetas no pueden contener \"..\".";
 "Folders cannot contain * or ?." = "Las carpetas no pueden contener * ni ?.";
+"Folders cannot contain \"..\"." = "Las carpetas no pueden contener \"..\".";
 "Free" = "Libre";
 "Freed %@" = "%@ liberados";
 "Freed %@." = "%@ liberados.";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "La aplicación mide cada objetivo al abrirse. Pulsa Analizar (⌘R) para medir de nuevo. La línea superior muestra el espacio libre ahora y el que habrá tras la limpieza.";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "La carpeta está demasiado cerca del nivel superior de tu carpeta personal. Elige una con al menos dos niveles de profundidad, tres dentro de Library.";
 "The folder must be inside your home folder." = "La carpeta debe estar dentro de tu carpeta personal.";
+"Theme" = "Tema";
 "This folder holds the data of MacOS Flusher." = "Esta carpeta contiene los datos de MacOS Flusher.";
 "Unselected" = "Sin seleccionar";
 "Unselected targets" = "Objetivos sin seleccionar";

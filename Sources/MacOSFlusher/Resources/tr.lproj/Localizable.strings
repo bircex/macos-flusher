@@ -54,8 +54,8 @@
 "Flush selected" = "Seçilenleri temizle";
 "Flushed %@" = "%@ temizlendi";
 "Folders" = "Klasörler";
-"Folders cannot contain \"..\"." = "Klasör yolunda \"..\" olamaz.";
 "Folders cannot contain * or ?." = "Klasör yolunda * ya da ? olamaz.";
+"Folders cannot contain \"..\"." = "Klasör yolunda \"..\" olamaz.";
 "Free" = "Boş";
 "Freed %@" = "%@ boşaltıldı";
 "Freed %@." = "%@ boşaltıldı.";
@@ -123,6 +123,7 @@
 "The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush." = "Uygulama açılırken her hedefi ölçer. Yeniden ölçmek için Tara'ya (⌘R) basın. Üstteki satır şu anki boş alanı ve temizlikten sonra ne olacağını gösterir.";
 "The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three." = "Klasör ev klasörünüzün en üstüne çok yakın. En az iki seviye derinde, Library içinde üç seviye derinde bir klasör seçin.";
 "The folder must be inside your home folder." = "Klasör ev klasörünüzün içinde olmalı.";
+"Theme" = "Tema";
 "This folder holds the data of MacOS Flusher." = "Bu klasör MacOS Flusher'ın verilerini tutuyor.";
 "Unselected" = "Seçilmemiş";
 "Unselected targets" = "Seçilmemiş hedefler";

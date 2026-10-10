@@ -65,7 +65,7 @@ struct ContentView: View {
             TargetEditor(target: target)
         }
         .environment(\.layoutDirection, Localization.isRightToLeft ? .rightToLeft : .leftToRight)
-        .id(store.language)
+        .id(store.language + " " + store.theme)
         .onAppear {
             Appearance.stored.apply()
             store.scan()
