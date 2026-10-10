@@ -2,10 +2,20 @@ import SwiftUI
 import AppKit
 
 enum Palette {
-    static let otherData = dynamic(light: 0x2a78d6, dark: 0x3987e5)
-    static let unselected = dynamic(light: 0x1baf7a, dark: 0x199e70)
-    static let selected = dynamic(light: 0xeb6834, dark: 0xd95926)
+    static let blue = (light: 0x1A5CFF, dark: 0x57A3F8)
+    static let green = (light: 0x388A34, dark: 0x86CF86)
+    static let yellow = (light: 0x667309, dark: 0xE0B97F)
+    static let red = (light: 0xAD0707, dark: 0xEF8773)
+
+    static let otherData = dynamic(blue)
+    static let selected = dynamic(green)
+    static let unselected = dynamic(yellow)
+    static let warning = dynamic(red)
     static let free = Color.secondary.opacity(0.25)
+
+    private static func dynamic(_ pair: (light: Int, dark: Int)) -> Color {
+        dynamic(light: pair.light, dark: pair.dark)
+    }
 
     private static func dynamic(light: Int, dark: Int) -> Color {
         Color(nsColor: NSColor(name: nil) { appearance in

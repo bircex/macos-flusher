@@ -280,7 +280,7 @@ struct DiskLine: View {
                 PercentBar(
                     fraction: expected,
                     behind: disk.usedFraction,
-                    tint: disk.usedFraction > 0.9 ? Color.red : Color.accentColor,
+                    tint: disk.usedFraction > 0.9 ? Palette.warning : Palette.otherData,
                     label: store.selectedTotal > 0
                         ? "\(Format.percent(disk.usedFraction)) → \(Format.percent(expected))"
                         : Format.percent(disk.usedFraction)
@@ -288,13 +288,13 @@ struct DiskLine: View {
                 if let after = store.expectedFreeAfterFlush, store.selectedTotal > 0 {
                     Text("\(Format.bytes(store.selectedTotal)) selected in \(Messages.targets(store.selectedCount)), \(Format.bytes(after)) free after flush")
                         .font(.callout.weight(.medium))
-                        .foregroundStyle(.green)
+                        .foregroundStyle(Palette.selected)
                         .fixedSize()
                 }
                 if let freed = store.lastFreed {
                     Text("Freed \(Format.bytes(freed))")
                         .font(.callout.weight(.medium))
-                        .foregroundStyle(.green)
+                        .foregroundStyle(Palette.selected)
                         .fixedSize()
                 }
             }
@@ -461,8 +461,8 @@ extension LogLevel {
 
     var color: Color {
         switch self {
-        case .info: return .blue
-        case .error: return .red
+        case .info: return .secondary
+        case .error: return Palette.warning
         }
     }
 }
@@ -488,7 +488,7 @@ struct LogRow: View {
         .font(.system(.caption, design: .monospaced))
         .padding(.horizontal)
         .padding(.vertical, 3)
-        .background(entry.level == .error ? Color.red.opacity(0.1) : Color.clear)
+        .background(entry.level == .error ? Palette.warning.opacity(0.12) : Color.clear)
     }
 }
 
