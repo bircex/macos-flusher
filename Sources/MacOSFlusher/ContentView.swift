@@ -26,6 +26,8 @@ struct ContentView: View {
                 DiskLine()
                 Divider()
                 page
+                Divider()
+                Footer()
             }
             .navigationTitle(store.page.title)
         }
@@ -54,7 +56,10 @@ struct ContentView: View {
         .sheet(item: $store.edited) { target in
             TargetEditor(target: target)
         }
-        .onAppear { store.scan() }
+        .onAppear {
+            Appearance.stored.apply()
+            store.scan()
+        }
     }
 
     @ViewBuilder
@@ -149,6 +154,39 @@ struct ChartsPage: View {
 struct ActivityPage: View {
     var body: some View {
         LogView()
+    }
+}
+
+struct Footer: View {
+    @EnvironmentObject var store: Store
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Button {
+                store.page = .activity
+            } label: {
+                HStack(spacing: 6) {
+                    if let entry = store.log.last {
+                        Image(systemName: entry.level.icon)
+                            .foregroundStyle(entry.level.color)
+                        Text(entry.message)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                    } else {
+                        Text(Messages.noActivityYet)
+                    }
+                }
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(.secondary)
+            Spacer()
+            Link(Messages.credit, destination: Links.website)
+                .foregroundStyle(.secondary)
+                .fixedSize()
+        }
+        .font(.caption)
+        .padding(.horizontal)
+        .padding(.vertical, 6)
     }
 }
 
