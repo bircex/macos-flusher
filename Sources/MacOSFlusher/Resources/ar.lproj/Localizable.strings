@@ -3,6 +3,7 @@
 "%@ of disk" = "%@ من القرص";
 "%@ selected in %@, %@ free after flush" = "%@ محددة في %@، %@ حرة بعد التنظيف";
 "%@ used" = "%@ مستخدمة";
+"%@: %@" = "%@: %@";
 "%d of %d" = "%d من %d";
 "%d targets" = "%d من الأهداف";
 ".NET" = ".NET";
@@ -80,8 +81,8 @@
 "MIT License" = "رخصة MIT";
 "Music and video" = "الموسيقى والفيديو";
 "My targets" = "أهدافي";
-"My targets could not be read. The file was kept as " = "تعذّرت قراءة أهدافي. احتُفظ بالملف باسم ";
-"My targets could not be saved: " = "تعذّر حفظ أهدافي: ";
+"My targets could not be read. The file was kept as %@." = "تعذّرت قراءة أهدافي. احتُفظ بالملف باسم %@.";
+"My targets could not be saved: %@" = "تعذّر حفظ أهدافي: %@";
 "Name" = "الاسم";
 "Named Docker volumes and project files are never touched." = "لا تُمسّ وحدات تخزين Docker المسمّاة ولا ملفات المشاريع أبدًا.";
 "No activity yet" = "لا يوجد نشاط بعد";
@@ -91,7 +92,7 @@
 "Not analyzed yet" = "لم يُحلَّل بعد";
 "not installed" = "غير مثبّت";
 "Nothing to clean here." = "لا يوجد ما يُنظَّف هنا.";
-"One folder per line. Everything inside is deleted, the folder itself stays." = "مجلد واحد في كل سطر. يُحذف كل ما بداخله ويبقى المجلد نفسه.";
+"One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "مجلد واحد في كل سطر، بالأسماء التي يعرضها Terminal لا بالأسماء المترجمة في Finder. يُحذف كل ما بداخله ويبقى المجلد نفسه.";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "افتح صفحة ضمن الفحوصات وحدّد ما تريد حذفه. الأهداف التي تُعيد بناء نفسها محدَّدة منذ البداية. أما الأهداف الموسومة ببطيء الاستعادة أو يُحذف نهائيًا فتبدأ غير محدَّدة.";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "اختياري. يُنفَّذ في zsh كما هو مكتوب تمامًا. عند وجود أمر، تُقاس المجلدات فقط.";
 "Other data" = "بيانات أخرى";

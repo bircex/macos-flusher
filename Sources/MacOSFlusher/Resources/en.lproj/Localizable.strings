@@ -3,6 +3,7 @@
 "%@ of disk" = "%@ of disk";
 "%@ selected in %@, %@ free after flush" = "%@ selected in %@, %@ free after flush";
 "%@ used" = "%@ used";
+"%@: %@" = "%@: %@";
 "%d of %d" = "%d of %d";
 "%d targets" = "%d targets";
 ".NET" = ".NET";
@@ -80,8 +81,8 @@
 "MIT License" = "MIT License";
 "Music and video" = "Music and video";
 "My targets" = "My targets";
-"My targets could not be read. The file was kept as " = "My targets could not be read. The file was kept as ";
-"My targets could not be saved: " = "My targets could not be saved: ";
+"My targets could not be read. The file was kept as %@." = "My targets could not be read. The file was kept as %@.";
+"My targets could not be saved: %@" = "My targets could not be saved: %@";
 "Name" = "Name";
 "Named Docker volumes and project files are never touched." = "Named Docker volumes and project files are never touched.";
 "No activity yet" = "No activity yet";
@@ -91,7 +92,7 @@
 "Not analyzed yet" = "Not analyzed yet";
 "not installed" = "not installed";
 "Nothing to clean here." = "Nothing to clean here.";
-"One folder per line. Everything inside is deleted, the folder itself stays." = "One folder per line. Everything inside is deleted, the folder itself stays.";
+"One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays.";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked.";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "Optional. Runs in zsh exactly as written. With a command, the folders are only measured.";
 "Other data" = "Other data";

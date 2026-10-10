@@ -178,6 +178,7 @@ import Testing
         #expect(store.userTargets.isEmpty)
         #expect(store.log.last?.level == .error)
         #expect(store.log.last?.message == "My targets could not be read. The file was kept as targets.broken.json.")
+        #expect(store.log.last?.key == Messages.storageBroken)
         #expect(folder.exists("data/targets.broken.json"))
     }
 }

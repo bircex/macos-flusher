@@ -57,7 +57,7 @@ enum Messages {
     static var edit: String { localized("Edit") }
     static var editorName: String { localized("Name") }
     static var editorFolders: String { localized("Folders") }
-    static var editorFoldersHint: String { localized("One folder per line. Everything inside is deleted, the folder itself stays.") }
+    static var editorFoldersHint: String { localized("One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays.") }
     static var editorCommand: String { localized("Command") }
     static var editorCommandHint: String { localized("Optional. Runs in zsh exactly as written. With a command, the folders are only measured.") }
     static var chooseFolder: String { localized("Choose folder…") }
@@ -72,8 +72,13 @@ enum Messages {
     static var outsideHome: String { localized("The folder must be inside your home folder.") }
     static var tooShallow: String { localized("The folder is too close to the top of your home folder. Choose one at least two levels deep, inside Library three.") }
     static var ownData: String { localized("This folder holds the data of MacOS Flusher.") }
-    static var storageBroken: String { localized("My targets could not be read. The file was kept as ") }
-    static var storageFailed: String { localized("My targets could not be saved: ") }
+    static let storageBroken = "My targets could not be read. The file was kept as %@."
+    static let storageFailed = "My targets could not be saved: %@"
+    static let namedProblem = "%@: %@"
+    static let scanningKey = "Scanning…"
+    static let scanStoppedKey = "Scan stopped."
+    static let scanFinishedKey = "Scan finished."
+    static let analysisFinishedKey = "Disk analysis finished."
 
     static var language: String { localized("Language") }
     static var cancel: String { localized("Cancel") }
@@ -88,7 +93,7 @@ enum Messages {
     static var freeOf: String { localized("%@ free of %@") }
     static var selectedIn: String { localized("%@ selected in %@, %@ free after flush") }
     static var freed: String { localized("Freed %@") }
-    static var freedLine: String { localized("Freed %@.") }
+    static let freedLine = "Freed %@."
     static var progressOf: String { localized("%d of %d") }
     static var deleteAcross: String { localized("Delete %@ across %@?") }
     static var otherData: String { localized("Other data") }
@@ -110,7 +115,7 @@ enum Messages {
     static var scanStopped: String { localized("Scan stopped.") }
     static var scanFinished: String { localized("Scan finished.") }
     static var analysisFinished: String { localized("Disk analysis finished.") }
-    static var flushed: String { localized("Flushed %@") }
+    static let flushed = "Flushed %@"
     static var info: String { localized("INFO") }
     static var error: String { localized("ERROR") }
     static var choose: String { localized("Choose") }

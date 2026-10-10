@@ -3,6 +3,7 @@
 "%@ of disk" = "diskin %@ kadarı";
 "%@ selected in %@, %@ free after flush" = "%@ seçili (%@), temizlikten sonra %@ boş";
 "%@ used" = "%@ kullanılıyor";
+"%@: %@" = "%@: %@";
 "%d of %d" = "%d / %d";
 "%d targets" = "%d hedef";
 ".NET" = ".NET";
@@ -80,8 +81,8 @@
 "MIT License" = "MIT Lisansı";
 "Music and video" = "Müzik ve video";
 "My targets" = "Hedeflerim";
-"My targets could not be read. The file was kept as " = "Hedeflerim okunamadı. Dosya şu adla saklandı: ";
-"My targets could not be saved: " = "Hedeflerim kaydedilemedi: ";
+"My targets could not be read. The file was kept as %@." = "Hedeflerim okunamadı. Dosya %@ adıyla saklandı.";
+"My targets could not be saved: %@" = "Hedeflerim kaydedilemedi: %@";
 "Name" = "Ad";
 "Named Docker volumes and project files are never touched." = "Adlandırılmış Docker birimlerine ve proje dosyalarına asla dokunulmaz.";
 "No activity yet" = "Henüz etkinlik yok";
@@ -91,7 +92,7 @@
 "Not analyzed yet" = "Henüz çözümlenmedi";
 "not installed" = "kurulu değil";
 "Nothing to clean here." = "Burada temizlenecek bir şey yok.";
-"One folder per line. Everything inside is deleted, the folder itself stays." = "Her satıra bir klasör. İçindeki her şey silinir, klasörün kendisi kalır.";
+"One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "Her satıra bir klasör; adlar Terminal'in gösterdiği gibi yazılır, Finder'daki çevrilmiş adlarla değil. İçindeki her şey silinir, klasörün kendisi kalır.";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "Taramalar altından bir sayfa açın ve silmek istediklerinizi işaretleyin. Kendini yeniden oluşturan hedefler baştan işaretlidir. Geri gelmesi yavaş ya da kalıcı olarak silinir diye işaretlenen hedefler işaretsiz başlar.";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "İsteğe bağlı. zsh içinde yazıldığı gibi çalışır. Komut varsa klasörler yalnızca ölçülür.";
 "Other data" = "Diğer veriler";

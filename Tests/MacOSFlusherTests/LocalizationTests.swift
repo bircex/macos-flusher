@@ -31,7 +31,7 @@ import Testing
         }
     }
 
-    @Test(arguments: ["tr", "ar"])
+    @Test(arguments: Localization.codes.filter { $0 != "en" })
     func languageMatchesEnglish(code: String) throws {
         let english = try table("en")
         let other = try table(code)
@@ -64,6 +64,9 @@ import Testing
         for key in used {
             #expect(english[key] != nil, "missing key: \(key)")
         }
+        for key in [Messages.storageBroken, Messages.storageFailed, Messages.namedProblem, Messages.scanningKey, Messages.scanStoppedKey, Messages.scanFinishedKey, Messages.analysisFinishedKey, Messages.freedLine, Messages.flushed] {
+            #expect(english[key] != nil, "missing log key: \(key)")
+        }
         for group in Targets.groups {
             #expect(english[group.name] != nil, "missing group name: \(group.name)")
         }
@@ -81,6 +84,12 @@ import Testing
         #expect(Localization.bundle(for: "tr").localizedString(forKey: "Settings", value: nil, table: nil) == "Ayarlar")
         #expect(Localization.bundle(for: "ar").localizedString(forKey: "Settings", value: nil, table: nil) == "الإعدادات")
         #expect(Localization.bundle(for: "en").localizedString(forKey: "Settings", value: nil, table: nil) == "Settings")
+    }
+
+    @Test func logLinesFollowTheLanguage() {
+        let entry = LogEntry(id: 1, date: Date(), level: .info, key: "Flushed %@", arguments: ["npm cache"])
+        #expect(Localization.bundle(for: "tr").localizedString(forKey: entry.key, value: nil, table: nil) == "%@ temizlendi")
+        #expect(entry.message.contains("npm cache"))
     }
 
     @Test func directionOfArabic() {

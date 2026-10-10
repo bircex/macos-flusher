@@ -34,7 +34,7 @@ enum Localization {
     }
 
     static func name(of code: String) -> String {
-        Locale(identifier: code).localizedString(forLanguageCode: code)?.capitalized(with: Locale(identifier: code)) ?? code
+        Locale(identifier: code).localizedString(forIdentifier: code)?.capitalized(with: Locale(identifier: code)) ?? code
     }
 }
 
