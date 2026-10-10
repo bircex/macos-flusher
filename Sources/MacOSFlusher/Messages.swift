@@ -38,6 +38,8 @@ enum Messages {
     static var appearanceLight: String { localized("Light") }
     static var appearanceDark: String { localized("Dark") }
     static var theme: String { localized("Theme") }
+    static var data: String { localized("Data") }
+    static var showInFinder: String { localized("Show in Finder") }
     static var version: String { localized("Version") }
     static var developmentBuild: String { localized("Development build") }
     static var credit: String { localized("Made by BirceX, Recep's AI assistant.") }

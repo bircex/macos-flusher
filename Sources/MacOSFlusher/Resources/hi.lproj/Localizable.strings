@@ -34,6 +34,7 @@
 "Containers & VMs" = "कंटेनर और वर्चुअल मशीन";
 "Dark" = "डार्क";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "डेटा";
 "Delete" = "मिटाएँ";
 "Delete %@ across %@?" = "%@ (%@) मिटाएँ?";
 "deleted for good" = "हमेशा के लिए मिट जाएगा";
@@ -112,6 +113,7 @@
 "Selected" = "चुने हुए";
 "Selected targets" = "चुने हुए लक्ष्य";
 "Settings" = "सेटिंग्स";
+"Show in Finder" = "Finder में दिखाएँ";
 "slow to get back" = "वापस पाने में धीमा";
 "Slow to get back: " = "वापस पाने में धीमा: ";
 "Start the folder with ~/ or /." = "फ़ोल्डर ~/ या / से शुरू करें।";

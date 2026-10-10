@@ -34,6 +34,7 @@
 "Containers & VMs" = "کانتینرها و ماشین‌های مجازی";
 "Dark" = "تیره";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "داده‌ها";
 "Delete" = "حذف";
 "Delete %@ across %@?" = "%@ (%@) حذف شود؟";
 "deleted for good" = "برای همیشه حذف می‌شود";
@@ -112,6 +113,7 @@
 "Selected" = "انتخاب‌شده";
 "Selected targets" = "اهداف انتخاب‌شده";
 "Settings" = "تنظیمات";
+"Show in Finder" = "نمایش در Finder";
 "slow to get back" = "بازگشت کُند";
 "Slow to get back: " = "بازگشت کُند: ";
 "Start the folder with ~/ or /." = "پوشه باید با ~/ یا / شروع شود.";

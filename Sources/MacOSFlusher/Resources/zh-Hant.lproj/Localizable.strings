@@ -34,6 +34,7 @@
 "Containers & VMs" = "容器與虛擬機器";
 "Dark" = "深色";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "資料";
 "Delete" = "刪除";
 "Delete %@ across %@?" = "刪除 %@（%@）？";
 "deleted for good" = "永久刪除";
@@ -112,6 +113,7 @@
 "Selected" = "已選";
 "Selected targets" = "已選目標";
 "Settings" = "設定";
+"Show in Finder" = "在 Finder 中顯示";
 "slow to get back" = "復原較慢";
 "Slow to get back: " = "復原較慢：";
 "Start the folder with ~/ or /." = "資料夾路徑必須以 ~/ 或 / 開頭。";

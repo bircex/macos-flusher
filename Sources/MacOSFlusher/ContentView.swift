@@ -249,8 +249,8 @@ struct SettingsPage: View {
     var body: some View {
         ScrollView {
             GeneralSettings()
-                .frame(maxWidth: 440)
-                .padding(8)
+                .frame(maxWidth: 520)
+                .padding(.vertical, 8)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }

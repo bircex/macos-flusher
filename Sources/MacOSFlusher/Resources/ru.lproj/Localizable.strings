@@ -34,6 +34,7 @@
 "Containers & VMs" = "Контейнеры и виртуальные машины";
 "Dark" = "Тёмное";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "Данные";
 "Delete" = "Удалить";
 "Delete %@ across %@?" = "Удалить %@ (%@)?";
 "deleted for good" = "удаляется навсегда";
@@ -112,6 +113,7 @@
 "Selected" = "Выбрано";
 "Selected targets" = "Выбранные цели";
 "Settings" = "Настройки";
+"Show in Finder" = "Показать в Finder";
 "slow to get back" = "долго восстанавливается";
 "Slow to get back: " = "Долго восстанавливается: ";
 "Start the folder with ~/ or /." = "Путь к папке должен начинаться с ~/ или /.";

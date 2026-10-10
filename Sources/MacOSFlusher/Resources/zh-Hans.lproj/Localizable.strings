@@ -34,6 +34,7 @@
 "Containers & VMs" = "容器与虚拟机";
 "Dark" = "深色";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "数据";
 "Delete" = "删除";
 "Delete %@ across %@?" = "删除 %@（%@）？";
 "deleted for good" = "永久删除";
@@ -112,6 +113,7 @@
 "Selected" = "已选";
 "Selected targets" = "已选目标";
 "Settings" = "设置";
+"Show in Finder" = "在访达中显示";
 "slow to get back" = "恢复较慢";
 "Slow to get back: " = "恢复较慢：";
 "Start the folder with ~/ or /." = "文件夹路径必须以 ~/ 或 / 开头。";

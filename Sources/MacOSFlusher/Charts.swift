@@ -24,6 +24,8 @@ struct Theme: Identifiable {
 
     static let all = [code2026]
 
+    var swatches: [Color] { [Palette.dynamic(blue), Palette.dynamic(green), Palette.dynamic(yellow), Palette.dynamic(red)] }
+
     static var stored: Theme {
         theme(id: UserDefaults.standard.string(forKey: key) ?? "")
     }
@@ -40,7 +42,7 @@ enum Palette {
     static var warning: Color { dynamic(Theme.stored.red) }
     static let free = Color.secondary.opacity(0.25)
 
-    private static func dynamic(_ pair: Theme.Pair) -> Color {
+    static func dynamic(_ pair: Theme.Pair) -> Color {
         Color(nsColor: NSColor(name: nil) { appearance in
             let hex = appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? pair.dark : pair.light
             return NSColor(
