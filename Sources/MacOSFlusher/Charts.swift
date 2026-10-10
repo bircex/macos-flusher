@@ -447,6 +447,45 @@ struct ReportToolbar: ToolbarContent {
     }
 }
 
+enum ReportTab: String, CaseIterable, Identifiable {
+    case overview
+    case locations
+    case categories
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .overview: return Messages.overview
+        case .locations: return Messages.locations
+        case .categories: return Messages.categories
+        }
+    }
+}
+
+struct ReportsPage: View {
+    @State private var tab = ReportTab.overview
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Picker("", selection: $tab) {
+                ForEach(ReportTab.allCases) { tab in
+                    Text(tab.title).tag(tab)
+                }
+            }
+            .pickerStyle(.segmented)
+            .labelsHidden()
+            .padding()
+            Divider()
+            switch tab {
+            case .overview: OverviewPage()
+            case .locations: LocationsPage()
+            case .categories: CategoriesPage()
+            }
+        }
+    }
+}
+
 struct OverviewPage: View {
     @EnvironmentObject var store: Store
 

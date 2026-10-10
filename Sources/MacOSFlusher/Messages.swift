@@ -33,7 +33,7 @@ enum Messages {
     static var overview: String { localized("Overview") }
     static var locations: String { localized("Locations") }
     static var categories: String { localized("Categories") }
-    static var activity: String { localized("Activity") }
+    static var logs: String { localized("Logs") }
     static var nothingHere: String { localized("Nothing to clean here.") }
     static var noOwnTargets: String { localized("No targets of your own yet.") }
     static var addTarget: String { localized("Add target…") }
@@ -60,11 +60,11 @@ enum Messages {
     static var homeTitle: String { localized("Get your disk space back") }
     static var homeLead: String { localized("MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose.") }
     static var homeStepScanText: String { localized("The app measures every target when it opens. Press Scan (⌘R) to measure again. The line at the top shows the free space now and what it will be after the flush.") }
-    static var homeStepChooseText: String { localized("Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked.") }
-    static var homeStepFlushText: String { localized("Press Flush selected (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Activity.") }
+    static var homeStepChooseText: String { localized("Open Scan and tick what you want to delete. Sort any column or filter by category. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked.") }
+    static var homeStepFlushText: String { localized("Tick a target and a Flush bar appears above the list. Press it (⌘⏎) and confirm. Each target is cleaned and measured again. Every step is listed under Logs.") }
     static var homeOwn: String { localized("Your own targets") }
     static var homeOwnText: String { localized("Add a folder or a command of your own with File, Add target (⌘N). They appear under My targets and are never ticked from the start.") }
-    static var homeMore: String { localized("Reports shows where the space is. Settings (⌘,) holds the appearance and the links to the project.") }
+    static var homeMore: String { localized("Reports shows where the space is. Logs lists every step. Settings (⌘,) holds the appearance and the links to the project.") }
     static var edit: String { localized("Edit") }
     static var editorName: String { localized("Name") }
     static var editorFolders: String { localized("Folders") }
@@ -133,6 +133,11 @@ enum Messages {
     static var info: String { localized("INFO") }
     static var error: String { localized("ERROR") }
     static var choose: String { localized("Choose") }
+    static var findings: String { localized("Findings") }
+    static var category: String { localized("Category") }
+    static var group: String { localized("Group") }
+    static var size: String { localized("Size") }
+    static var scanned: String { localized("Scanned") }
 
     static func targets(_ count: Int) -> String {
         count == 1 ? localized("1 target") : String(format: localized("%d targets"), count)

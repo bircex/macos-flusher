@@ -35,7 +35,6 @@ final class Store: ObservableObject {
     @Published var hideEmpty = true
     @Published private(set) var progress: Progress?
     @Published private(set) var disk: DiskInfo?
-    @Published var expanded: Set<String> = Set(Targets.groups.map(\.id) + [Store.mine])
     @Published private(set) var pathSizes: [String: [String: Int64]] = [:]
     @Published private(set) var locations: [DiskLocation] = []
     @Published private(set) var analysis: Progress?

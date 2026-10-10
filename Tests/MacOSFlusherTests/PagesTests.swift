@@ -12,16 +12,22 @@ import Testing
 
     @Test func titles() {
         #expect(Page.home.title == "Home")
-        #expect(Page.all.title == "All")
-        #expect(Page.audience(.browsers).title == "Browsers")
-        #expect(Page.audience(.developers).title == "Developers")
-        #expect(Page.audience(.mine).title == "My targets")
-        #expect(Page.overview.title == "Overview")
-        #expect(Page.locations.title == "Locations")
-        #expect(Page.categories.title == "Categories")
-        #expect(Page.activity.title == "Activity")
+        #expect(Page.scan.title == "Scan")
+        #expect(Page.reports.title == "Reports")
+        #expect(Page.logs.title == "Logs")
         #expect(Page.settings.title == "Settings")
         #expect(Page.about.title == "About")
+    }
+
+    @Test func scanRowsCarryTheirCategoryAndGroup() throws {
+        let folder = try Folder()
+        defer { folder.remove() }
+        let store = folder.store()
+        store.hideEmpty = false
+        let row = store.scanRows.first { $0.id == "chrome" }
+        #expect(row?.category == .browsers)
+        #expect(row?.groupName == "Web browsers")
+        #expect(row?.custom == false)
     }
 
     @Test func totalOfAnAudienceAddsUpItsGroups() async throws {
