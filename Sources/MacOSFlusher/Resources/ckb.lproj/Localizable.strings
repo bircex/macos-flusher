@@ -34,6 +34,7 @@
 "Containers & VMs" = "کۆنتەینەرەکان و ئامێرە خەیاڵییەکان";
 "Dark" = "تاریک";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "داتا";
 "Delete" = "سڕینەوە";
 "Delete %@ across %@?" = "%@ (%@) بسڕدرێتەوە؟";
 "deleted for good" = "بۆ هەمیشە دەسڕدرێتەوە";
@@ -112,6 +113,7 @@
 "Selected" = "هەڵبژێردراو";
 "Selected targets" = "ئامانجە هەڵبژێردراوەکان";
 "Settings" = "ڕێکخستنەکان";
+"Show in Finder" = "نیشاندان لە Finder دا";
 "slow to get back" = "گەڕاندنەوەی خاوە";
 "Slow to get back: " = "گەڕاندنەوەی خاوە: ";
 "Start the folder with ~/ or /." = "فۆڵدەر دەبێت بە ~/ یان / دەست پێ بکات.";

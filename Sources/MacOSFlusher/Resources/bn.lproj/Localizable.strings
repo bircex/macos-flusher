@@ -34,6 +34,7 @@
 "Containers & VMs" = "কনটেইনার ও ভার্চুয়াল মেশিন";
 "Dark" = "ডার্ক";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "ডেটা";
 "Delete" = "মুছুন";
 "Delete %@ across %@?" = "%@ (%@) মুছবেন?";
 "deleted for good" = "চিরতরে মুছে যাবে";
@@ -112,6 +113,7 @@
 "Selected" = "নির্বাচিত";
 "Selected targets" = "নির্বাচিত লক্ষ্য";
 "Settings" = "সেটিংস";
+"Show in Finder" = "Finder-এ দেখান";
 "slow to get back" = "ফিরে পেতে সময় লাগে";
 "Slow to get back: " = "ফিরে পেতে সময় লাগে: ";
 "Start the folder with ~/ or /." = "ফোল্ডার ~/ বা / দিয়ে শুরু করুন।";

@@ -34,6 +34,7 @@
 "Containers & VMs" = "コンテナと仮想マシン";
 "Dark" = "ダーク";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "データ";
 "Delete" = "削除";
 "Delete %@ across %@?" = "%@（%@）を削除しますか？";
 "deleted for good" = "完全に削除";
@@ -112,6 +113,7 @@
 "Selected" = "選択中";
 "Selected targets" = "選択中のターゲット";
 "Settings" = "設定";
+"Show in Finder" = "Finderで表示";
 "slow to get back" = "元に戻すのに時間がかかる";
 "Slow to get back: " = "元に戻すのに時間がかかる: ";
 "Start the folder with ~/ or /." = "フォルダは ~/ または / で始めてください。";

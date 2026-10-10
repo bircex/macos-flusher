@@ -34,6 +34,7 @@
 "Containers & VMs" = "Konteyner û makîneyên virtual";
 "Dark" = "Tarî";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "Dane";
 "Delete" = "Jê bibe";
 "Delete %@ across %@?" = "%@ (%@) were jêbirin?";
 "deleted for good" = "bi tevahî tê jêbirin";
@@ -112,6 +113,7 @@
 "Selected" = "Hilbijartî";
 "Selected targets" = "Armancên hilbijartî";
 "Settings" = "Mîheng";
+"Show in Finder" = "Di Finder de nîşan bide";
 "slow to get back" = "vegerandina wê hêdî ye";
 "Slow to get back: " = "Vegerandina wê hêdî ye: ";
 "Start the folder with ~/ or /." = "Peldank divê bi ~/ an / dest pê bike.";

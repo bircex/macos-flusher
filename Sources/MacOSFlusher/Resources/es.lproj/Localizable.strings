@@ -34,6 +34,7 @@
 "Containers & VMs" = "Contenedores y máquinas virtuales";
 "Dark" = "Oscuro";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "Datos";
 "Delete" = "Eliminar";
 "Delete %@ across %@?" = "¿Eliminar %@ en %@?";
 "deleted for good" = "se elimina para siempre";
@@ -112,6 +113,7 @@
 "Selected" = "Seleccionado";
 "Selected targets" = "Objetivos seleccionados";
 "Settings" = "Ajustes";
+"Show in Finder" = "Mostrar en el Finder";
 "slow to get back" = "lento de recuperar";
 "Slow to get back: " = "Lento de recuperar: ";
 "Start the folder with ~/ or /." = "La carpeta debe empezar por ~/ o /.";

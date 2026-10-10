@@ -34,6 +34,7 @@
 "Containers & VMs" = "Konteynerler ve sanal makineler";
 "Dark" = "Koyu";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "Veri";
 "Delete" = "Sil";
 "Delete %@ across %@?" = "%@ silinsin mi (%@)?";
 "deleted for good" = "kalıcı olarak silinir";
@@ -112,6 +113,7 @@
 "Selected" = "Seçili";
 "Selected targets" = "Seçili hedefler";
 "Settings" = "Ayarlar";
+"Show in Finder" = "Finder'da Göster";
 "slow to get back" = "geri gelmesi yavaş";
 "Slow to get back: " = "Geri gelmesi yavaş: ";
 "Start the folder with ~/ or /." = "Klasör ~/ ya da / ile başlamalı.";

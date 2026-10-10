@@ -34,6 +34,7 @@
 "Containers & VMs" = "Konteynerlər və virtual maşınlar";
 "Dark" = "Tünd";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "Məlumatlar";
 "Delete" = "Sil";
 "Delete %@ across %@?" = "%@ (%@) silinsin?";
 "deleted for good" = "birdəfəlik silinir";
@@ -112,6 +113,7 @@
 "Selected" = "Seçilib";
 "Selected targets" = "Seçilmiş hədəflər";
 "Settings" = "Ayarlar";
+"Show in Finder" = "Finder-də göstər";
 "slow to get back" = "geri qaytarması yavaş";
 "Slow to get back: " = "Geri qaytarması yavaş: ";
 "Start the folder with ~/ or /." = "Qovluq ~/ və ya / ilə başlamalıdır.";

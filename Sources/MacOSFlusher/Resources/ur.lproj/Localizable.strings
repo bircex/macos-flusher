@@ -34,6 +34,7 @@
 "Containers & VMs" = "کنٹینرز اور ورچوئل مشینیں";
 "Dark" = "ڈارک";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "ڈیٹا";
 "Delete" = "حذف کریں";
 "Delete %@ across %@?" = "%@ (%@) حذف کریں؟";
 "deleted for good" = "ہمیشہ کے لیے حذف";
@@ -112,6 +113,7 @@
 "Selected" = "منتخب";
 "Selected targets" = "منتخب اہداف";
 "Settings" = "ترتیبات";
+"Show in Finder" = "Finder میں دکھائیں";
 "slow to get back" = "واپس آنے میں سست";
 "Slow to get back: " = "واپس آنے میں سست: ";
 "Start the folder with ~/ or /." = "فولڈر ~/ یا / سے شروع کریں۔";

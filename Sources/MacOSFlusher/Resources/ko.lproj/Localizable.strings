@@ -34,6 +34,7 @@
 "Containers & VMs" = "컨테이너와 가상 머신";
 "Dark" = "다크";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
+"Data" = "데이터";
 "Delete" = "삭제";
 "Delete %@ across %@?" = "%@(%@) 삭제할까요?";
 "deleted for good" = "영구 삭제";
@@ -112,6 +113,7 @@
 "Selected" = "선택됨";
 "Selected targets" = "선택된 대상";
 "Settings" = "설정";
+"Show in Finder" = "Finder에서 보기";
 "slow to get back" = "되돌리기 느림";
 "Slow to get back: " = "되돌리기 느림: ";
 "Start the folder with ~/ or /." = "폴더는 ~/ 또는 /로 시작해야 합니다.";
