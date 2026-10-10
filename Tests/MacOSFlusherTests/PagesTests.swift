@@ -18,6 +18,8 @@ import Testing
         #expect(Page.audience(.mine).title == "My targets")
         #expect(Page.charts.title == "Charts")
         #expect(Page.activity.title == "Activity")
+        #expect(Page.settings.title == "Settings")
+        #expect(Page.about.title == "About")
     }
 
     @Test func totalOfAnAudienceAddsUpItsGroups() async throws {

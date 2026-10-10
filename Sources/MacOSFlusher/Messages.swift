@@ -30,6 +30,7 @@ enum Messages {
     static let noOwnTargets = "No targets of your own yet."
     static let addTarget = "Add target…"
     static let appName = "MacOS Flusher"
+    static let settings = "Settings"
     static let general = "General"
     static let about = "About"
     static let appearance = "Appearance"
