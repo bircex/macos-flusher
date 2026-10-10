@@ -650,6 +650,13 @@ details > summary::-webkit-details-marker {
   margin-top: 28px;
 }
 
+.audience-empty {
+  margin: 0 0 12px;
+  color: var(--faint);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
 .toolbar .button {
   flex: none;
   white-space: nowrap;

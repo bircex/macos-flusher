@@ -15,22 +15,23 @@
 "Add a folder or a command." = "একটি ফোল্ডার বা একটি কমান্ড যোগ করুন।";
 "Add target…" = "লক্ষ্য যোগ করুন…";
 "Added by you" = "আপনার যোগ করা";
-"AI models" = "AI মডেল";
+"AI" = "AI";
 "All" = "সব";
 "Analyzing %d of %d" = "বিশ্লেষণ হচ্ছে %d / %d";
 "Analyzing disk…" = "ডিস্ক বিশ্লেষণ হচ্ছে…";
 "Appearance" = "চেহারা";
 "Applications" = "অ্যাপ্লিকেশন";
+"Browsers" = "ব্রাউজার";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "ক্যাশ প্রয়োজনে আবার তৈরি হয়।";
 "Cancel" = "বাতিল";
 "Charts" = "চার্ট";
 "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "চার্ট দেখায় জায়গা কোথায় গেছে। সেটিংস (⌘,)-এ চেহারা এবং প্রকল্পের লিঙ্ক আছে।";
 "Chat and meetings" = "চ্যাট ও মিটিং";
-"Chat, mail and office" = "চ্যাট, মেইল ও অফিস";
 "Choose" = "বেছে নিন";
 "Choose folder…" = "ফোল্ডার বেছে নিন…";
 "Command" = "কমান্ড";
+"Communication" = "যোগাযোগ";
 "Containers & VMs" = "কনটেইনার ও ভার্চুয়াল মেশিন";
 "Dark" = "ডার্ক";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
@@ -39,6 +40,7 @@
 "Delete %@ across %@?" = "%@ (%@) মুছবেন?";
 "deleted for good" = "চিরতরে মুছে যাবে";
 "Deleted for good: " = "চিরতরে মুছে যাবে: ";
+"Design and photo" = "ডিজাইন ও ছবি";
 "Developers" = "ডেভেলপার";
 "Development build" = "ডেভেলপমেন্ট বিল্ড";
 "Disk analysis finished." = "ডিস্ক বিশ্লেষণ শেষ হয়েছে।";
@@ -60,6 +62,7 @@
 "Free" = "খালি";
 "Freed %@" = "%@ খালি হয়েছে";
 "Freed %@." = "%@ খালি হয়েছে।";
+"Games" = "গেম";
 "General" = "সাধারণ";
 "Get your disk space back" = "আপনার ডিস্কের জায়গা ফিরে পান";
 "GitHub repository" = "GitHub রিপোজিটরি";
@@ -79,6 +82,7 @@
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher এই ফোল্ডারগুলির ভিতরের সবকিছু মুছে ফেলে এবং কমান্ডটি ঠিক যেমন লেখা আছে তেমনই চালায়। কিছুই ট্র্যাশে যায় না এবং কিছুই ফেরানো যায় না। এই লক্ষ্য যা মুছে ফেলে তার দায়িত্ব আপনার।";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher আপনার অ্যাপ ও টুলের রেখে যাওয়া ক্যাশ ও অবশিষ্টাংশ খুঁজে বের করে, দেখায় ডিস্ক কীসে ভরেছে, এবং আপনি যা বেছে নেন তা মুছে ফেলে।";
 "Made by BirceX, Recep's AI assistant." = "Recep-এর AI সহকারী BirceX তৈরি করেছে।";
+"Media" = "মিডিয়া";
 "MIT License" = "MIT লাইসেন্স";
 "Music and video" = "সংগীত ও ভিডিও";
 "My targets" = "আমার লক্ষ্য";
@@ -93,6 +97,7 @@
 "Not analyzed yet" = "এখনও বিশ্লেষণ হয়নি";
 "not installed" = "ইনস্টল করা নেই";
 "Nothing to clean here." = "এখানে পরিষ্কার করার কিছু নেই।";
+"Office and documents" = "অফিস ও নথি";
 "One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "প্রতি লাইনে একটি ফোল্ডার, টার্মিনাল যে নাম দেখায় সেই নামে, Finder-এর অনূদিত নামে নয়। ভিতরের সবকিছু মুছে যায়, ফোল্ডারটি নিজে থাকে।";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "স্ক্যান-এর নিচে একটি পাতা খুলুন এবং যা মুছতে চান তাতে টিক দিন। যে লক্ষ্যগুলি নিজে থেকে আবার তৈরি হয় সেগুলি শুরু থেকেই টিক দেওয়া থাকে। ফিরে পেতে সময় লাগে বা চিরতরে মুছে যাবে চিহ্নিত লক্ষ্যগুলি টিক ছাড়া শুরু হয়।";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "ঐচ্ছিক। zsh-এ ঠিক যেমন লেখা আছে তেমনই চলে। কমান্ড থাকলে ফোল্ডারগুলি শুধু মাপা হয়।";

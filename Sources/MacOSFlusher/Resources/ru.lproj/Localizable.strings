@@ -15,22 +15,23 @@
 "Add a folder or a command." = "Добавьте папку или команду.";
 "Add target…" = "Добавить цель…";
 "Added by you" = "Добавлено вами";
-"AI models" = "Модели ИИ";
+"AI" = "ИИ";
 "All" = "Все";
 "Analyzing %d of %d" = "Анализ %d из %d";
 "Analyzing disk…" = "Анализ диска…";
 "Appearance" = "Оформление";
 "Applications" = "Программы";
+"Browsers" = "Браузеры";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "Кэши создаются заново по мере надобности.";
 "Cancel" = "Отменить";
 "Charts" = "Диаграммы";
 "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "Диаграммы показывают, где занято место. В Настройках (⌘,) находятся оформление и ссылки на проект.";
 "Chat and meetings" = "Чаты и встречи";
-"Chat, mail and office" = "Чаты, почта и офис";
 "Choose" = "Выбор";
 "Choose folder…" = "Выбрать папку…";
 "Command" = "Команда";
+"Communication" = "Связь";
 "Containers & VMs" = "Контейнеры и виртуальные машины";
 "Dark" = "Тёмное";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
@@ -39,6 +40,7 @@
 "Delete %@ across %@?" = "Удалить %@ (%@)?";
 "deleted for good" = "удаляется навсегда";
 "Deleted for good: " = "Удаляется навсегда: ";
+"Design and photo" = "Дизайн и фото";
 "Developers" = "Разработчики";
 "Development build" = "Сборка для разработки";
 "Disk analysis finished." = "Анализ диска завершён.";
@@ -60,6 +62,7 @@
 "Free" = "Свободно";
 "Freed %@" = "Освобождено %@";
 "Freed %@." = "Освобождено %@.";
+"Games" = "Игры";
 "General" = "Основные";
 "Get your disk space back" = "Верните место на диске";
 "GitHub repository" = "Репозиторий на GitHub";
@@ -79,6 +82,7 @@
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher удаляет всё содержимое этих папок и выполняет команду ровно так, как она написана. Ничего не попадает в Корзину, и ничего нельзя восстановить. Вы отвечаете за то, что удаляет эта цель.";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher находит кэши и остатки, которые оставляют ваши программы и инструменты, показывает, что занимает диск, и удаляет то, что вы выберете.";
 "Made by BirceX, Recep's AI assistant." = "Сделано BirceX, ИИ-ассистентом Реджепа.";
+"Media" = "Медиа";
 "MIT License" = "Лицензия MIT";
 "Music and video" = "Музыка и видео";
 "My targets" = "Мои цели";
@@ -93,6 +97,7 @@
 "Not analyzed yet" = "Ещё не проанализировано";
 "not installed" = "не установлено";
 "Nothing to clean here." = "Здесь нечего очищать.";
+"Office and documents" = "Офис и документы";
 "One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "Одна папка в строке, с именами, которые показывает Терминал, а не переведёнными именами из Finder. Всё внутри удаляется, сама папка остаётся.";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "Откройте страницу в разделе Сканы и отметьте, что хотите удалить. Цели, которые восстанавливаются сами, отмечены с самого начала. Цели с пометкой долго восстанавливается или удаляется навсегда изначально не отмечены.";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "Необязательно. Выполняется в zsh ровно так, как написано. Если есть команда, папки только измеряются.";

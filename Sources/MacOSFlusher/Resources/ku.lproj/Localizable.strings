@@ -15,22 +15,23 @@
 "Add a folder or a command." = "Peldankek an fermanek zêde bike.";
 "Add target…" = "Armancê zêde bike…";
 "Added by you" = "Ji aliyê te ve hatine zêdekirin";
-"AI models" = "Modelên AI-yê";
+"AI" = "AI";
 "All" = "Hemû";
 "Analyzing %d of %d" = "Tê analîzkirin %d / %d";
 "Analyzing disk…" = "Dîsk tê analîzkirin…";
 "Appearance" = "Xuyakirin";
 "Applications" = "Sepan";
+"Browsers" = "Gerok";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "Pêşbîr dema pêwîst be ji nû ve tên çêkirin.";
 "Cancel" = "Betal bike";
 "Charts" = "Grafîk";
 "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "Grafîk nîşan dide ka cih li ku ye. Mîheng (⌘,) xuyakirin û girêdanên projeyê digire.";
 "Chat and meetings" = "Sohbet û civîn";
-"Chat, mail and office" = "Sohbet, e-name û ofîs";
 "Choose" = "Hilbijêre";
 "Choose folder…" = "Peldankê hilbijêre…";
 "Command" = "Ferman";
+"Communication" = "Peywendî";
 "Containers & VMs" = "Konteyner û makîneyên virtual";
 "Dark" = "Tarî";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
@@ -39,6 +40,7 @@
 "Delete %@ across %@?" = "%@ (%@) were jêbirin?";
 "deleted for good" = "bi tevahî tê jêbirin";
 "Deleted for good: " = "Bi tevahî tê jêbirin: ";
+"Design and photo" = "Sêwirandin û wêne";
 "Developers" = "Pêşdebir";
 "Development build" = "Avakirina pêşdebiriyê";
 "Disk analysis finished." = "Analîza dîskê qediya.";
@@ -60,6 +62,7 @@
 "Free" = "Vala";
 "Freed %@" = "%@ hat valakirin";
 "Freed %@." = "%@ hat valakirin.";
+"Games" = "Lîstik";
 "General" = "Giştî";
 "Get your disk space back" = "Cihê dîska xwe vegerîne";
 "GitHub repository" = "Depoya GitHub";
@@ -79,6 +82,7 @@
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher her tiştê di nav van peldankan de jê dibe û fermanê bi awayê ku hatiye nivîsîn dimeşîne. Tu tişt naçe Çopê û tu tişt nayê vegerandin. Tiştên ku ev armanc jê dibe di bin berpirsiyariya te de ne.";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher pêşbîr û bermayiyên ku sepan û amûrên te li dû xwe dihêlin dibîne, nîşan dide ka çi dîskê tije dike û tiştên ku tu hilbijêrî jê dibe.";
 "Made by BirceX, Recep's AI assistant." = "Ji aliyê BirceX, alîkarê AI yê Recep ve hatiye çêkirin.";
+"Media" = "Medya";
 "MIT License" = "Lîsansa MIT";
 "Music and video" = "Muzîk û vîdyo";
 "My targets" = "Armancên min";
@@ -93,6 +97,7 @@
 "Not analyzed yet" = "Hê nehatiye analîzkirin";
 "not installed" = "nehatiye sazkirin";
 "Nothing to clean here." = "Li vir tiştek ji bo paqijkirinê tune.";
+"Office and documents" = "Ofîs û belge";
 "One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "Di her rêzê de peldankek, bi navên ku Termînal nîşan dide, ne bi navên wergerandî yên Finder. Her tiştê di nav de tê jêbirin, peldank bi xwe dimîne.";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "Di bin Skan de rûpelekê veke û tiştên ku tu dixwazî jê bibî nîşan bike. Armancên ku xwe ji nû ve çêdikin ji destpêkê ve nîşankirî ne. Armancên ku bi vegerandina wê hêdî ye an bi tevahî tê jêbirin hatine nîşankirin, bê nîşan dest pê dikin.";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "Ne mecbûrî. Di zsh de bi awayê ku hatiye nivîsîn tê meşandin. Dema ferman hebe, peldank tenê tên pîvandin.";

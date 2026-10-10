@@ -15,22 +15,23 @@
 "Add a folder or a command." = "폴더나 명령을 추가하세요.";
 "Add target…" = "대상 추가…";
 "Added by you" = "직접 추가함";
-"AI models" = "AI 모델";
+"AI" = "AI";
 "All" = "전체";
 "Analyzing %d of %d" = "분석 중 %d / %d";
 "Analyzing disk…" = "디스크 분석 중…";
 "Appearance" = "화면 모드";
 "Applications" = "응용 프로그램";
+"Browsers" = "브라우저";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "캐시는 필요할 때 다시 만들어집니다.";
 "Cancel" = "취소";
 "Charts" = "차트";
 "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "차트는 공간이 어디에 쓰였는지 보여 줍니다. 설정(⌘,)에는 화면 모드와 프로젝트 링크가 있습니다.";
 "Chat and meetings" = "채팅과 회의";
-"Chat, mail and office" = "채팅, 메일, 오피스";
 "Choose" = "선택";
 "Choose folder…" = "폴더 선택…";
 "Command" = "명령";
+"Communication" = "커뮤니케이션";
 "Containers & VMs" = "컨테이너와 가상 머신";
 "Dark" = "다크";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
@@ -39,6 +40,7 @@
 "Delete %@ across %@?" = "%@(%@) 삭제할까요?";
 "deleted for good" = "영구 삭제";
 "Deleted for good: " = "영구 삭제: ";
+"Design and photo" = "디자인 및 사진";
 "Developers" = "개발자";
 "Development build" = "개발 빌드";
 "Disk analysis finished." = "디스크 분석이 끝났습니다.";
@@ -60,6 +62,7 @@
 "Free" = "남은 공간";
 "Freed %@" = "%@ 확보";
 "Freed %@." = "%@ 확보했습니다.";
+"Games" = "게임";
 "General" = "일반";
 "Get your disk space back" = "디스크 공간을 되찾으세요";
 "GitHub repository" = "GitHub 저장소";
@@ -79,6 +82,7 @@
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher는 이 폴더 안의 모든 것을 삭제하고 명령을 적힌 그대로 실행합니다. 휴지통으로 가지 않으며 되돌릴 수 없습니다. 이 대상이 지우는 내용은 사용자의 책임입니다.";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher는 앱과 도구가 남긴 캐시와 찌꺼기를 찾아 디스크를 채우는 것이 무엇인지 보여 주고, 선택한 것을 삭제합니다.";
 "Made by BirceX, Recep's AI assistant." = "Recep의 AI 어시스턴트 BirceX가 만들었습니다.";
+"Media" = "미디어";
 "MIT License" = "MIT 라이선스";
 "Music and video" = "음악과 비디오";
 "My targets" = "내 대상";
@@ -93,6 +97,7 @@
 "Not analyzed yet" = "아직 분석하지 않음";
 "not installed" = "설치되지 않음";
 "Nothing to clean here." = "여기에는 비울 것이 없습니다.";
+"Office and documents" = "오피스 및 문서";
 "One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "한 줄에 폴더 하나씩, Finder의 번역된 이름이 아니라 터미널에 표시되는 이름으로 적습니다. 안의 내용은 모두 삭제되고 폴더 자체는 남습니다.";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "스캔 아래의 페이지를 열고 삭제할 항목에 체크하세요. 스스로 다시 만들어지는 대상은 처음부터 체크되어 있습니다. 되돌리기 느림 또는 영구 삭제로 표시된 대상은 체크되지 않은 상태로 시작합니다.";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "선택 사항. zsh에서 적힌 그대로 실행됩니다. 명령이 있으면 폴더는 측정만 합니다.";

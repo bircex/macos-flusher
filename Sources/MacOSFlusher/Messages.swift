@@ -1,9 +1,14 @@
 import Foundation
 
 enum Messages {
-    static var everyone: String { localized("General") }
-    static var office: String { localized("Chat, mail and office") }
-    static var ai: String { localized("AI models") }
+    static var browsers: String { localized("Browsers") }
+    static var communication: String { localized("Communication") }
+    static var office: String { localized("Office and documents") }
+    static var media: String { localized("Media") }
+    static var design: String { localized("Design and photo") }
+    static var games: String { localized("Games") }
+    static var ai: String { localized("AI") }
+    static var system: String { localized("System") }
     static var developers: String { localized("Developers") }
     static var mine: String { localized("My targets") }
     static var addedByYou: String { localized("Added by you") }
@@ -131,9 +136,14 @@ enum Messages {
 extension Audience {
     var name: String {
         switch self {
-        case .everyone: return Messages.everyone
+        case .browsers: return Messages.browsers
+        case .communication: return Messages.communication
         case .office: return Messages.office
+        case .media: return Messages.media
+        case .design: return Messages.design
+        case .games: return Messages.games
         case .ai: return Messages.ai
+        case .system: return Messages.system
         case .developers: return Messages.developers
         case .mine: return Messages.mine
         }

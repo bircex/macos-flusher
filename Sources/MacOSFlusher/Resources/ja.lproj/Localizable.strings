@@ -15,22 +15,23 @@
 "Add a folder or a command." = "フォルダかコマンドを追加してください。";
 "Add target…" = "ターゲットを追加…";
 "Added by you" = "自分で追加";
-"AI models" = "AI モデル";
+"AI" = "AI";
 "All" = "すべて";
 "Analyzing %d of %d" = "分析中 %d / %d";
 "Analyzing disk…" = "ディスクを分析中…";
 "Appearance" = "外観";
 "Applications" = "アプリケーション";
+"Browsers" = "ブラウザ";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "キャッシュは必要に応じて再作成されます。";
 "Cancel" = "キャンセル";
 "Charts" = "グラフ";
 "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "「グラフ」は容量の内訳を示します。「設定」(⌘,) には外観とプロジェクトへのリンクがあります。";
 "Chat and meetings" = "チャットと会議";
-"Chat, mail and office" = "チャット、メール、オフィス";
 "Choose" = "選択";
 "Choose folder…" = "フォルダを選択…";
 "Command" = "コマンド";
+"Communication" = "コミュニケーション";
 "Containers & VMs" = "コンテナと仮想マシン";
 "Dark" = "ダーク";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
@@ -39,6 +40,7 @@
 "Delete %@ across %@?" = "%@（%@）を削除しますか？";
 "deleted for good" = "完全に削除";
 "Deleted for good: " = "完全に削除: ";
+"Design and photo" = "デザインと写真";
 "Developers" = "開発者";
 "Development build" = "開発ビルド";
 "Disk analysis finished." = "ディスクの分析が完了しました。";
@@ -60,6 +62,7 @@
 "Free" = "空き";
 "Freed %@" = "%@ を解放";
 "Freed %@." = "%@ を解放しました。";
+"Games" = "ゲーム";
 "General" = "一般";
 "Get your disk space back" = "ディスクの空きを取り戻そう";
 "GitHub repository" = "GitHub リポジトリ";
@@ -79,6 +82,7 @@
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher はこれらのフォルダの中身をすべて削除し、コマンドを書かれたとおりに実行します。ゴミ箱には入らず、復元もできません。このターゲットが削除するものについては、あなた自身の責任となります。";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher はアプリやツールが残したキャッシュや不要ファイルを見つけ、何がディスクを埋めているかを示し、選んだものを削除します。";
 "Made by BirceX, Recep's AI assistant." = "Recep の AI アシスタント BirceX が作りました。";
+"Media" = "メディア";
 "MIT License" = "MIT ライセンス";
 "Music and video" = "音楽とビデオ";
 "My targets" = "マイターゲット";
@@ -93,6 +97,7 @@
 "Not analyzed yet" = "まだ分析していません";
 "not installed" = "未インストール";
 "Nothing to clean here." = "ここに掃除するものはありません。";
+"Office and documents" = "オフィスと書類";
 "One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "1 行に 1 つのフォルダを、Finder の翻訳された名前ではなくターミナルに表示される名前で書きます。中身はすべて削除され、フォルダ自体は残ります。";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "「スキャン」の下のページを開き、削除したいものにチェックを付けます。自動で再作成されるターゲットは最初からチェックされています。「元に戻すのに時間がかかる」または「完全に削除」と表示されたターゲットは、最初はチェックされていません。";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "任意。zsh で書かれたとおりに実行されます。コマンドがある場合、フォルダは計測のみ行われます。";

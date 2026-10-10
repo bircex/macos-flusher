@@ -15,22 +15,23 @@
 "Add a folder or a command." = "请添加一个文件夹或一条命令。";
 "Add target…" = "添加目标…";
 "Added by you" = "由你添加";
-"AI models" = "AI 模型";
+"AI" = "AI";
 "All" = "全部";
 "Analyzing %d of %d" = "正在分析 %d / %d";
 "Analyzing disk…" = "正在分析磁盘…";
 "Appearance" = "外观";
 "Applications" = "应用程序";
+"Browsers" = "浏览器";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "缓存会在需要时重新生成。";
 "Cancel" = "取消";
 "Charts" = "图表";
 "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "“图表”显示空间的分布。“设置”(⌘,) 包含外观和项目链接。";
 "Chat and meetings" = "聊天与会议";
-"Chat, mail and office" = "聊天、邮件与办公";
 "Choose" = "选择";
 "Choose folder…" = "选择文件夹…";
 "Command" = "命令";
+"Communication" = "通讯";
 "Containers & VMs" = "容器与虚拟机";
 "Dark" = "深色";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
@@ -39,6 +40,7 @@
 "Delete %@ across %@?" = "删除 %@（%@）？";
 "deleted for good" = "永久删除";
 "Deleted for good: " = "永久删除：";
+"Design and photo" = "设计与照片";
 "Developers" = "开发者";
 "Development build" = "开发版本";
 "Disk analysis finished." = "磁盘分析完成。";
@@ -60,6 +62,7 @@
 "Free" = "可用";
 "Freed %@" = "已释放 %@";
 "Freed %@." = "已释放 %@。";
+"Games" = "游戏";
 "General" = "通用";
 "Get your disk space back" = "拿回你的磁盘空间";
 "GitHub repository" = "GitHub 仓库";
@@ -79,6 +82,7 @@
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher 会删除这些文件夹中的所有内容，并原样运行该命令。不会放入废纸篓，也无法恢复。此目标删除的内容由你自行负责。";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher 找出应用和工具留下的缓存与残留，显示是什么占满了磁盘，并删除你选择的内容。";
 "Made by BirceX, Recep's AI assistant." = "由 Recep 的 AI 助手 BirceX 制作。";
+"Media" = "媒体";
 "MIT License" = "MIT 许可证";
 "Music and video" = "音乐与视频";
 "My targets" = "我的目标";
@@ -93,6 +97,7 @@
 "Not analyzed yet" = "尚未分析";
 "not installed" = "未安装";
 "Nothing to clean here." = "这里没有可清理的内容。";
+"Office and documents" = "办公与文档";
 "One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "每行一个文件夹，使用终端显示的名称，而不是访达中翻译后的名称。其中的所有内容都会被删除，文件夹本身保留。";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "打开“扫描”下的页面，勾选要删除的内容。能自行重建的目标默认勾选。标记为“恢复较慢”或“永久删除”的目标默认不勾选。";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "可选。在 zsh 中原样运行。填写命令后，文件夹只会被测量。";

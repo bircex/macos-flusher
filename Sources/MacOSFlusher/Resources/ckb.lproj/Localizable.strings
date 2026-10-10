@@ -15,22 +15,23 @@
 "Add a folder or a command." = "فۆڵدەرێک یان فەرمانێک زیاد بکە.";
 "Add target…" = "زیادکردنی ئامانج…";
 "Added by you" = "زیادکراو لەلایەن تۆوە";
-"AI models" = "مۆدێلەکانی زیرەکی دەستکرد";
+"AI" = "زیرەکی دەستکرد";
 "All" = "هەموو";
 "Analyzing %d of %d" = "شیکارکردن %d / %d";
 "Analyzing disk…" = "دیسک شیکار دەکرێت…";
 "Appearance" = "ڕووکار";
 "Applications" = "بەرنامەکان";
+"Browsers" = "وێبگەڕەکان";
 "C / C++" = "C / C++";
 "Caches are rebuilt on demand." = "کاشەکان کاتێک پێویست بن دووبارە دروست دەکرێنەوە.";
 "Cancel" = "هەڵوەشاندنەوە";
 "Charts" = "هێڵکارییەکان";
 "Charts shows where the space is. Settings (⌘,) holds the appearance and the links to the project." = "هێڵکارییەکان نیشان دەدەن بۆشایی لە کوێیە. ڕێکخستنەکان (⌘,) ڕووکار و بەستەرەکانی پڕۆژە لەخۆ دەگرێت.";
 "Chat and meetings" = "چات و کۆبوونەوەکان";
-"Chat, mail and office" = "چات، ئیمەیڵ و ئۆفیس";
 "Choose" = "هەڵبژاردن";
 "Choose folder…" = "هەڵبژاردنی فۆڵدەر…";
 "Command" = "فەرمان";
+"Communication" = "پەیوەندی";
 "Containers & VMs" = "کۆنتەینەرەکان و ئامێرە خەیاڵییەکان";
 "Dark" = "تاریک";
 "Dart, Zig, Nim, Julia, R, Crystal, D" = "Dart, Zig, Nim, Julia, R, Crystal, D";
@@ -39,6 +40,7 @@
 "Delete %@ across %@?" = "%@ (%@) بسڕدرێتەوە؟";
 "deleted for good" = "بۆ هەمیشە دەسڕدرێتەوە";
 "Deleted for good: " = "بۆ هەمیشە دەسڕدرێتەوە: ";
+"Design and photo" = "دیزاین و وێنە";
 "Developers" = "گەشەپێدەران";
 "Development build" = "بیلدی گەشەپێدان";
 "Disk analysis finished." = "شیکاری دیسک تەواو بوو.";
@@ -60,6 +62,7 @@
 "Free" = "بەتاڵ";
 "Freed %@" = "%@ بەتاڵ کرا";
 "Freed %@." = "%@ بەتاڵ کرا.";
+"Games" = "یاری";
 "General" = "گشتی";
 "Get your disk space back" = "بۆشایی دیسکەکەت بگەڕێنەوە";
 "GitHub repository" = "کۆگای GitHub";
@@ -79,6 +82,7 @@
 "MacOS Flusher deletes everything inside these folders and runs the command exactly as written. Nothing goes to the Trash and nothing can be restored. You are responsible for what this target removes." = "MacOS Flusher هەموو شتێک لەناو ئەم فۆڵدەرانە دەسڕێتەوە و فەرمانەکە بە تەواوی وەک نووسراوە جێبەجێ دەکات. هیچ شتێک ناچێتە ناو سەبەتەی خۆڵ و هیچ شتێک ناگەڕێندرێتەوە. تۆ بەرپرسیاری ئەو شتانەی کە ئەم ئامانجە لایان دەبات.";
 "MacOS Flusher finds the caches and leftovers your apps and tools leave behind, shows what fills the disk and deletes what you choose." = "MacOS Flusher ئەو کاش و پاشماوانە دەدۆزێتەوە کە بەرنامە و ئامرازەکانت بەجێیان دەهێڵن، نیشان دەدات چی دیسکەکە پڕ دەکات و ئەوەی تۆ هەڵیدەبژێریت دەیسڕێتەوە.";
 "Made by BirceX, Recep's AI assistant." = "دروستکراوە لەلایەن BirceX، یاریدەدەری زیرەکی دەستکردی Recep.";
+"Media" = "میدیا";
 "MIT License" = "مۆڵەتی MIT";
 "Music and video" = "مۆسیقا و ڤیدیۆ";
 "My targets" = "ئامانجەکانم";
@@ -93,6 +97,7 @@
 "Not analyzed yet" = "هێشتا شیکار نەکراوە";
 "not installed" = "دانەمەزراوە";
 "Nothing to clean here." = "لێرە هیچ شتێک بۆ پاککردنەوە نییە.";
+"Office and documents" = "ئۆفیس و بەڵگەنامە";
 "One folder per line, with the names Terminal shows, not the translated names of the Finder. Everything inside is deleted, the folder itself stays." = "لە هەر دێڕێکدا فۆڵدەرێک، بەو ناوانەی کە Terminal نیشانیان دەدات، نەک ناوە وەرگێڕدراوەکانی Finder. هەموو شتێکی ناوەوە دەسڕدرێتەوە، فۆڵدەرەکە خۆی دەمێنێتەوە.";
 "Open a page under Scans and tick what you want to delete. Targets that rebuild themselves are ticked from the start. Targets marked slow to get back or deleted for good start unticked." = "لاپەڕەیەک لەژێر پشکنینەکان بکەرەوە و ئەوەی دەتەوێت بیسڕیتەوە نیشانە بکە. ئەو ئامانجانەی خۆیان دووبارە دروست دەبنەوە لە سەرەتاوە نیشانەکراون. ئامانجەکانی نیشانەکراو بە گەڕاندنەوەی خاوە یان بۆ هەمیشە دەسڕدرێتەوە بەبێ نیشانە دەست پێ دەکەن.";
 "Optional. Runs in zsh exactly as written. With a command, the folders are only measured." = "ئارەزوومەندانە. لە zsh بە تەواوی وەک نووسراوە جێبەجێ دەکرێت. کاتێک فەرمان هەبێت، فۆڵدەرەکان تەنها دەپێورێن.";
