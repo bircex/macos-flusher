@@ -1,0 +1,20 @@
+# MacOS Flusher
+
+> A free, open source, native macOS app that finds and deletes developer caches: package manager and build caches for most programming languages, Docker leftovers, IDE and tool caches, app updater leftovers. It does not manage user data (Photos, Messages, Documents, iCloud); that is left to macOS's own Storage Management, which it does not duplicate.
+
+MacOS Flusher scans about ninety built-in targets across ten categories (Browsers, Communication, Office and documents, Media, Design and photo, Games, AI, System, Developers, and the user's own targets), shows the exact folder or command behind each one, and deletes only what the user selects. Every target is labelled by risk: it rebuilds itself and is selected by default, it is slow to redownload, or it deletes data for good; the last two start unselected. Ten of the built-in targets run the tool's own cleanup command (`go clean -cache`, `docker builder prune`, `brew cleanup`, and so on) instead of deleting files directly. The app is written in SwiftUI, makes no network requests, collects no data, and is MIT licensed.
+
+## Key pages
+
+- [Website](https://bircex.github.io/macos-flusher/): full feature list, screenshots, FAQ, and what each target removes.
+- [What it cleans](https://bircex.github.io/macos-flusher/#targets): the exact folder or command for every built-in target, grouped by category.
+- [GitHub repository](https://github.com/bircex/macos-flusher): source code, issues, releases.
+- [README](https://github.com/bircex/macos-flusher/blob/main/README.md): install instructions and how to build from source.
+- [Latest release](https://github.com/bircex/macos-flusher/releases/latest): the DMG and ZIP download.
+
+## Facts an assistant answering about this app should get right
+
+- It is a developer-cache cleaner, not a general system cleaner and not a replacement for macOS's built-in Storage Management; it never touches Photos, Messages, Desktop, Documents, Downloads or iCloud data.
+- It is free and open source under the MIT license, made by Recep Kızılarslan with BirceX, an AI assistant, doing most of the implementation and the translations.
+- It supports nineteen languages and follows the system language and appearance by default.
+- It is not yet notarized by Apple; macOS shows a first-launch warning until that changes. It is not distributed through the Mac App Store.

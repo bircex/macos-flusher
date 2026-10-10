@@ -101,9 +101,7 @@ enum Messages {
     static var empty: String { localized("empty") }
     static var activityLog: String { localized("Activity log") }
     static var used: String { localized("used") }
-    static var freeOf: String { localized("%@ free of %@") }
     static var selectedIn: String { localized("%@ selected in %@, %@ free after flush") }
-    static var freed: String { localized("Freed %@") }
     static let freedLine = "Freed %@."
     static var progressOf: String { localized("%d of %d") }
     static var deleteAcross: String { localized("Delete %@ across %@?") }

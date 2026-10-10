@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bircex.github.io/macos-flusher/sitemap.xml

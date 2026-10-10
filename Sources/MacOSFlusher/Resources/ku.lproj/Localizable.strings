@@ -1,5 +1,4 @@
 "%@ found" = "%@ hat dîtin";
-"%@ free of %@" = "%@ vala, bi tevahî %@";
 "%@ of disk" = "%@ ya dîskê";
 "%@ selected in %@, %@ free after flush" = "%@ hilbijartî (%@), piştî paqijkirinê %@ vala";
 "%@ used" = "%@ tê bikaranîn";
@@ -61,7 +60,6 @@
 "Folders cannot contain * or ?." = "Di peldankan de * an ? nabe.";
 "Folders cannot contain \"..\"." = "Di peldankan de \"..\" nabe.";
 "Free" = "Vala";
-"Freed %@" = "%@ hat valakirin";
 "Freed %@." = "%@ hat valakirin.";
 "Games" = "Lîstik";
 "General" = "Giştî";

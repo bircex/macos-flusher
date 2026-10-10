@@ -41,8 +41,6 @@ struct ContentView: View {
                 .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 320)
         } detail: {
             VStack(spacing: 0) {
-                DiskLine()
-                Divider()
                 page
                 Divider()
                 Footer()
@@ -225,81 +223,6 @@ struct Footer: View {
         .font(.caption)
         .padding(.horizontal)
         .padding(.vertical, 6)
-    }
-}
-
-struct DiskLine: View {
-    @EnvironmentObject var store: Store
-
-    var body: some View {
-        HStack(spacing: 14) {
-            if let disk = store.disk {
-                let expected = max(0, disk.usedFraction - Double(store.selectedTotal) / Double(max(disk.total, 1)))
-                Text(String(format: Messages.freeOf, Format.bytes(disk.free), Format.bytes(disk.total)))
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                    .fixedSize()
-                PercentBar(
-                    fraction: expected,
-                    behind: disk.usedFraction,
-                    tint: disk.usedFraction > 0.9 ? Palette.warning : Palette.otherData,
-                    label: store.selectedTotal > 0
-                        ? "\(Format.percent(disk.usedFraction)) → \(Format.percent(expected))"
-                        : Format.percent(disk.usedFraction)
-                )
-                if let after = store.expectedFreeAfterFlush, store.selectedTotal > 0 {
-                    Text(String(format: Messages.selectedIn, Format.bytes(store.selectedTotal), Messages.targets(store.selectedCount), Format.bytes(after)))
-                        .font(.callout.weight(.medium))
-                        .foregroundStyle(Palette.selected)
-                        .fixedSize()
-                }
-                if let freed = store.lastFreed {
-                    Text(String(format: Messages.freed, Format.bytes(freed)))
-                        .font(.callout.weight(.medium))
-                        .foregroundStyle(Palette.selected)
-                        .fixedSize()
-                }
-            }
-            if let progress = store.progress {
-                ProgressView(value: progress.fraction)
-                    .frame(width: 90)
-                Text(String(format: Messages.progressOf, progress.done, progress.total))
-                    .font(.system(.caption, design: .monospaced))
-                    .foregroundStyle(.secondary)
-                    .fixedSize()
-            }
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 10)
-    }
-}
-
-struct PercentBar: View {
-    let fraction: Double
-    var behind: Double?
-    let tint: Color
-    let label: String
-
-    var body: some View {
-        HStack(spacing: 10) {
-            GeometryReader { geo in
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 6).fill(Color.secondary.opacity(0.2))
-                    if let behind {
-                        RoundedRectangle(cornerRadius: 6)
-                            .fill(Palette.selected)
-                            .frame(width: geo.size.width * min(max(behind, 0), 1))
-                    }
-                    RoundedRectangle(cornerRadius: 6)
-                        .fill(tint)
-                        .frame(width: geo.size.width * min(max(fraction, 0), 1))
-                }
-            }
-            .frame(height: 18)
-            Text(label)
-                .font(.system(.callout, design: .monospaced).weight(.semibold))
-                .frame(width: 100, alignment: .trailing)
-        }
     }
 }
 

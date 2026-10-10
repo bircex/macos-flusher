@@ -1,5 +1,4 @@
 "%@ found" = "%@ 見つかりました";
-"%@ free of %@" = "空き %@ / %@";
 "%@ of disk" = "ディスクの %@";
 "%@ selected in %@, %@ free after flush" = "%@ を選択中（%@）、掃除後の空き %@";
 "%@ used" = "使用中 %@";
@@ -61,7 +60,6 @@
 "Folders cannot contain * or ?." = "フォルダに * や ? は使えません。";
 "Folders cannot contain \"..\"." = "フォルダに「..」は使えません。";
 "Free" = "空き";
-"Freed %@" = "%@ を解放";
 "Freed %@." = "%@ を解放しました。";
 "Games" = "ゲーム";
 "General" = "一般";

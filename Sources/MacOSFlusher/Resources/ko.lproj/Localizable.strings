@@ -1,5 +1,4 @@
 "%@ found" = "%@ 발견";
-"%@ free of %@" = "%@ 남음 / 전체 %@";
 "%@ of disk" = "디스크의 %@";
 "%@ selected in %@, %@ free after flush" = "%@ 선택됨(%@), 비운 뒤 %@ 남음";
 "%@ used" = "%@ 사용 중";
@@ -61,7 +60,6 @@
 "Folders cannot contain * or ?." = "폴더에 * 또는 ?를 쓸 수 없습니다.";
 "Folders cannot contain \"..\"." = "폴더에 \"..\"을 쓸 수 없습니다.";
 "Free" = "남은 공간";
-"Freed %@" = "%@ 확보";
 "Freed %@." = "%@ 확보했습니다.";
 "Games" = "게임";
 "General" = "일반";
