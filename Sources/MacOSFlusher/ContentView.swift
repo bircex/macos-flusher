@@ -1,36 +1,49 @@
 import SwiftUI
 
+enum Page: Hashable {
+    case audience(Audience)
+    case charts
+    case activity
+
+    var title: String {
+        switch self {
+        case .audience(let audience): return audience.name
+        case .charts: return Messages.charts
+        case .activity: return Messages.activity
+        }
+    }
+}
+
 struct ContentView: View {
     @EnvironmentObject var store: Store
-    @State private var confirmFlush = false
 
     var body: some View {
-        VStack(spacing: 0) {
-            header
-            overview
-            Divider()
-            HStack(spacing: 0) {
-                List {
-                    ForEach(Audience.allCases) { audience in
-                        AudienceSection(audience: audience)
-                    }
-                }
-                .listStyle(.inset)
+        NavigationSplitView {
+            Sidebar()
+                .navigationSplitViewColumnWidth(min: 180, ideal: 210, max: 280)
+        } detail: {
+            VStack(spacing: 0) {
+                DiskLine()
                 Divider()
-                VStack(spacing: 0) {
-                    LocationChart()
-                    Divider()
-                    GroupChart()
-                }
-                .frame(width: 320)
+                page
             }
-            Divider()
-            LogView()
+            .navigationTitle(store.page.title)
         }
-        .frame(minWidth: 960, minHeight: 820)
+        .toolbar {
+            ToolbarItemGroup(placement: .primaryAction) {
+                if store.busy {
+                    Button(Messages.stop) { store.stop() }
+                } else {
+                    Button(Messages.scan) { store.scan() }
+                }
+                Button(Messages.flushSelected) { store.confirmFlush = true }
+                    .disabled(store.busy || store.selectedCount == 0)
+            }
+        }
+        .frame(minWidth: 900, minHeight: 600)
         .confirmationDialog(
             "Delete \(Format.bytes(store.selectedTotal)) across \(Messages.targets(store.selectedCount))?",
-            isPresented: $confirmFlush,
+            isPresented: $store.confirmFlush,
             titleVisibility: .visible
         ) {
             Button("Flush", role: .destructive) { store.flush() }
@@ -44,48 +57,144 @@ struct ContentView: View {
         .onAppear { store.scan() }
     }
 
-    private var header: some View {
-        HStack(spacing: 12) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("MacOS Flusher").font(.title2.bold())
-                Text("Selected: \(Format.bytes(store.selectedTotal)) in \(Messages.targets(store.selectedCount))")
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-            }
-            Spacer()
-            Button(Messages.addTarget) { store.edited = UserTarget() }
-            Toggle("Hide empty", isOn: $store.hideEmpty)
-                .toggleStyle(.checkbox)
-            if store.busy {
-                Button("Stop") { store.stop() }
-            } else {
-                Button("Scan") { store.scan() }
-            }
-            Button("Flush selected") { confirmFlush = true }
-                .buttonStyle(.borderedProminent)
-                .tint(.red)
-                .disabled(store.busy || store.selectedCount == 0)
+    @ViewBuilder
+    private var page: some View {
+        switch store.page {
+        case .audience(let audience): TargetsPage(audience: audience)
+        case .charts: ChartsPage()
+        case .activity: ActivityPage()
         }
-        .padding()
+    }
+}
+
+struct Sidebar: View {
+    @EnvironmentObject var store: Store
+
+    private var selection: Binding<Page?> {
+        Binding(get: { store.page }, set: { if let page = $0 { store.page = page } })
     }
 
-    private var overview: some View {
-        HStack(spacing: 16) {
-            DiskDonut()
-            VStack(spacing: 10) {
+    var body: some View {
+        List(selection: selection) {
+            Section {
+                ForEach(Audience.allCases) { audience in
+                    HStack {
+                        Text(audience.name)
+                        Spacer()
+                        if store.total(of: audience) > 0 {
+                            Text(Format.bytes(store.total(of: audience)))
+                                .font(.system(.caption, design: .monospaced))
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .tag(Page.audience(audience))
+                }
+            }
+            Section {
+                Text(Messages.charts).tag(Page.charts)
+                Text(Messages.activity).tag(Page.activity)
+            }
+        }
+        .listStyle(.sidebar)
+    }
+}
+
+struct TargetsPage: View {
+    @EnvironmentObject var store: Store
+    let audience: Audience
+
+    private var groups: [TargetGroup] {
+        store.groups.filter { $0.audience == audience && $0.items.contains(where: store.isVisible) }
+    }
+
+    var body: some View {
+        if groups.isEmpty {
+            VStack(spacing: 12) {
+                Text(audience == .mine ? Messages.noOwnTargets : Messages.nothingHere)
+                    .foregroundStyle(.secondary)
+                if audience == .mine {
+                    Button(Messages.addTarget) { store.edited = UserTarget() }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else {
+            List {
+                ForEach(groups) { group in
+                    GroupSection(group: group)
+                }
+            }
+            .listStyle(.inset)
+        }
+    }
+}
+
+struct ChartsPage: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            HStack(spacing: 16) {
+                DiskDonut()
                 DiskLegend()
-                DiskBar()
-                progressBar
+            }
+            .padding()
+            Divider()
+            HStack(spacing: 0) {
+                LocationChart()
+                Divider()
+                GroupChart()
+            }
+        }
+    }
+}
+
+struct ActivityPage: View {
+    var body: some View {
+        LogView()
+    }
+}
+
+struct DiskLine: View {
+    @EnvironmentObject var store: Store
+
+    var body: some View {
+        HStack(spacing: 14) {
+            if let disk = store.disk {
+                let expected = max(0, disk.usedFraction - Double(store.selectedTotal) / Double(max(disk.total, 1)))
+                Text("\(Format.bytes(disk.free)) free of \(Format.bytes(disk.total))")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                    .fixedSize()
+                PercentBar(
+                    fraction: expected,
+                    behind: disk.usedFraction,
+                    tint: disk.usedFraction > 0.9 ? Color.red : Color.accentColor,
+                    label: store.selectedTotal > 0
+                        ? "\(Format.percent(disk.usedFraction)) → \(Format.percent(expected))"
+                        : Format.percent(disk.usedFraction)
+                )
+                if let after = store.expectedFreeAfterFlush, store.selectedTotal > 0 {
+                    Text("\(Format.bytes(store.selectedTotal)) selected in \(Messages.targets(store.selectedCount)), \(Format.bytes(after)) free after flush")
+                        .font(.callout.weight(.medium))
+                        .foregroundStyle(.green)
+                        .fixedSize()
+                }
+                if let freed = store.lastFreed {
+                    Text("Freed \(Format.bytes(freed))")
+                        .font(.callout.weight(.medium))
+                        .foregroundStyle(.green)
+                        .fixedSize()
+                }
+            }
+            if let progress = store.progress {
+                ProgressView(value: progress.fraction)
+                    .frame(width: 90)
+                Text("\(progress.done) of \(progress.total)")
+                    .font(.system(.caption, design: .monospaced))
+                    .foregroundStyle(.secondary)
+                    .fixedSize()
             }
         }
         .padding(.horizontal)
-        .padding(.bottom, 12)
-    }
-
-    private var progressBar: some View {
-        let fraction = store.progress?.fraction ?? 0
-        return PercentBar(fraction: fraction, tint: .accentColor, label: Format.percent(fraction))
-            .opacity(store.progress == nil ? 0 : 1)
+        .padding(.vertical, 10)
     }
 }
 
@@ -114,63 +223,6 @@ struct PercentBar: View {
             Text(label)
                 .font(.system(.callout, design: .monospaced).weight(.semibold))
                 .frame(width: 100, alignment: .trailing)
-        }
-    }
-}
-
-struct DiskBar: View {
-    @EnvironmentObject var store: Store
-
-    var body: some View {
-        if let disk = store.disk {
-            let expectedFraction = max(0, disk.usedFraction - Double(store.selectedTotal) / Double(max(disk.total, 1)))
-            VStack(alignment: .leading, spacing: 6) {
-                HStack {
-                    Text("Disk usage")
-                        .font(.callout.weight(.medium))
-                    Spacer()
-                    Text("\(Format.bytes(disk.free)) free of \(Format.bytes(disk.total))")
-                        .font(.callout)
-                        .foregroundStyle(.secondary)
-                    if let expected = store.expectedFreeAfterFlush, store.selectedTotal > 0 {
-                        Text("→ \(Format.bytes(expected)) after flush")
-                            .font(.callout.weight(.medium))
-                            .foregroundStyle(.green)
-                    }
-                    if let freed = store.lastFreed {
-                        Text("Freed \(Format.bytes(freed))")
-                            .font(.callout.weight(.medium))
-                            .foregroundStyle(.green)
-                    }
-                }
-                PercentBar(
-                    fraction: expectedFraction,
-                    behind: disk.usedFraction,
-                    tint: disk.usedFraction > 0.9 ? Color.red : Color.accentColor,
-                    label: store.selectedTotal > 0
-                        ? "\(Format.percent(disk.usedFraction)) → \(Format.percent(expectedFraction))"
-                        : Format.percent(disk.usedFraction)
-                )
-            }
-        }
-    }
-}
-
-struct AudienceSection: View {
-    @EnvironmentObject var store: Store
-    let audience: Audience
-
-    private var groups: [TargetGroup] {
-        store.groups.filter { $0.audience == audience && $0.items.contains(where: store.isVisible) }
-    }
-
-    var body: some View {
-        if !groups.isEmpty {
-            Section(audience.name) {
-                ForEach(groups) { group in
-                    GroupSection(group: group)
-                }
-            }
         }
     }
 }
@@ -357,7 +409,6 @@ struct LogView: View {
                     }
                     .padding(.vertical, 4)
                 }
-                .frame(height: 130)
                 .onChange(of: store.log.last?.id) { id in
                     if let id { proxy.scrollTo(id, anchor: .bottom) }
                 }

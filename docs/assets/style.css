@@ -388,11 +388,6 @@ section.block {
   font-size: 16px;
 }
 
-.step .shot.narrow {
-  justify-self: end;
-  max-width: 320px;
-}
-
 .step .shot.medium {
   justify-self: end;
   max-width: 520px;
@@ -793,7 +788,6 @@ footer a:hover {
     gap: 24px;
   }
 
-  .step .shot.narrow,
   .step .shot.medium {
     justify-self: start;
   }
